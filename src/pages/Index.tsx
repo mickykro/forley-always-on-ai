@@ -29,9 +29,9 @@ const Index = () => {
           <div className="flex justify-center mb-8">
             <img src={forliMascot} alt="פורלי הינשוף החכם" className="w-32 h-32" />
           </div>
-          <h1 className="text-5xl font-bold mb-6 leading-tight">
+          <h1 className="text-5xl font-bold mb-6 leading-tight text-white">
             לא מפספסים יותר שיחות –<br />
-            <span className="text-accent">Call4li</span>, הבוט שמחזיר לך שליטה
+            <span className="text-accent font-black">Call4li</span>, הבוט שמחזיר לך שליטה
           </h1>
           <p className="text-xl mb-8 max-w-3xl mx-auto leading-relaxed">
             פורלי הינשוף החכם עונה כשאתה לא יכול – מתעד שיחות, יוצר קשר עם הלקוחות שלך, ושולח לך סיכום ברור
