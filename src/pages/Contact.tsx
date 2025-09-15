@@ -3,10 +3,14 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Send, User, Mail, MessageSquare } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useToast } from "@/components/ui/use-toast";
 import forliMascot from "@/assets/cropped_circle_image.png";
+import { ContactIntegrationService } from "@/services/contactIntegration";
 
 const Contact = () => {
+  const { toast } = useToast();
   const [currentStep, setCurrentStep] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -40,7 +44,38 @@ const Contact = () => {
   const currentMessage = steps[currentStep] ;
   const isComplete = currentStep === 4;
 
-  const handleNext = () => {
+  const handleNext = async () => {
+    if (currentStep === 3) {
+      // Form is complete, submit data to integrations
+      setIsSubmitting(true);
+      
+      try {
+        const result = await ContactIntegrationService.submitContactForm(formData);
+        
+        if (result.success) {
+          toast({
+            title: "הטופס נשלח בהצלחה! 🎉",
+            description: "נחזור אליכם בהקדם",
+          });
+        } else {
+          // Still proceed to next step even if integrations fail
+          console.warn('Integration errors:', result.errors);
+          toast({
+            title: "הטופס התקבל",
+            description: "נחזור אליכם בהקדם",
+          });
+        }
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        toast({
+          title: "הטופס התקבל",
+          description: "נחזור אליכם בהקדם",
+        });
+      } finally {
+        setIsSubmitting(false);
+      }
+    }
+
     if (currentStep < steps.length - 1) {
       // Add a small delay to show the user message before moving to next step
       setTimeout(() => {
@@ -121,11 +156,15 @@ const Contact = () => {
             </div>
             <Button 
               onClick={handleNext}
-              disabled={!formData.message.trim()}
+              disabled={!formData.message.trim() || isSubmitting}
               size="icon"
               className="rounded-full bg-[#25D366] hover:bg-[#128C7E] h-12 w-12"
             >
-              <Send className="w-5 h-5" />
+              {isSubmitting ? (
+                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+              ) : (
+                <Send className="w-5 h-5" />
+              )}
             </Button>
           </div>
         );
