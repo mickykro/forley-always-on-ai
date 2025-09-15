@@ -3,17 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { PhoneIcon, MessageCircleIcon, ClipboardCheckIcon, TrendingUpIcon, ClockIcon, BrainIcon } from "lucide-react";
-import { useBackgroundRemoval } from "@/hooks/useBackgroundRemoval";
-import { useEffect } from "react";
 
 const Index = () => {
-  const { processImage, processedImageUrl, isProcessing } = useBackgroundRemoval();
-
-  useEffect(() => {
-    // Process the mascot image on component mount
-    processImage(forliMascot);
-  }, [processImage]);
-
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -36,12 +27,7 @@ const Index = () => {
       <section className="relative overflow-hidden bg-gradient-hero py-20">
         <div className="container mx-auto px-4 text-center text-text-custom">
           <div className="flex justify-center mb-8">
-            <img 
-              src={processedImageUrl || forliMascot} 
-              alt="פורלי הינשוף החכם" 
-              className="w-32 h-32" 
-              style={{ opacity: isProcessing ? 0.7 : 1 }}
-            />
+            <img src={forliMascot} alt="פורלי הינשוף החכם" className="w-32 h-32" />
           </div>
           <h1 className="text-5xl font-bold mb-6 leading-tight text-text-custom">
             לא מפספסים יותר שיחות –<br />
@@ -176,7 +162,7 @@ const Index = () => {
       <section className="py-20 bg-primary text-white">
         <div className="container mx-auto px-4 text-center">
           <div className="flex justify-center mb-8">
-            <img src={forliMascot} alt="פורלי הינשוף" className="w-24 h-24 rounded-full object-cover border-2 border-white/20" />
+            <img src={forliMascot} alt="פורלי הינשוף" className="w-24 h-24" />
           </div>
           <h2 className="text-4xl font-bold mb-6">עסק ממוצע מפספס 30% מהשיחות</h2>
           <p className="text-2xl mb-8">Call4li הופך אותן להזדמנויות!</p>
