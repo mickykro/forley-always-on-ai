@@ -41,23 +41,13 @@ const Contact = () => {
   const isComplete = currentStep === 4;
 
   const handleNext = () => {
+    console.log("current sterp ", currentStep);
     if (currentStep < steps.length - 1) {
       // Add a small delay to show the user message before moving to next step
       setTimeout(() => {
         setCurrentStep(currentStep + 1);
-        
-        // Auto-submit form after the last user input (step 3 -> step 4)
-        if (currentStep === 3) {
-          handleFormSubmit();
-        }
       }, 100);
     }
-  };
-
-  const handleFormSubmit = () => {
-    // Form submission logic here
-    console.log('Form submitted:', formData);
-    // You can add actual form submission to your backend here
   };
 
   const handleInputChange = (field: string, value: string) => {
