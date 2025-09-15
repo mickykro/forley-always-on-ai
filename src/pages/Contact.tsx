@@ -259,7 +259,7 @@ const Contact = () => {
         </div>
 
         {/* Input Area */}
-        {!isComplete && (
+        {!isComplete && currentStep < 4 && (
           <div className="p-4 bg-[#202c33] border-t border-gray-700">
             {renderInput()}
           </div>
