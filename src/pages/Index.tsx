@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { PhoneIcon, MessageCircleIcon, ClipboardCheckIcon, TrendingUpIcon, ClockIcon, BrainIcon } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const [dealValue, setDealValue] = useState<number>(1000);
@@ -22,9 +23,11 @@ const Index = () => {
               <p className="text-sm text-muted-foreground">עם פורלי הינשוף החכם</p>
             </div>
           </div>
-          <Button variant="outline" className="text-secondary hover:bg-secondary hover:text-white">
-            להתחלת ניסיון חינם
-          </Button>
+          <Link to="/contact">
+            <Button variant="outline" className="text-secondary hover:bg-secondary hover:text-white">
+              להתחלת ניסיון חינם
+            </Button>
+          </Link>
         </div>
       </header>
 
@@ -41,9 +44,11 @@ const Index = () => {
           <p className="text-xl mb-8 max-w-3xl mx-auto leading-relaxed text-text-custom">
             פורלי הינשוף החכם עונה כשאתה לא יכול – מתעד שיחות, יוצר קשר עם הלקוחות שלך, ושולח לך סיכום ברור
           </p>
-          <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6">
-            להתחלת ניסיון חינם
-          </Button>
+          <Link to="/contact">
+            <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6">
+              להתחלת ניסיון חינם
+            </Button>
+          </Link>
         </div>
       </section>
 
@@ -238,9 +243,11 @@ const Index = () => {
                     <span>דוחות בסיסיים</span>
                   </li>
                 </ul>
-                <Button className="w-full bg-secondary hover:bg-secondary/90">
-                  התחילו עכשיו
-                </Button>
+                <Link to="/contact" className="w-full">
+                  <Button className="w-full bg-secondary hover:bg-secondary/90">
+                    התחילו עכשיו
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
 
@@ -276,9 +283,11 @@ const Index = () => {
                     <span>דוחות מתקדמים</span>
                   </li>
                 </ul>
-                <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
-                  התחילו עכשיו
-                </Button>
+                <Link to="/contact" className="w-full">
+                  <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
+                    התחילו עכשיו
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           </div>
@@ -358,9 +367,11 @@ const Index = () => {
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             הצטרפו לעסקים שכבר משתמשים בפורלי ולא מפספסים אף הזדמנות
           </p>
-          <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6">
-            התחילו ניסיון חינם היום
-          </Button>
+          <Link to="/contact">
+            <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6">
+              התחילו ניסיון חינם היום
+            </Button>
+          </Link>
         </div>
       </section>
 
