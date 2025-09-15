@@ -157,18 +157,12 @@ const Contact = () => {
 
         {/* Chat Messages */}
         <div className="p-4 space-y-4 bg-[#0b141a] min-h-[400px] max-h-[500px] overflow-y-auto">
-          {/* Bot Messages */}
+          {/* Welcome Message */}
           <div className="flex gap-2">
             <img src={forliMascot} alt="פורלי" className="w-8 h-8 rounded-full flex-shrink-0" />
             <div className="bg-[#202c33] text-white rounded-lg rounded-bl-none px-4 py-2 max-w-[80%]">
-              <p className="text-sm">
-                {currentMessage.message.replace(/\{name\}/g, formData.name || "")}
-              </p>
-              {currentMessage.submessage && (
-                <p className="text-sm mt-1 text-gray-300">
-                  {currentMessage.submessage}
-                </p>
-              )}
+              <p className="text-sm">שלום! אני פורלי, הינשוף החכם של Call4li 🦉</p>
+              <p className="text-sm mt-1 text-gray-300">אשמח לעזור לכם להתחיל. בואו נכיר - איך קוראים לכם?</p>
               <span className="text-xs text-gray-400 mt-1 block">
                 {new Date().toLocaleTimeString("he-IL", { 
                   hour: "2-digit", 
@@ -178,38 +172,79 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* User Messages */}
+          {/* User Name Message */}
           {formData.name && currentStep > 1 && (
-            <div className="flex justify-end">
-              <div className="bg-[#005c4b] text-white rounded-lg rounded-br-none px-4 py-2 max-w-[80%]">
-                <p className="text-sm">{formData.name}</p>
-                <span className="text-xs text-gray-300 mt-1 block">
-                  ✓✓
-                </span>
+            <>
+              <div className="flex justify-end">
+                <div className="bg-[#005c4b] text-white rounded-lg rounded-br-none px-4 py-2 max-w-[80%]">
+                  <p className="text-sm">{formData.name}</p>
+                  <span className="text-xs text-gray-300 mt-1 block">✓✓</span>
+                </div>
               </div>
-            </div>
+              <div className="flex gap-2">
+                <img src={forliMascot} alt="פורלי" className="w-8 h-8 rounded-full flex-shrink-0" />
+                <div className="bg-[#202c33] text-white rounded-lg rounded-bl-none px-4 py-2 max-w-[80%]">
+                  <p className="text-sm">נחמד להכיר אותך {formData.name}! 😊</p>
+                  <p className="text-sm mt-1 text-gray-300">ומה מספר הטלפון שלכם?</p>
+                  <span className="text-xs text-gray-400 mt-1 block">
+                    {new Date().toLocaleTimeString("he-IL", { 
+                      hour: "2-digit", 
+                      minute: "2-digit" 
+                    })}
+                  </span>
+                </div>
+              </div>
+            </>
           )}
 
+          {/* User Phone Message */}
           {formData.phone && currentStep > 2 && (
-            <div className="flex justify-end">
-              <div className="bg-[#005c4b] text-white rounded-lg rounded-br-none px-4 py-2 max-w-[80%]">
-                <p className="text-sm">{formData.phone}</p>
-                <span className="text-xs text-gray-300 mt-1 block">
-                  ✓✓
-                </span>
+            <>
+              <div className="flex justify-end">
+                <div className="bg-[#005c4b] text-white rounded-lg rounded-br-none px-4 py-2 max-w-[80%]">
+                  <p className="text-sm">{formData.phone}</p>
+                  <span className="text-xs text-gray-300 mt-1 block">✓✓</span>
+                </div>
               </div>
-            </div>
+              <div className="flex gap-2">
+                <img src={forliMascot} alt="פורלי" className="w-8 h-8 rounded-full flex-shrink-0" />
+                <div className="bg-[#202c33] text-white rounded-lg rounded-bl-none px-4 py-2 max-w-[80%]">
+                  <p className="text-sm">אחלה! עוד רגע נתחיל 🚀</p>
+                  <p className="text-sm mt-1 text-gray-300">ספרו לי קצת על העסק שלכם ואיך נוכל לעזור</p>
+                  <span className="text-xs text-gray-400 mt-1 block">
+                    {new Date().toLocaleTimeString("he-IL", { 
+                      hour: "2-digit", 
+                      minute: "2-digit" 
+                    })}
+                  </span>
+                </div>
+              </div>
+            </>
           )}
 
+          {/* User Message */}
           {formData.message && currentStep > 3 && (
-            <div className="flex justify-end">
-              <div className="bg-[#005c4b] text-white rounded-lg rounded-br-none px-4 py-2 max-w-[80%]">
-                <p className="text-sm">{formData.message}</p>
-                <span className="text-xs text-gray-300 mt-1 block">
-                  ✓✓
-                </span>
+            <>
+              <div className="flex justify-end">
+                <div className="bg-[#005c4b] text-white rounded-lg rounded-br-none px-4 py-2 max-w-[80%]">
+                  <p className="text-sm">{formData.message}</p>
+                  <span className="text-xs text-gray-300 mt-1 block">✓✓</span>
+                </div>
               </div>
-            </div>
+              <div className="flex gap-2">
+                <img src={forliMascot} alt="פורלי" className="w-8 h-8 rounded-full flex-shrink-0" />
+                <div className="bg-[#202c33] text-white rounded-lg rounded-bl-none px-4 py-2 max-w-[80%]">
+                  <p className="text-sm">תודה רבה {formData.name}! 🎉</p>
+                  <p className="text-sm mt-1 text-gray-300">נחזור אליכם תוך 24 שעות עם הצעה מותאמת אישית</p>
+                  <span className="text-xs text-gray-400 mt-1 block">
+                    {new Date().toLocaleTimeString("he-IL", { 
+                      hour: "2-digit", 
+                      minute: "2-digit" 
+                    })}
+                  </span>
+                </div>
+              </div>
+            </>
           )}
 
           {isComplete && (
