@@ -3,8 +3,17 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { PhoneIcon, MessageCircleIcon, ClipboardCheckIcon, TrendingUpIcon, ClockIcon, BrainIcon } from "lucide-react";
+import { useBackgroundRemoval } from "@/hooks/useBackgroundRemoval";
+import { useEffect } from "react";
 
 const Index = () => {
+  const { processImage, processedImageUrl, isProcessing } = useBackgroundRemoval();
+
+  useEffect(() => {
+    // Process the mascot image on component mount
+    processImage(forliMascot);
+  }, [processImage]);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -27,7 +36,12 @@ const Index = () => {
       <section className="relative overflow-hidden bg-gradient-hero py-20">
         <div className="container mx-auto px-4 text-center text-text-custom">
           <div className="flex justify-center mb-8">
-            <img src={forliMascot} alt="פורלי הינשוף החכם" className="w-32 h-32" />
+            <img 
+              src={processedImageUrl || forliMascot} 
+              alt="פורלי הינשוף החכם" 
+              className="w-32 h-32" 
+              style={{ opacity: isProcessing ? 0.7 : 1 }}
+            />
           </div>
           <h1 className="text-5xl font-bold mb-6 leading-tight text-text-custom">
             לא מפספסים יותר שיחות –<br />
