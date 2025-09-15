@@ -27,7 +27,22 @@ const Index = () => {
       <section className="relative overflow-hidden bg-gradient-hero py-20">
         <div className="container mx-auto px-4 text-center text-text-custom">
           <div className="flex justify-center mb-8">
-            <img src={forliMascot} alt="פורלי הינשוף החכם" className="w-32 h-32" />
+            <div className="relative group">
+              <img src={forliMascot} alt="פורלי הינשוף החכם" className="w-32 h-32" />
+              <Button 
+                onClick={() => {
+                  const link = document.createElement('a');
+                  link.href = forliMascot;
+                  link.download = 'forli-mascot.png';
+                  link.click();
+                }}
+                variant="outline" 
+                size="sm"
+                className="absolute -bottom-2 -right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 hover:bg-white text-primary border-primary"
+              >
+                הורד תמונה
+              </Button>
+            </div>
           </div>
           <h1 className="text-5xl font-bold mb-6 leading-tight text-text-custom">
             לא מפספסים יותר שיחות –<br />
