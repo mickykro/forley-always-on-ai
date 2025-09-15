@@ -3,8 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { PhoneIcon, MessageCircleIcon, ClipboardCheckIcon, TrendingUpIcon, ClockIcon, BrainIcon } from "lucide-react";
+import { useState } from "react";
 
 const Index = () => {
+  const [dealValue, setDealValue] = useState<number>(1000);
+  const [callsPerMonth, setCallsPerMonth] = useState<number>(100);
+  
+  const expectedReturn = Math.round(dealValue * callsPerMonth * 0.3);
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -175,7 +180,8 @@ const Index = () => {
                   <label className="block text-sm font-medium mb-2">שווי עסקה ממוצעת (₪)</label>
                   <input 
                     type="number" 
-                    placeholder="1,000" 
+                    value={dealValue}
+                    onChange={(e) => setDealValue(Number(e.target.value) || 0)}
                     className="w-full p-3 border rounded-lg text-center"
                   />
                 </div>
@@ -183,12 +189,13 @@ const Index = () => {
                   <label className="block text-sm font-medium mb-2">שיחות בחודש</label>
                   <input 
                     type="number" 
-                    placeholder="100" 
+                    value={callsPerMonth}
+                    onChange={(e) => setCallsPerMonth(Number(e.target.value) || 0)}
                     className="w-full p-3 border rounded-lg text-center"
                   />
                 </div>
                 <div className="pt-4 border-t">
-                  <p className="text-lg font-bold text-success">החזר צפוי: ₪30,000/חודש</p>
+                  <p className="text-lg font-bold text-success">החזר צפוי: ₪{expectedReturn.toLocaleString()}/חודש</p>
                   <p className="text-sm text-muted-foreground">מ-30% מהשיחות שהפספסתם</p>
                 </div>
               </div>
