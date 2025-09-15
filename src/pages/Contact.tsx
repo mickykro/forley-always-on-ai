@@ -176,7 +176,7 @@ const Contact = () => {
           </div>
 
           {/* User Name Message */}
-          {formData.name && currentStep > 1 && (
+          {formData.name && (
             <>
               <div className="flex justify-end">
                 <div className="bg-[#005c4b] text-white rounded-lg rounded-br-none px-4 py-2 max-w-[80%]">
@@ -184,24 +184,26 @@ const Contact = () => {
                   <span className="text-xs text-gray-300 mt-1 block">✓✓</span>
                 </div>
               </div>
-              <div className="flex gap-2">
-                <img src={forliMascot} alt="פורלי" className="w-8 h-8 rounded-full flex-shrink-0" />
-                <div className="bg-[#202c33] text-white rounded-lg rounded-bl-none px-4 py-2 max-w-[80%]">
-                  <p className="text-sm">נחמד להכיר אותך {formData.name}! 😊</p>
-                  <p className="text-sm mt-1 text-gray-300">ומה מספר הטלפון שלכם?</p>
-                  <span className="text-xs text-gray-400 mt-1 block">
-                    {new Date().toLocaleTimeString("he-IL", { 
-                      hour: "2-digit", 
-                      minute: "2-digit" 
-                    })}
-                  </span>
+              {currentStep > 1 && (
+                <div className="flex gap-2">
+                  <img src={forliMascot} alt="פורלי" className="w-8 h-8 rounded-full flex-shrink-0" />
+                  <div className="bg-[#202c33] text-white rounded-lg rounded-bl-none px-4 py-2 max-w-[80%]">
+                    <p className="text-sm">נחמד להכיר אותך {formData.name}! 😊</p>
+                    <p className="text-sm mt-1 text-gray-300">ומה מספר הטלפון שלכם?</p>
+                    <span className="text-xs text-gray-400 mt-1 block">
+                      {new Date().toLocaleTimeString("he-IL", { 
+                        hour: "2-digit", 
+                        minute: "2-digit" 
+                      })}
+                    </span>
+                  </div>
                 </div>
-              </div>
+              )}
             </>
           )}
 
           {/* User Phone Message */}
-          {formData.phone && currentStep > 2 && (
+          {formData.phone && (
             <>
               <div className="flex justify-end">
                 <div className="bg-[#005c4b] text-white rounded-lg rounded-br-none px-4 py-2 max-w-[80%]">
@@ -209,24 +211,26 @@ const Contact = () => {
                   <span className="text-xs text-gray-300 mt-1 block">✓✓</span>
                 </div>
               </div>
-              <div className="flex gap-2">
-                <img src={forliMascot} alt="פורלי" className="w-8 h-8 rounded-full flex-shrink-0" />
-                <div className="bg-[#202c33] text-white rounded-lg rounded-bl-none px-4 py-2 max-w-[80%]">
-                  <p className="text-sm">אחלה! עוד רגע נתחיל 🚀</p>
-                  <p className="text-sm mt-1 text-gray-300">ספרו לי קצת על העסק שלכם ואיך נוכל לעזור</p>
-                  <span className="text-xs text-gray-400 mt-1 block">
-                    {new Date().toLocaleTimeString("he-IL", { 
-                      hour: "2-digit", 
-                      minute: "2-digit" 
-                    })}
-                  </span>
+              {currentStep > 2 && (
+                <div className="flex gap-2">
+                  <img src={forliMascot} alt="פורלי" className="w-8 h-8 rounded-full flex-shrink-0" />
+                  <div className="bg-[#202c33] text-white rounded-lg rounded-bl-none px-4 py-2 max-w-[80%]">
+                    <p className="text-sm">אחלה! עוד רגע נתחיל 🚀</p>
+                    <p className="text-sm mt-1 text-gray-300">ספרו לי קצת על העסק שלכם ואיך נוכל לעזור</p>
+                    <span className="text-xs text-gray-400 mt-1 block">
+                      {new Date().toLocaleTimeString("he-IL", { 
+                        hour: "2-digit", 
+                        minute: "2-digit" 
+                      })}
+                    </span>
+                  </div>
                 </div>
-              </div>
+              )}
             </>
           )}
 
           {/* User Message */}
-          {formData.message && currentStep > 3 && (
+          {formData.message && (
             <>
               <div className="flex justify-end">
                 <div className="bg-[#005c4b] text-white rounded-lg rounded-br-none px-4 py-2 max-w-[80%]">
@@ -234,19 +238,21 @@ const Contact = () => {
                   <span className="text-xs text-gray-300 mt-1 block">✓✓</span>
                 </div>
               </div>
-              <div className="flex gap-2">
-                <img src={forliMascot} alt="פורלי" className="w-8 h-8 rounded-full flex-shrink-0" />
-                <div className="bg-[#202c33] text-white rounded-lg rounded-bl-none px-4 py-2 max-w-[80%]">
-                  <p className="text-sm">תודה רבה {formData.name}! 🎉</p>
-                  <p className="text-sm mt-1 text-gray-300">נחזור אליכם תוך 24 שעות עם הצעה מותאמת אישית</p>
-                  <span className="text-xs text-gray-400 mt-1 block">
-                    {new Date().toLocaleTimeString("he-IL", { 
-                      hour: "2-digit", 
-                      minute: "2-digit" 
-                    })}
-                  </span>
+              {currentStep > 3 && (
+                <div className="flex gap-2">
+                  <img src={forliMascot} alt="פורלי" className="w-8 h-8 rounded-full flex-shrink-0" />
+                  <div className="bg-[#202c33] text-white rounded-lg rounded-bl-none px-4 py-2 max-w-[80%]">
+                    <p className="text-sm">תודה רבה {formData.name}! 🎉</p>
+                    <p className="text-sm mt-1 text-gray-300">נחזור אליכם תוך 24 שעות עם הצעה מותאמת אישית</p>
+                    <span className="text-xs text-gray-400 mt-1 block">
+                      {new Date().toLocaleTimeString("he-IL", { 
+                        hour: "2-digit", 
+                        minute: "2-digit" 
+                      })}
+                    </span>
+                  </div>
                 </div>
-              </div>
+              )}
             </>
           )}
 
