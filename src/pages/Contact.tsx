@@ -42,7 +42,10 @@ const Contact = () => {
 
   const handleNext = () => {
     if (currentStep < steps.length - 1) {
-      setCurrentStep(currentStep + 1);
+      // Add a small delay to show the user message before moving to next step
+      setTimeout(() => {
+        setCurrentStep(currentStep + 1);
+      }, 100);
     }
   };
 
