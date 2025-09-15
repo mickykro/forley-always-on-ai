@@ -25,15 +25,15 @@ const Index = () => {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-hero py-20">
-        <div className="container mx-auto px-4 text-center text-white">
+        <div className="container mx-auto px-4 text-center text-text-custom">
           <div className="flex justify-center mb-8">
             <img src={forliMascot} alt="פורלי הינשוף החכם" className="w-32 h-32" />
           </div>
-          <h1 className="text-5xl font-bold mb-6 leading-tight text-white">
+          <h1 className="text-5xl font-bold mb-6 leading-tight text-text-custom">
             לא מפספסים יותר שיחות –<br />
             <span className="text-accent font-black">Call4li</span>, הבוט שמחזיר לך שליטה
           </h1>
-          <p className="text-xl mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl mb-8 max-w-3xl mx-auto leading-relaxed text-text-custom">
             פורלי הינשוף החכם עונה כשאתה לא יכול – מתעד שיחות, יוצר קשר עם הלקוחות שלך, ושולח לך סיכום ברור
           </p>
           <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6">
@@ -342,7 +342,7 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-hero text-white">
+      <section className="py-20 bg-gradient-hero text-text-custom">
         <div className="container mx-auto px-4 text-center">
           <div className="flex justify-center mb-8">
             <img src={forliMascot} alt="פורלי הינשוף" className="w-32 h-32" />
@@ -358,7 +358,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-primary text-white py-12">
+      <footer className="bg-primary text-text-custom py-12">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8 text-center md:text-right">
             <div>
