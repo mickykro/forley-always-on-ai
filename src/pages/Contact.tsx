@@ -38,7 +38,7 @@ const Contact = () => {
   ];
 
   const currentMessage = steps[currentStep];
-  const isComplete = currentStep === steps.length - 1;
+  const isComplete = currentStep === 4;
 
   const handleNext = () => {
     if (currentStep < steps.length - 1) {
@@ -247,7 +247,7 @@ const Contact = () => {
             </>
           )}
 
-          {currentStep === 3 && formData.message && (
+          {currentStep === 4 && (
             <div className="text-center py-4">
               <Link to="/">
                 <Button className="bg-[#25D366] hover:bg-[#128C7E] rounded-full px-8">
@@ -259,7 +259,7 @@ const Contact = () => {
         </div>
 
         {/* Input Area */}
-        {!isComplete && currentStep < 4 && (
+        {currentStep >= 0 && currentStep <= 3 && (
           <div className="p-4 bg-[#202c33] border-t border-gray-700">
             {renderInput()}
           </div>
