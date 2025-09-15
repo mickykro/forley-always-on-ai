@@ -34,14 +34,13 @@ const Contact = () => {
       id: "complete",
       message: "תודה רבה {name}! 🎉",
       submessage: "נחזור אליכם תוך 24 שעות עם הצעה מותאמת אישית"
-    }
+    },{}
   ];
 
-  const currentMessage = steps[currentStep];
+  const currentMessage = steps[currentStep] ;
   const isComplete = currentStep === 4;
 
   const handleNext = () => {
-    console.log("current sterp ", currentStep);
     if (currentStep < steps.length - 1) {
       // Add a small delay to show the user message before moving to next step
       setTimeout(() => {
