@@ -247,7 +247,7 @@ const Contact = () => {
             </>
           )}
 
-          {isComplete && (
+          {currentStep === 3 && formData.message && (
             <div className="text-center py-4">
               <Link to="/">
                 <Button className="bg-[#25D366] hover:bg-[#128C7E] rounded-full px-8">
