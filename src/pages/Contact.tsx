@@ -162,7 +162,7 @@ const Contact = () => {
             <img src={forliMascot} alt="פורלי" className="w-8 h-8 rounded-full flex-shrink-0" />
             <div className="bg-[#202c33] text-white rounded-lg rounded-bl-none px-4 py-2 max-w-[80%]">
               <p className="text-sm">
-                {currentStep > 1 ? currentMessage.message.replace("{name}", formData.name) : currentMessage.message}
+                {currentMessage.message.replace(/\{name\}/g, formData.name || "")}
               </p>
               {currentMessage.submessage && (
                 <p className="text-sm mt-1 text-gray-300">
