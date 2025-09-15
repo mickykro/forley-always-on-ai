@@ -1,4 +1,4 @@
-import forliMascot from "@/assets/forli-mascot.png";
+import forliMascot from "@/assets/forli_no_bg.png";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
