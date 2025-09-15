@@ -47,7 +47,7 @@ const Contact = () => {
         setCurrentStep(currentStep + 1);
         
         // Auto-submit form after the last user input (step 3 -> step 4)
-        if (currentStep === 2) {
+        if (currentStep === 3) {
           handleFormSubmit();
         }
       }, 100);
