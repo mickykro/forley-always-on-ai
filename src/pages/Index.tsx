@@ -223,7 +223,7 @@ const Index = () => {
                 <div className="text-center mb-8">
                   <Badge className="bg-muted text-muted-foreground mb-4">בסיסית</Badge>
                   <div className="mb-4">
-                    <h3 className="text-3xl font-bold text-primary mb-1">₪50</h3>
+                    <h3 className="text-3xl font-bold text-primary mb-1">₪150</h3>
                     <p className="text-muted-foreground">לחודש</p>
                     <div className="mt-2 p-2 bg-success/10 rounded-lg">
                       <p className="text-sm font-bold text-success">החודש הראשון: ₪50</p>
@@ -265,7 +265,7 @@ const Index = () => {
                 <div className="text-center mb-8">
                   <Badge className="bg-primary text-primary-foreground mb-4">פרו</Badge>
                   <div className="mb-4">
-                    <h3 className="text-3xl font-bold text-primary mb-1">₪0</h3>
+                    <h3 className="text-3xl font-bold text-primary mb-1">₪450</h3>
                     <p className="text-muted-foreground">לחודש</p>
                     <div className="mt-2 p-2 bg-accent/10 rounded-lg">
                       <p className="text-sm font-bold text-accent-foreground">החודש הראשון: חינם!</p>
