@@ -223,11 +223,13 @@ const Index = () => {
                 <div className="text-center mb-8">
                   <Badge className="bg-muted text-muted-foreground mb-4">בסיסית</Badge>
                   <div className="mb-4">
-                    <h3 className="text-3xl font-bold text-primary mb-1">₪150</h3>
-                    <p className="text-muted-foreground">לחודש</p>
-                    <div className="mt-2 p-2 bg-success/10 rounded-lg">
-                      <p className="text-sm font-bold text-success">החודש הראשון: ₪50</p>
-                      <p className="text-xs text-muted-foreground">חידוש: ₪150/חודש</p>
+                    <div className="relative">
+                      <h3 className="text-2xl font-bold text-muted-foreground line-through mb-1">₪150</h3>
+                      <h2 className="text-4xl font-bold text-success mb-1">₪50</h2>
+                      <p className="text-muted-foreground text-sm">החודש הראשון</p>
+                    </div>
+                    <div className="mt-4 pt-4 border-t border-muted">
+                      <p className="text-sm text-muted-foreground">לאחר מכן: ₪150/חודש</p>
                     </div>
                   </div>
                 </div>
@@ -265,11 +267,13 @@ const Index = () => {
                 <div className="text-center mb-8">
                   <Badge className="bg-primary text-primary-foreground mb-4">פרו</Badge>
                   <div className="mb-4">
-                    <h3 className="text-3xl font-bold text-primary mb-1">₪450</h3>
-                    <p className="text-muted-foreground">לחודש</p>
-                    <div className="mt-2 p-2 bg-accent/10 rounded-lg">
-                      <p className="text-sm font-bold text-accent-foreground">החודש הראשון: חינם!</p>
-                      <p className="text-xs text-muted-foreground">חידוש: ₪450/חודש</p>
+                    <div className="relative">
+                      <h3 className="text-2xl font-bold text-muted-foreground line-through mb-1">₪450</h3>
+                      <h2 className="text-4xl font-bold text-accent-foreground mb-1">חינם!</h2>
+                      <p className="text-muted-foreground text-sm">החודש הראשון</p>
+                    </div>
+                    <div className="mt-4 pt-4 border-t border-muted">
+                      <p className="text-sm text-muted-foreground">לאחר מכן: ₪450/חודש</p>
                     </div>
                   </div>
                 </div>
