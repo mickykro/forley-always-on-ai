@@ -292,6 +292,10 @@ const Index = () => {
                   </li>
                   <li className="flex items-center gap-3">
                     <span className="w-2 h-2 bg-success rounded-full"></span>
+                    <span>תזכורות אוטומטיות ללקוח ולעסק</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-success rounded-full"></span>
                     <span>תמיכה 24/7</span>
                   </li>
                   <li className="flex items-center gap-3">
