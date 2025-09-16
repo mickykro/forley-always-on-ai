@@ -222,13 +222,19 @@ const Index = () => {
               <CardContent className="pt-4">
                 <div className="text-center mb-8">
                   <Badge className="bg-muted text-muted-foreground mb-4">בסיסית</Badge>
-                  <h3 className="text-3xl font-bold text-primary mb-2">₪299</h3>
-                  <p className="text-muted-foreground">לחודש</p>
+                  <div className="mb-4">
+                    <h3 className="text-3xl font-bold text-primary mb-1">₪150</h3>
+                    <p className="text-muted-foreground">לחודש</p>
+                    <div className="mt-2 p-2 bg-success/10 rounded-lg">
+                      <p className="text-sm font-bold text-success">החודש הראשון: ₪50</p>
+                      <p className="text-xs text-muted-foreground">חידוש: ₪150/חודש</p>
+                    </div>
+                  </div>
                 </div>
                 <ul className="space-y-4 mb-8 text-right">
                   <li className="flex items-center gap-3">
                     <span className="w-2 h-2 bg-success rounded-full"></span>
-                    <span>עד 200 שיחות בחודש</span>
+                    <span>עד 100 שיחות בחודש</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <span className="w-2 h-2 bg-success rounded-full"></span>
@@ -258,8 +264,14 @@ const Index = () => {
               <CardContent className="pt-4">
                 <div className="text-center mb-8">
                   <Badge className="bg-primary text-primary-foreground mb-4">פרו</Badge>
-                  <h3 className="text-3xl font-bold text-primary mb-2">₪749</h3>
-                  <p className="text-muted-foreground">לחודש</p>
+                  <div className="mb-4">
+                    <h3 className="text-3xl font-bold text-primary mb-1">₪450</h3>
+                    <p className="text-muted-foreground">לחודש</p>
+                    <div className="mt-2 p-2 bg-accent/10 rounded-lg">
+                      <p className="text-sm font-bold text-accent-foreground">החודש הראשון: חינם!</p>
+                      <p className="text-xs text-muted-foreground">חידוש: ₪450/חודש</p>
+                    </div>
+                  </div>
                 </div>
                 <ul className="space-y-4 mb-8 text-right">
                   <li className="flex items-center gap-3">
