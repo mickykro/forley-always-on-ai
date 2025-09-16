@@ -1,5 +1,4 @@
 import forliMascot from "@/assets/forli_no_bg.png";
-import forliHeadphones from "@/assets/forli-headphones.png";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -87,7 +86,7 @@ const Index = () => {
                   </div>
                 </div>
                 <div className="flex justify-center mb-4">
-                  <img src={forliHeadphones} alt="פורלי" className="w-16 h-16" />
+                  <img src={forliMascot} alt="פורלי" className="w-16 h-16" />
                 </div>
                 <h3 className="text-2xl font-bold text-primary mb-4">תגובה חכמה</h3>
                 <p className="text-muted-foreground text-lg">
