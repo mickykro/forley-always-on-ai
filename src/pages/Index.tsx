@@ -292,10 +292,6 @@ const Index = () => {
                   </li>
                   <li className="flex items-center gap-3">
                     <span className="w-2 h-2 bg-success rounded-full"></span>
-                    <span>אימון פורלי עם מינוח ותהליכים ייחודיים לעסק</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 bg-success rounded-full"></span>
                     <span>תזכורות אוטומטיות ללקוח ולעסק</span>
                   </li>
                   <li className="flex items-center gap-3">
@@ -416,9 +412,9 @@ const Index = () => {
             <div>
               <h4 className="text-lg font-bold mb-4">יצירת קשר</h4>
               <div className="space-y-2 text-primary-foreground/80">
-                <p>📧 info@call4li.com</p>
-                <p>📞 1-700-555-0123</p>
-                <p>💬 ווטסאפ: 050-1234567</p>
+                <p>📧 micky@kaizen-il.com</p>
+                <p>📞 054-2045280</p>
+                <p>💬 ווטסאפ: 054-2045280</p>
               </div>
             </div>
             
