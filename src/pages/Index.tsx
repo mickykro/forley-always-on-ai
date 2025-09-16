@@ -292,6 +292,10 @@ const Index = () => {
                   </li>
                   <li className="flex items-center gap-3">
                     <span className="w-2 h-2 bg-success rounded-full"></span>
+                    <span>אימון פורלי עם מינוח ותהליכים ייחודיים לעסק</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-success rounded-full"></span>
                     <span>תזכורות אוטומטיות ללקוח ולעסק</span>
                   </li>
                   <li className="flex items-center gap-3">
