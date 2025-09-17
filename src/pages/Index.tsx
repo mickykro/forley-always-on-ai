@@ -194,7 +194,7 @@ const Index = () => {
       </section>
 
       {/* Value Proposition */}
-      <section className="py-20 bg-primary text-white">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4 text-center">
           <div className="flex justify-center mb-8">
             <video 
@@ -206,8 +206,8 @@ const Index = () => {
               className="w-24 h-24"
             />
           </div>
-          <h2 className="text-4xl font-bold mb-6">עסק ממוצע מפספס 30% מהשיחות</h2>
-          <p className="text-2xl mb-8">Call4li הופך אותן להזדמנויות!</p>
+          <h2 className="text-4xl font-bold text-primary mb-6">עסק ממוצע מפספס 30% מהשיחות</h2>
+          <p className="text-2xl text-muted-foreground mb-8">Call4li הופך אותן להזדמנויות!</p>
           
           <Card className="max-w-md mx-auto bg-white text-primary p-8">
             <CardContent className="pt-4">
