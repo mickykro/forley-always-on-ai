@@ -3,6 +3,7 @@ import answeringVid from "@/assets/answering_vid.mp4";
 import typingVid from "@/assets/typing_vid.mp4";
 import summaryVid from "@/assets/summary_vid.mp4";
 import valuePropositionVid from "@/assets/value_proposition_vid.mp4";
+import heroMascotVid from "@/assets/hero_mascot_vid.mp4";
 import ctaMascotVid from "@/assets/cta_mascot_vid.mp4";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -41,7 +42,7 @@ const Index = () => {
         <div className="container mx-auto px-4 text-center text-text-custom">
           <div className="flex justify-center mb-8">
             <video 
-              src="/src/assets/hero_mascot_vid.mp4"
+              src={heroMascotVid}
               autoPlay 
               muted 
               loop 
