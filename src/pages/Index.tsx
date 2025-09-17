@@ -159,40 +159,40 @@ const Index = () => {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
+            <Card className="p-6 text-center hover:shadow-xl hover:-translate-y-2 transition-all duration-500 animate-fade-in opacity-0 [animation-delay:100ms] [animation-fill-mode:forwards] transform translate-y-8">
               <CardContent className="pt-4">
-                <div className="w-16 h-16 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <TrendingUpIcon className="w-8 h-8 text-success" />
+                <div className="w-16 h-16 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300 hover:scale-110 hover:bg-success/20">
+                  <TrendingUpIcon className="w-8 h-8 text-success transition-transform duration-300 hover:scale-110" />
                 </div>
                 <h3 className="text-xl font-bold text-primary mb-2">🦉 לא מפספסים לידים</h3>
                 <p className="text-muted-foreground">כל שיחה הופכת להזדמנות עסקית</p>
               </CardContent>
             </Card>
 
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
+            <Card className="p-6 text-center hover:shadow-xl hover:-translate-y-2 transition-all duration-500 animate-fade-in opacity-0 [animation-delay:300ms] [animation-fill-mode:forwards] transform translate-y-8">
               <CardContent className="pt-4">
-                <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <ClipboardCheckIcon className="w-8 h-8 text-secondary" />
+                <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300 hover:scale-110 hover:bg-secondary/20">
+                  <ClipboardCheckIcon className="w-8 h-8 text-secondary transition-transform duration-300 hover:scale-110" />
                 </div>
                 <h3 className="text-xl font-bold text-primary mb-2">📊 הכל מתועד אוטומטית</h3>
                 <p className="text-muted-foreground">מערכת ניהול לקוחות חכמה</p>
               </CardContent>
             </Card>
 
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
+            <Card className="p-6 text-center hover:shadow-xl hover:-translate-y-2 transition-all duration-500 animate-fade-in opacity-0 [animation-delay:500ms] [animation-fill-mode:forwards] transform translate-y-8">
               <CardContent className="pt-4">
-                <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <ClockIcon className="w-8 h-8 text-accent-foreground" />
+                <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300 hover:scale-110 hover:bg-accent/20">
+                  <ClockIcon className="w-8 h-8 text-accent-foreground transition-transform duration-300 hover:scale-110" />
                 </div>
                 <h3 className="text-xl font-bold text-primary mb-2">⏱️ זמן תגובה מהיר ומקצועי</h3>
                 <p className="text-muted-foreground">לקוחות מרוצים, עסק שגדל</p>
               </CardContent>
             </Card>
 
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
+            <Card className="p-6 text-center hover:shadow-xl hover:-translate-y-2 transition-all duration-500 animate-fade-in opacity-0 [animation-delay:700ms] [animation-fill-mode:forwards] transform translate-y-8">
               <CardContent className="pt-4">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <BrainIcon className="w-8 h-8 text-primary" />
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300 hover:scale-110 hover:bg-primary/20">
+                  <BrainIcon className="w-8 h-8 text-primary transition-transform duration-300 hover:scale-110" />
                 </div>
                 <h3 className="text-xl font-bold text-primary mb-2">💡 מערכת חכמה עם סיכומי AI</h3>
                 <p className="text-muted-foreground">טכנולוגיה מתקדמת בשירותך</p>
