@@ -5,7 +5,7 @@ import summaryVid from "@/assets/summary_vid.mp4";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ClipboardCheckIcon, TrendingUpIcon, ClockIcon, BrainIcon } from "lucide-react";
+import { PhoneIcon, MessageCircleIcon, ClipboardCheckIcon, TrendingUpIcon, ClockIcon, BrainIcon } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -67,19 +67,19 @@ const Index = () => {
             <Card className="text-center p-8 border-2 hover:border-secondary transition-colors">
               <CardContent className="pt-6">
                 <div className="flex justify-center mb-6">
-                  <div className="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center overflow-hidden">
-                    <video 
-                      src={answeringVid} 
-                      autoPlay 
-                      muted 
-                      loop 
-                      playsInline 
-                      className="w-10 h-10 rounded-full object-cover"
-                    />
+                  <div className="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center">
+                    <PhoneIcon className="w-10 h-10 text-secondary" />
                   </div>
                 </div>
                 <div className="flex justify-center mb-4">
-                  <img src={forliMascot} alt="פורלי" className="w-16 h-16" />
+                  <video 
+                    src={answeringVid} 
+                    autoPlay 
+                    muted 
+                    loop 
+                    playsInline 
+                    className="w-16 h-16 rounded-full object-cover"
+                  />
                 </div>
                 <h3 className="text-2xl font-bold text-primary mb-4">לקוח מתקשר</h3>
                 <p className="text-muted-foreground text-lg">
@@ -91,19 +91,19 @@ const Index = () => {
             <Card className="text-center p-8 border-2 hover:border-secondary transition-colors">
               <CardContent className="pt-6">
                 <div className="flex justify-center mb-6">
-                  <div className="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center overflow-hidden">
-                    <video 
-                      src={typingVid} 
-                      autoPlay 
-                      muted 
-                      loop 
-                      playsInline 
-                      className="w-10 h-10 rounded-full object-cover"
-                    />
+                  <div className="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center">
+                    <MessageCircleIcon className="w-10 h-10 text-secondary" />
                   </div>
                 </div>
                 <div className="flex justify-center mb-4">
-                  <img src={forliMascot} alt="פורלי" className="w-16 h-16" />
+                  <video 
+                    src={typingVid} 
+                    autoPlay 
+                    muted 
+                    loop 
+                    playsInline 
+                    className="w-16 h-16 rounded-full object-cover"
+                  />
                 </div>
                 <h3 className="text-2xl font-bold text-primary mb-4">תגובה חכמה</h3>
                 <p className="text-muted-foreground text-lg">
@@ -116,19 +116,19 @@ const Index = () => {
             <Card className="text-center p-8 border-2 hover:border-secondary transition-colors">
               <CardContent className="pt-6">
                 <div className="flex justify-center mb-6">
-                  <div className="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center overflow-hidden">
-                    <video 
-                      src={summaryVid} 
-                      autoPlay 
-                      muted 
-                      loop 
-                      playsInline 
-                      className="w-10 h-10 rounded-full object-cover"
-                    />
+                  <div className="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center">
+                    <ClipboardCheckIcon className="w-10 h-10 text-secondary" />
                   </div>
                 </div>
                 <div className="flex justify-center mb-4">
-                  <img src={forliMascot} alt="פורלי" className="w-16 h-16" />
+                  <video 
+                    src={summaryVid} 
+                    autoPlay 
+                    muted 
+                    loop 
+                    playsInline 
+                    className="w-16 h-16 rounded-full object-cover"
+                  />
                 </div>
                 <h3 className="text-2xl font-bold text-primary mb-4">סיכום מושלם</h3>
                 <p className="text-muted-foreground text-lg">
