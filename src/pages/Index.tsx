@@ -1,5 +1,5 @@
 import forliMascot from "@/assets/forli_no_bg.png";
-import answeringVid from "@/assets/answering_vid.mp4";
+import answeringGif from "@/assets/answering_vid.gif";
 import typingVid from "@/assets/typing_vid.mp4";
 import summaryVid from "@/assets/summary_vid.mp4";
 import { Button } from "@/components/ui/button";
@@ -72,12 +72,9 @@ const Index = () => {
                   </div>
                 </div>
                 <div className="flex justify-center mb-4">
-                  <video 
-                    src={answeringVid} 
-                    autoPlay 
-                    muted 
-                    loop 
-                    playsInline 
+                  <img 
+                    src={answeringGif} 
+                    alt="פורלי עונה לשיחה"
                     className="w-16 h-16 rounded-full object-cover"
                   />
                 </div>
