@@ -39,7 +39,14 @@ const Index = () => {
       <section className="relative overflow-hidden bg-gradient-hero py-20">
         <div className="container mx-auto px-4 text-center text-text-custom">
           <div className="flex justify-center mb-8">
-            <img src={forliMascot} alt="פורלי הינשוף החכם" className="w-32 h-32" />
+            <video 
+              src="/src/assets/hero_mascot_vid.mp4"
+              autoPlay 
+              muted 
+              loop 
+              playsInline 
+              className="w-32 h-32 rounded-full object-cover"
+            />
           </div>
           <h1 className="text-5xl font-bold mb-6 leading-tight text-text-custom">
             לא מפספסים יותר שיחות –<br />
