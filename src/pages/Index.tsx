@@ -3,6 +3,7 @@ import answeringVid from "@/assets/answering_vid.mp4";
 import typingVid from "@/assets/typing_vid.mp4";
 import summaryVid from "@/assets/summary_vid.mp4";
 import valuePropositionVid from "@/assets/value_proposition_vid.mp4";
+import ctaMascotVid from "@/assets/cta_mascot_vid.mp4";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -420,7 +421,14 @@ const Index = () => {
       <section className="py-20 bg-gradient-hero text-text-custom">
         <div className="container mx-auto px-4 text-center">
           <div className="flex justify-center mb-8">
-            <img src={forliMascot} alt="פורלי הינשוף" className="w-32 h-32" />
+            <video 
+              src={ctaMascotVid}
+              autoPlay 
+              muted 
+              loop 
+              playsInline 
+              className="w-32 h-32 rounded-full object-cover"
+            />
           </div>
           <h2 className="text-4xl font-bold mb-6">מוכנים להתחיל?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
