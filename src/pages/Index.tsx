@@ -2,6 +2,7 @@ import forliMascot from "@/assets/forli_no_bg.png";
 import answeringVid from "@/assets/answering_vid.mp4";
 import typingVid from "@/assets/typing_vid.mp4";
 import summaryVid from "@/assets/summary_vid.mp4";
+import valuePropositionVid from "@/assets/value_proposition_vid.mp4";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -196,7 +197,14 @@ const Index = () => {
       <section className="py-20 bg-primary text-white">
         <div className="container mx-auto px-4 text-center">
           <div className="flex justify-center mb-8">
-            <img src={forliMascot} alt="פורלי הינשוף" className="w-24 h-24" />
+            <video 
+              src={valuePropositionVid} 
+              autoPlay 
+              muted 
+              loop 
+              playsInline 
+              className="w-24 h-24"
+            />
           </div>
           <h2 className="text-4xl font-bold mb-6">עסק ממוצע מפספס 30% מהשיחות</h2>
           <p className="text-2xl mb-8">Call4li הופך אותן להזדמנויות!</p>
