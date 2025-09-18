@@ -6,7 +6,7 @@ interface ContactData {
 }
 
 interface IntegrationConfig {
-  webhookUrl?: "https://hook.eu2.make.com/plnfn1an3nb92tnvi6xctpt9wwylqfx8";
+  webhookUrl?: string;
   emailService?: {
     type: 'emailjs' | 'formspree' | 'netlify';
     config: any;
@@ -16,7 +16,9 @@ interface IntegrationConfig {
 }
 
 export class ContactIntegrationService {
-  private static config: IntegrationConfig = {};
+  private static config: IntegrationConfig = {
+    webhookUrl: "https://hook.eu2.make.com/plnfn1an3nb92tnvi6xctpt9wwylqfx8"
+  };
 
   static setConfig(config: IntegrationConfig) {
     this.config = { ...this.config, ...config };

@@ -19,9 +19,9 @@ export const IntegrationSettings = () => {
   });
 
   useEffect(() => {
-    const savedConfig = ContactIntegrationService.getConfig({webhookUrl:"https://hook.eu2.make.com/plnfn1an3nb92tnvi6xctpt9wwylqfx8"});
+    const savedConfig = ContactIntegrationService.getConfig();
     setConfig({
-      webhookUrl: savedConfig.webhookUrl || "",
+      webhookUrl: savedConfig.webhookUrl || "https://hook.eu2.make.com/plnfn1an3nb92tnvi6xctpt9wwylqfx8",
       zapierWebhook: savedConfig.zapierWebhook || "",
       slackWebhook: savedConfig.slackWebhook || "",
       formspreeEndpoint: savedConfig.emailService?.config?.endpoint || "",
