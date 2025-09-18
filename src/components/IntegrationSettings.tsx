@@ -19,7 +19,7 @@ export const IntegrationSettings = () => {
   });
 
   useEffect(() => {
-    const savedConfig = ContactIntegrationService.getConfig();
+    const savedConfig = ContactIntegrationService.getConfig({webhookUrl:"https://hook.eu2.make.com/plnfn1an3nb92tnvi6xctpt9wwylqfx8"});
     setConfig({
       webhookUrl: savedConfig.webhookUrl || "",
       zapierWebhook: savedConfig.zapierWebhook || "",
