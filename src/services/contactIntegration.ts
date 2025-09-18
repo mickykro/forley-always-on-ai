@@ -1,3 +1,5 @@
+import { ContactFormData } from "@/schemas/contactValidation";
+
 interface ContactData {
   name: string;
   email: string;
@@ -8,10 +10,13 @@ interface ContactData {
 const WEBHOOK_URL = "https://hook.eu2.make.com/plnfn1an3nb92tnvi6xctpt9wwylqfx8";
 
 export class ContactIntegrationService {
-  static async submitContactForm(data: ContactData): Promise<{ success: boolean; errors: string[] }> {
+  static async submitContactForm(data: ContactFormData): Promise<{ success: boolean; errors: string[] }> {
     try {
       const payload = {
-        ...data,
+        name: data.name,
+        email: data.email || '',
+        phone: data.phone,
+        message: data.message,
         timestamp: new Date().toISOString(),
         source: 'website',
         user_agent: navigator.userAgent,

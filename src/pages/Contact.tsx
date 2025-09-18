@@ -3,15 +3,17 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Send, User, Mail, MessageSquare } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import forliMascot from "@/assets/cropped_circle_image.png";
 import { ContactIntegrationService } from "@/services/contactIntegration";
+import { validateStep, type ContactFormData } from "@/schemas/contactValidation";
 
 const Contact = () => {
   const { toast } = useToast();
   const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
+  const [validationError, setValidationError] = useState<string | null>(null);
+  const [formData, setFormData] = useState<ContactFormData>({
     name: "",
     email: "",
     phone: "",
@@ -45,6 +47,20 @@ const Contact = () => {
   const isComplete = currentStep === 4;
 
   const handleNext = async () => {
+    // Validate current step before proceeding
+    const validation = validateStep(currentStep, formData);
+    if (!validation.isValid) {
+      setValidationError(validation.error || "שגיאה בוולידציה");
+      toast({
+        title: "שגיאה בוולידציה",
+        description: validation.error,
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    setValidationError(null);
+    
     if (currentStep === 3) {
       // Form is complete, submit data to integrations
       setIsSubmitting(true);
@@ -84,8 +100,12 @@ const Contact = () => {
     }
   };
 
-  const handleInputChange = (field: string, value: string) => {
+  const handleInputChange = (field: keyof ContactFormData, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
+    // Clear validation error when user starts typing
+    if (validationError) {
+      setValidationError(null);
+    }
   };
 
   const renderInput = () => {
@@ -101,13 +121,13 @@ const Contact = () => {
                 value={formData.name}
                 onChange={(e) => handleInputChange("name", e.target.value)}
                 className="flex-1 outline-none text-right"
-                onKeyPress={(e) => e.key === "Enter" && formData.name.trim() && handleNext()}
+                onKeyPress={(e) => e.key === "Enter" && validateStep(1, formData).isValid && handleNext()}
                 autoFocus
               />
             </div>
             <Button 
               onClick={handleNext}
-              disabled={!formData.name.trim()}
+              disabled={!validateStep(1, formData).isValid}
               size="icon"
               className="rounded-full bg-[#25D366] hover:bg-[#128C7E]"
             >
@@ -126,13 +146,13 @@ const Contact = () => {
                 value={formData.phone}
                 onChange={(e) => handleInputChange("phone", e.target.value)}
                 className="flex-1 outline-none text-right"
-                onKeyPress={(e) => e.key === "Enter" && formData.phone.trim() && handleNext()}
+                onKeyPress={(e) => e.key === "Enter" && validateStep(2, formData).isValid && handleNext()}
                 autoFocus
               />
             </div>
             <Button 
               onClick={handleNext}
-              disabled={!formData.phone.trim()}
+              disabled={!validateStep(2, formData).isValid}
               size="icon"
               className="rounded-full bg-[#25D366] hover:bg-[#128C7E]"
             >
@@ -152,7 +172,7 @@ const Contact = () => {
                 onKeyDown={(e) => {
                   if (e.key === "Enter" && !e.ctrlKey && !e.shiftKey) {
                     e.preventDefault();
-                    if (formData.message.trim() && !isSubmitting) {
+                    if (validateStep(3, formData).isValid && !isSubmitting) {
                       handleNext();
                     }
                   }
@@ -164,7 +184,7 @@ const Contact = () => {
             </div>
             <Button 
               onClick={handleNext}
-              disabled={!formData.message.trim() || isSubmitting}
+              disabled={!validateStep(3, formData).isValid || isSubmitting}
               size="icon"
               className="rounded-full bg-[#25D366] hover:bg-[#128C7E] h-12 w-12"
             >
@@ -318,6 +338,11 @@ const Contact = () => {
         {currentStep >= 0 && currentStep <= 3 && (
           <div className="p-4 bg-[#202c33] border-t border-gray-700">
             {renderInput()}
+            {validationError && (
+              <div className="mt-2 text-red-400 text-sm text-center">
+                {validationError}
+              </div>
+            )}
           </div>
         )}
       </Card>
