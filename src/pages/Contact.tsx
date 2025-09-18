@@ -149,6 +149,14 @@ const Contact = () => {
                 placeholder="ספרו לנו על העסק שלכם..."
                 value={formData.message}
                 onChange={(e) => handleInputChange("message", e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && !e.ctrlKey && !e.shiftKey) {
+                    e.preventDefault();
+                    if (formData.message.trim() && !isSubmitting) {
+                      handleNext();
+                    }
+                  }
+                }}
                 className="flex-1 outline-none resize-none min-h-[60px] text-right"
                 rows={3}
                 autoFocus
