@@ -79,7 +79,7 @@ const Onboard = () => {
         <CardContent className="space-y-4">
           <Button
             className="w-full h-14 text-lg font-semibold bg-primary text-primary-foreground hover:bg-primary/90"
-            onClick={() => handleButtonClick("activate", "tel:*004*+972535972420%23")}
+            onClick={() => handleButtonClick("activate", "tel:*004*0535972420%23")}
             disabled={isLoading}
           >
             הפעל העברת שיחות
