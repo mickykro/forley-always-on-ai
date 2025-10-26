@@ -9,13 +9,27 @@ interface ContactData {
 
 const WEBHOOK_URL = "https://hook.eu2.make.com/plnfn1an3nb92tnvi6xctpt9wwylqfx8";
 
+const normalizePhoneNumber = (phone: string): string => {
+  const cleanPhone = phone.trim();
+  
+  if (cleanPhone.startsWith('0')) {
+    return `+972${cleanPhone.substring(1)}`;
+  }
+  
+  if (cleanPhone.startsWith('972')) {
+    return `+${cleanPhone}`;
+  }
+  
+  return cleanPhone;
+};
+
 export class ContactIntegrationService {
   static async submitContactForm(data: ContactFormData): Promise<{ success: boolean; errors: string[] }> {
     try {
       const payload = {
         name: data.name,
         email: data.email || '',
-        phone: data.phone,
+        phone: normalizePhoneNumber(data.phone),
         message: data.message,
         timestamp: new Date().toISOString(),
         source: 'website',
