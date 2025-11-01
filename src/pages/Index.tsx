@@ -11,12 +11,17 @@ import { Badge } from "@/components/ui/badge";
 import { PhoneIcon, MessageCircleIcon, ClipboardCheckIcon, TrendingUpIcon, ClockIcon, BrainIcon } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Index = () => {
   const [dealValue, setDealValue] = useState<number>(1000);
   const [callsPerMonth, setCallsPerMonth] = useState<number>(100);
   
   const expectedReturn = Math.round(dealValue * callsPerMonth * 0.3);
+  
+  const card1 = useScrollAnimation();
+  const card2 = useScrollAnimation();
+  const card3 = useScrollAnimation();
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -74,7 +79,12 @@ const Index = () => {
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="text-center p-8 border-2 hover:border-secondary transition-colors">
+            <Card 
+              ref={card1.ref}
+              className={`text-center p-8 border-2 hover:border-secondary transition-all duration-700 ${
+                card1.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
+            >
               <CardContent className="pt-6">
                 <div className="flex justify-center mb-6">
                   <div className="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center">
@@ -98,7 +108,12 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="text-center p-8 border-2 hover:border-secondary transition-colors">
+            <Card 
+              ref={card2.ref}
+              className={`text-center p-8 border-2 hover:border-secondary transition-all duration-700 delay-150 ${
+                card2.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
+            >
               <CardContent className="pt-6">
                 <div className="flex justify-center mb-6">
                   <div className="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center">
@@ -123,7 +138,12 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="text-center p-8 border-2 hover:border-secondary transition-colors">
+            <Card 
+              ref={card3.ref}
+              className={`text-center p-8 border-2 hover:border-secondary transition-all duration-700 delay-300 ${
+                card3.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
+            >
               <CardContent className="pt-6">
                 <div className="flex justify-center mb-6">
                   <div className="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center">
