@@ -16,9 +16,9 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 const Index = () => {
   const [dealValue, setDealValue] = useState<number>(1000);
   const [callsPerMonth, setCallsPerMonth] = useState<number>(100);
-  
+
   const expectedReturn = Math.round(dealValue * callsPerMonth * 0.3);
-  
+
   const card1 = useScrollAnimation();
   const card2 = useScrollAnimation();
   const card3 = useScrollAnimation();
@@ -46,12 +46,12 @@ const Index = () => {
       <section className="relative overflow-hidden bg-gradient-hero py-20">
         <div className="container mx-auto px-4 text-center text-text-custom">
           <div className="flex justify-center mb-8">
-            <video 
+            <video
               src={heroMascotVid}
-              autoPlay 
-              muted 
-              loop 
-              playsInline 
+              autoPlay
+              muted
+              loop
+              playsInline
               className="w-32 h-32 rounded-full object-cover"
             />
           </div>
@@ -77,12 +77,12 @@ const Index = () => {
             <h2 className="text-4xl font-bold text-primary mb-4">איך זה עובד?</h2>
             <p className="text-xl text-muted-foreground">3 שלבים פשוטים שמשנים את העסק</p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
-            <Card 
+            <Card
               ref={card1.ref}
               className={`text-center p-8 border-2 hover:border-secondary transition-all duration-700 ${
-                card1.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                card1.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
             >
               <CardContent className="pt-6">
@@ -92,26 +92,24 @@ const Index = () => {
                   </div>
                 </div>
                 <div className="flex justify-center mb-4">
-                  <video 
-                    src={answeringVid} 
-                    autoPlay 
-                    muted 
-                    loop 
-                    playsInline 
+                  <video
+                    src={answeringVid}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
                     className="w-16 h-16 rounded-full object-cover"
                   />
                 </div>
                 <h3 className="text-2xl font-bold text-primary mb-4">לקוח מתקשר</h3>
-                <p className="text-muted-foreground text-lg">
-                  פורלי מזהה את השיחה הנכנסת ומתכונן לפעול
-                </p>
+                <p className="text-muted-foreground text-lg">פורלי מזהה את השיחה הנכנסת ומתכונן לפעול</p>
               </CardContent>
             </Card>
 
-            <Card 
+            <Card
               ref={card2.ref}
               className={`text-center p-8 border-2 hover:border-secondary transition-all duration-700 delay-150 ${
-                card2.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                card2.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
             >
               <CardContent className="pt-6">
@@ -121,27 +119,28 @@ const Index = () => {
                   </div>
                 </div>
                 <div className="flex justify-center mb-4">
-                  <video 
-                    src={typingVid} 
-                    autoPlay 
-                    muted 
-                    loop 
-                    playsInline 
+                  <video
+                    src={typingVid}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
                     className="w-16 h-16 rounded-full object-cover"
                   />
                 </div>
                 <h3 className="text-2xl font-bold text-primary mb-4">תגובה חכמה</h3>
                 <p className="text-muted-foreground text-lg">
-                  אם לא ענית - פורלי שולח ווטסאפ ללקוח<br />
+                  אם לא ענית - פורלי שולח ווטסאפ ללקוח
+                  <br />
                   אם ענית - פורלי מתעד ומסכם
                 </p>
               </CardContent>
             </Card>
 
-            <Card 
+            <Card
               ref={card3.ref}
               className={`text-center p-8 border-2 hover:border-secondary transition-all duration-700 delay-300 ${
-                card3.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                card3.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
             >
               <CardContent className="pt-6">
@@ -151,19 +150,17 @@ const Index = () => {
                   </div>
                 </div>
                 <div className="flex justify-center mb-4">
-                  <video 
-                    src={summaryVid} 
-                    autoPlay 
-                    muted 
-                    loop 
-                    playsInline 
+                  <video
+                    src={summaryVid}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
                     className="w-16 h-16 rounded-full object-cover"
                   />
                 </div>
                 <h3 className="text-2xl font-bold text-primary mb-4">סיכום מושלם</h3>
-                <p className="text-muted-foreground text-lg">
-                  כל השיחה נשמרת בגיליון או CRM עם סיכום ברור
-                </p>
+                <p className="text-muted-foreground text-lg">כל השיחה נשמרת בגיליון או CRM עם סיכום ברור</p>
               </CardContent>
             </Card>
           </div>
@@ -177,7 +174,7 @@ const Index = () => {
             <h2 className="text-4xl font-bold text-primary mb-4">למה פורלי?</h2>
             <p className="text-xl text-muted-foreground">היתרונות שיהפכו את העסק שלך</p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card className="p-6 text-center hover:shadow-lg transition-shadow">
               <CardContent className="pt-4">
@@ -226,26 +223,19 @@ const Index = () => {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 text-center">
           <div className="flex justify-center mb-8">
-            <video 
-              src={valuePropositionVid} 
-              autoPlay 
-              muted 
-              loop 
-              playsInline 
-              className="w-24 h-24"
-            />
+            <video src={valuePropositionVid} autoPlay muted loop playsInline className="w-24 h-24" />
           </div>
           <h2 className="text-4xl font-bold text-primary mb-6">עסק ממוצע מפספס 30% מהשיחות</h2>
           <p className="text-2xl text-muted-foreground mb-8">Call4li הופך אותן להזדמנויות!</p>
-          
+
           <Card className="max-w-md mx-auto bg-white text-primary p-8">
             <CardContent className="pt-4">
               <h3 className="text-2xl font-bold mb-6">מחשבון החיסכון שלך</h3>
               <div className="space-y-4 text-right">
                 <div>
                   <label className="block text-sm font-medium mb-2">שווי עסקה ממוצעת (₪)</label>
-                  <input 
-                    type="number" 
+                  <input
+                    type="number"
                     value={dealValue}
                     onChange={(e) => setDealValue(Number(e.target.value) || 0)}
                     className="w-full p-3 border rounded-lg text-center"
@@ -253,8 +243,8 @@ const Index = () => {
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">שיחות בחודש</label>
-                  <input 
-                    type="number" 
+                  <input
+                    type="number"
                     value={callsPerMonth}
                     onChange={(e) => setCallsPerMonth(Number(e.target.value) || 0)}
                     className="w-full p-3 border rounded-lg text-center"
@@ -277,7 +267,7 @@ const Index = () => {
             <h2 className="text-4xl font-bold text-primary mb-4">חבילות המחיר שלנו</h2>
             <p className="text-xl text-muted-foreground">בחרו את החבילה המתאימה לעסק שלכם</p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <Card className="p-8 border-2 hover:border-secondary transition-colors">
               <CardContent className="pt-4">
@@ -313,9 +303,7 @@ const Index = () => {
                   </li>
                 </ul>
                 <Link to="/contact" className="w-full">
-                  <Button className="w-full bg-secondary hover:bg-secondary/90">
-                    התחילו עכשיו
-                  </Button>
+                  <Button className="w-full bg-secondary hover:bg-secondary/90">התחילו עכשיו</Button>
                 </Link>
               </CardContent>
             </Card>
@@ -365,9 +353,7 @@ const Index = () => {
                   </li>
                 </ul>
                 <Link to="/contact" className="w-full">
-                  <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
-                    התחילו עכשיו
-                  </Button>
+                  <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90">התחילו עכשיו</Button>
                 </Link>
               </CardContent>
             </Card>
@@ -382,7 +368,7 @@ const Index = () => {
             <h2 className="text-4xl font-bold text-primary mb-4">מה הלקוחות שלנו אומרים</h2>
             <p className="text-xl text-muted-foreground">סיפורי הצלחה מעסקים כמוכם</p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="p-6">
               <CardContent className="pt-4">
@@ -442,19 +428,10 @@ const Index = () => {
       <section className="py-20 bg-gradient-hero text-text-custom">
         <div className="container mx-auto px-4 text-center">
           <div className="flex justify-center mb-8">
-            <video 
-              src={ctaMascotVid}
-              autoPlay 
-              muted 
-              loop 
-              playsInline 
-              className="w-32 h-32 rounded-full object-cover"
-            />
+            <video src={ctaMascotVid} autoPlay muted loop playsInline className="w-32 h-32 rounded-full object-cover" />
           </div>
           <h2 className="text-4xl font-bold mb-6">מוכנים להתחיל?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            הצטרפו לעסקים שכבר משתמשים בפורלי ולא מפספסים אף הזדמנות
-          </p>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">הצטרפו לעסקים שכבר משתמשים בפורלי ולא מפספסים אף הזדמנות</p>
           <Link to="/contact">
             <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6">
               התחילו ניסיון חינם היום
@@ -472,20 +449,18 @@ const Index = () => {
                 <img src={forliMascot} alt="פורלי הינשוף" className="w-10 h-10" />
                 <h3 className="text-2xl font-bold">Call4li</h3>
               </div>
-              <p className="text-primary-foreground/80">
-                פורלי הינשוף שתמיד ער בשביל העסק שלך
-              </p>
+              <p className="text-primary-foreground/80">פורלי הינשוף שתמיד ער בשביל העסק שלך</p>
             </div>
-            
+
             <div>
               <h4 className="text-lg font-bold mb-4">יצירת קשר</h4>
               <div className="space-y-2 text-primary-foreground/80">
-                <p>📧 micky@kaizen-il.com</p>
+                <p>📧 micky@call4li.com</p>
                 <p>📞 054-2045280</p>
                 <p>💬 ווטסאפ: 054-2045280</p>
               </div>
             </div>
-            
+
             <div>
               <h4 className="text-lg font-bold mb-4">קישורים</h4>
               <div className="space-y-2">
@@ -501,11 +476,9 @@ const Index = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center">
-            <p className="text-primary-foreground/60">
-              © 2024 Call4li. כל הזכויות שמורות.
-            </p>
+            <p className="text-primary-foreground/60">© 2024 Call4li. כל הזכויות שמורות.</p>
           </div>
         </div>
       </footer>
