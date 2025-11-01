@@ -18,39 +18,39 @@ const Contact = () => {
     companyName: "",
     businessDescription: "",
     email: "",
-    phone: ""
+    phone: "",
   });
 
   const steps = [
     {
       id: "welcome",
       message: "שלום! אני פורלי, הינשוף החכם של Call4li 🦉",
-      submessage: "אשמח לעזור לכם להתחיל. בואו נכיר - איך קוראים לכם?"
+      submessage: "אשמח לעזור לכם להתחיל. בואו נכיר - איך קוראים לכם?",
     },
     {
       id: "company",
       message: "נחמד להכיר אותך {name}! 😊",
-      submessage: "ומה שם החברה/העסק שלכם?"
+      submessage: "ומה שם החברה/העסק שלכם?",
     },
     {
       id: "description",
       message: "מעולה! 👏",
-      submessage: "ספרו לי קצת על העסק - מה אתם עושים?"
+      submessage: "ספרו לי קצת על העסק - מה אתם עושים?",
     },
     {
       id: "phone",
       message: "מעניין! 🚀",
-      submessage: "מה מספר הטלפון?"
+      submessage: "מה מספר הטלפון?",
     },
     {
       id: "complete",
       message: "תודה רבה {name}! 🎉",
-      submessage: "נחזור אליכם תוך 24 שעות עם הצעה מותאמת אישית"
-    }
+      submessage: "נחזור אליכם תוך 24 שעות עם הצעה מותאמת אישית",
+    },
   ];
 
   const currentMessage = steps[currentStep];
-  const isComplete = currentStep === 5;
+  const isComplete = currentStep === 4;
 
   const handleNext = async () => {
     // Validate current step before proceeding
@@ -64,16 +64,16 @@ const Contact = () => {
       });
       return;
     }
-    
+
     setValidationError(null);
-    
+
     if (currentStep === 4) {
       // Form is complete, submit data to integrations
       setIsSubmitting(true);
-      
+
       try {
         const result = await ContactIntegrationService.submitContactForm(formData);
-        
+
         if (result.success) {
           toast({
             title: "הטופס נשלח בהצלחה! 🎉",
@@ -81,14 +81,14 @@ const Contact = () => {
           });
         } else {
           // Still proceed to next step even if integrations fail
-          console.warn('Integration errors:', result.errors);
+          console.warn("Integration errors:", result.errors);
           toast({
             title: "הטופס התקבל",
             description: "נחזור אליכם בהקדם",
           });
         }
       } catch (error) {
-        console.error('Error submitting form:', error);
+        console.error("Error submitting form:", error);
         toast({
           title: "הטופס התקבל",
           description: "נחזור אליכם בהקדם",
@@ -107,7 +107,7 @@ const Contact = () => {
   };
 
   const handleInputChange = (field: keyof ContactFormData, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
     // Clear validation error when user starts typing
     if (validationError) {
       setValidationError(null);
@@ -115,7 +115,7 @@ const Contact = () => {
   };
 
   const renderInput = () => {
-    switch(currentStep) {
+    switch (currentStep) {
       case 1:
         return (
           <div className="flex gap-2">
@@ -131,7 +131,7 @@ const Contact = () => {
                 autoFocus
               />
             </div>
-            <Button 
+            <Button
               onClick={handleNext}
               disabled={!validateStep(1, formData).isValid}
               size="icon"
@@ -156,7 +156,7 @@ const Contact = () => {
                 autoFocus
               />
             </div>
-            <Button 
+            <Button
               onClick={handleNext}
               disabled={!validateStep(2, formData).isValid}
               size="icon"
@@ -188,7 +188,7 @@ const Contact = () => {
                 autoFocus
               />
             </div>
-            <Button 
+            <Button
               onClick={handleNext}
               disabled={!validateStep(3, formData).isValid}
               size="icon"
@@ -213,7 +213,7 @@ const Contact = () => {
                 autoFocus
               />
             </div>
-            <Button 
+            <Button
               onClick={handleNext}
               disabled={!validateStep(4, formData).isValid || isSubmitting}
               size="icon"
@@ -230,10 +230,7 @@ const Contact = () => {
       default:
         return (
           <div className="text-center">
-            <Button 
-              onClick={handleNext}
-              className="rounded-full bg-[#25D366] hover:bg-[#128C7E] px-8"
-            >
+            <Button onClick={handleNext} className="rounded-full bg-[#25D366] hover:bg-[#128C7E] px-8">
               בואו נתחיל <ArrowRight className="w-4 h-4 mr-2" />
             </Button>
           </div>
@@ -265,9 +262,9 @@ const Contact = () => {
               <p className="text-sm">שלום! אני פורלי, הינשוף החכם של Call4li 🦉</p>
               <p className="text-sm mt-1 text-gray-300">אשמח לעזור לכם להתחיל. בואו נכיר - איך קוראים לכם?</p>
               <span className="text-xs text-gray-400 mt-1 block">
-                {new Date().toLocaleTimeString("he-IL", { 
-                  hour: "2-digit", 
-                  minute: "2-digit" 
+                {new Date().toLocaleTimeString("he-IL", {
+                  hour: "2-digit",
+                  minute: "2-digit",
                 })}
               </span>
             </div>
@@ -289,9 +286,9 @@ const Contact = () => {
                     <p className="text-sm">נחמד להכיר אותך {formData.name}! 😊</p>
                     <p className="text-sm mt-1 text-gray-300">ומה שם החברה/העסק שלכם?</p>
                     <span className="text-xs text-gray-400 mt-1 block">
-                      {new Date().toLocaleTimeString("he-IL", { 
-                        hour: "2-digit", 
-                        minute: "2-digit" 
+                      {new Date().toLocaleTimeString("he-IL", {
+                        hour: "2-digit",
+                        minute: "2-digit",
                       })}
                     </span>
                   </div>
@@ -316,9 +313,9 @@ const Contact = () => {
                     <p className="text-sm">מעולה! 👏</p>
                     <p className="text-sm mt-1 text-gray-300">ספרו לי קצת על העסק - מה אתם עושים?</p>
                     <span className="text-xs text-gray-400 mt-1 block">
-                      {new Date().toLocaleTimeString("he-IL", { 
-                        hour: "2-digit", 
-                        minute: "2-digit" 
+                      {new Date().toLocaleTimeString("he-IL", {
+                        hour: "2-digit",
+                        minute: "2-digit",
                       })}
                     </span>
                   </div>
@@ -343,9 +340,9 @@ const Contact = () => {
                     <p className="text-sm">מעניין! 🚀</p>
                     <p className="text-sm mt-1 text-gray-300">מה מספר הטלפון?</p>
                     <span className="text-xs text-gray-400 mt-1 block">
-                      {new Date().toLocaleTimeString("he-IL", { 
-                        hour: "2-digit", 
-                        minute: "2-digit" 
+                      {new Date().toLocaleTimeString("he-IL", {
+                        hour: "2-digit",
+                        minute: "2-digit",
                       })}
                     </span>
                   </div>
@@ -370,9 +367,9 @@ const Contact = () => {
                     <p className="text-sm">תודה רבה {formData.name}! 🎉</p>
                     <p className="text-sm mt-1 text-gray-300">נחזור אליכם תוך 24 שעות עם הצעה מותאמת אישית</p>
                     <span className="text-xs text-gray-400 mt-1 block">
-                      {new Date().toLocaleTimeString("he-IL", { 
-                        hour: "2-digit", 
-                        minute: "2-digit" 
+                      {new Date().toLocaleTimeString("he-IL", {
+                        hour: "2-digit",
+                        minute: "2-digit",
                       })}
                     </span>
                   </div>
@@ -381,12 +378,10 @@ const Contact = () => {
             </>
           )}
 
-          {currentStep === 5 && (
+          {currentStep === 4 && (
             <div className="text-center py-4">
               <Link to="/">
-                <Button className="bg-[#25D366] hover:bg-[#128C7E] rounded-full px-8">
-                  חזרה לאתר
-                </Button>
+                <Button className="bg-[#25D366] hover:bg-[#128C7E] rounded-full px-8">חזרה לאתר</Button>
               </Link>
             </div>
           )}
@@ -396,11 +391,7 @@ const Contact = () => {
         {currentStep >= 0 && currentStep <= 4 && (
           <div className="p-4 bg-[#202c33] border-t border-gray-700">
             {renderInput()}
-            {validationError && (
-              <div className="mt-2 text-red-400 text-sm text-center">
-                {validationError}
-              </div>
-            )}
+            {validationError && <div className="mt-2 text-red-400 text-sm text-center">{validationError}</div>}
           </div>
         )}
       </Card>
