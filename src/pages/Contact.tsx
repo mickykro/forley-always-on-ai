@@ -98,11 +98,11 @@ const Contact = () => {
       }
     }
 
-    if (currentStep < steps.length - 1) {
+    if (currentStep < steps.length) {
       // Add a small delay to show the user message before moving to next step
       setTimeout(() => {
         setCurrentStep(currentStep + 1);
-      }, 100);
+      }, 200);
     }
   };
 
@@ -378,7 +378,7 @@ const Contact = () => {
             </>
           )}
 
-          {currentStep === 4 && (
+          {currentStep > 4 && (
             <div className="text-center py-4">
               <Link to="/">
                 <Button className="bg-[#25D366] hover:bg-[#128C7E] rounded-full px-8">חזרה לאתר</Button>
