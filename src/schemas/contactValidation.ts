@@ -9,8 +9,9 @@ export const contactFormSchema = z.object({
 
   companyName: z
     .string()
-    .min(3, "שם החברה חייב להכיל לפחות 3 תווים")
-    .max(100, "שם החברה לא יכול להכיל יותר מ-100 תווים"),
+    .min(2, "שם החברה חייב להכיל לפחות 2 תווים")
+    .max(100, "שם החברה לא יכול להכיל יותר מ-100 תווים")
+    .regex(/^[א-ת\u0590-\u05FF\s\u200F\u200Ea-zA-Z0-9\s]+$/, "שם החברה יכול להכיל אותיות ומספרים בלבד"),
 
   businessDescription: z
     .string()
