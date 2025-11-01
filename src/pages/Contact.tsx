@@ -15,9 +15,10 @@ const Contact = () => {
   const [validationError, setValidationError] = useState<string | null>(null);
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
+    companyName: "",
+    businessDescription: "",
     email: "",
-    phone: "",
-    message: ""
+    phone: ""
   });
 
   const steps = [
@@ -27,24 +28,29 @@ const Contact = () => {
       submessage: "אשמח לעזור לכם להתחיל. בואו נכיר - איך קוראים לכם?"
     },
     {
-      id: "phone", 
+      id: "company",
       message: "נחמד להכיר אותך {name}! 😊",
-      submessage: "ומה מספר הטלפון שלכם?"
+      submessage: "ומה שם החברה/העסק שלכם?"
     },
     {
-      id: "message",
-      message: "אחלה! עוד רגע נתחיל 🚀",
-      submessage: "ספרו לי קצת על העסק שלכם ואיך נוכל לעזור"
+      id: "description",
+      message: "מעולה! 👏",
+      submessage: "ספרו לי קצת על העסק - מה אתם עושים?"
+    },
+    {
+      id: "phone",
+      message: "מעניין! 🚀",
+      submessage: "מה מספר הטלפון?"
     },
     {
       id: "complete",
       message: "תודה רבה {name}! 🎉",
       submessage: "נחזור אליכם תוך 24 שעות עם הצעה מותאמת אישית"
-    },{}
+    }
   ];
 
-  const currentMessage = steps[currentStep] ;
-  const isComplete = currentStep === 4;
+  const currentMessage = steps[currentStep];
+  const isComplete = currentStep === 5;
 
   const handleNext = async () => {
     // Validate current step before proceeding
@@ -61,7 +67,7 @@ const Contact = () => {
     
     setValidationError(null);
     
-    if (currentStep === 3) {
+    if (currentStep === 4) {
       // Form is complete, submit data to integrations
       setIsSubmitting(true);
       
@@ -139,12 +145,12 @@ const Contact = () => {
         return (
           <div className="flex gap-2">
             <div className="flex-1 flex items-center gap-2 bg-white rounded-full px-4 py-3 border">
-              <span className="text-muted-foreground">📞</span>
+              <span className="text-muted-foreground">🏢</span>
               <input
-                type="tel"
-                placeholder="מספר הטלפון..."
-                value={formData.phone}
-                onChange={(e) => handleInputChange("phone", e.target.value)}
+                type="text"
+                placeholder="שם החברה/העסק..."
+                value={formData.companyName}
+                onChange={(e) => handleInputChange("companyName", e.target.value)}
                 className="flex-1 outline-none text-right"
                 onKeyPress={(e) => e.key === "Enter" && validateStep(2, formData).isValid && handleNext()}
                 autoFocus
@@ -166,13 +172,13 @@ const Contact = () => {
             <div className="flex-1 flex items-center gap-2 bg-white rounded-2xl px-4 py-3 border">
               <MessageSquare className="w-5 h-5 text-muted-foreground" />
               <textarea
-                placeholder="ספרו לנו על העסק שלכם..."
-                value={formData.message}
-                onChange={(e) => handleInputChange("message", e.target.value)}
+                placeholder="ספרו לנו מה אתם עושים..."
+                value={formData.businessDescription}
+                onChange={(e) => handleInputChange("businessDescription", e.target.value)}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" && !e.ctrlKey && !e.shiftKey) {
                     e.preventDefault();
-                    if (validateStep(3, formData).isValid && !isSubmitting) {
+                    if (validateStep(3, formData).isValid) {
                       handleNext();
                     }
                   }
@@ -184,9 +190,34 @@ const Contact = () => {
             </div>
             <Button 
               onClick={handleNext}
-              disabled={!validateStep(3, formData).isValid || isSubmitting}
+              disabled={!validateStep(3, formData).isValid}
               size="icon"
               className="rounded-full bg-[#25D366] hover:bg-[#128C7E] h-12 w-12"
+            >
+              <Send className="w-5 h-5" />
+            </Button>
+          </div>
+        );
+      case 4:
+        return (
+          <div className="flex gap-2">
+            <div className="flex-1 flex items-center gap-2 bg-white rounded-full px-4 py-3 border">
+              <span className="text-muted-foreground">📞</span>
+              <input
+                type="tel"
+                placeholder="מספר הטלפון..."
+                value={formData.phone}
+                onChange={(e) => handleInputChange("phone", e.target.value)}
+                className="flex-1 outline-none text-right"
+                onKeyPress={(e) => e.key === "Enter" && validateStep(4, formData).isValid && handleNext()}
+                autoFocus
+              />
+            </div>
+            <Button 
+              onClick={handleNext}
+              disabled={!validateStep(4, formData).isValid || isSubmitting}
+              size="icon"
+              className="rounded-full bg-[#25D366] hover:bg-[#128C7E]"
             >
               {isSubmitting ? (
                 <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -256,7 +287,61 @@ const Contact = () => {
                   <img src={forliMascot} alt="פורלי" className="w-8 h-8 rounded-full flex-shrink-0" />
                   <div className="bg-[#202c33] text-white rounded-lg rounded-bl-none px-4 py-2 max-w-[80%]">
                     <p className="text-sm">נחמד להכיר אותך {formData.name}! 😊</p>
-                    <p className="text-sm mt-1 text-gray-300">ומה מספר הטלפון שלכם?</p>
+                    <p className="text-sm mt-1 text-gray-300">ומה שם החברה/העסק שלכם?</p>
+                    <span className="text-xs text-gray-400 mt-1 block">
+                      {new Date().toLocaleTimeString("he-IL", { 
+                        hour: "2-digit", 
+                        minute: "2-digit" 
+                      })}
+                    </span>
+                  </div>
+                </div>
+              )}
+            </>
+          )}
+
+          {/* User Company Name Message */}
+          {formData.companyName && (
+            <>
+              <div className="flex justify-end">
+                <div className="bg-[#005c4b] text-white rounded-lg rounded-br-none px-4 py-2 max-w-[80%]">
+                  <p className="text-sm">{formData.companyName}</p>
+                  <span className="text-xs text-gray-300 mt-1 block">✓✓</span>
+                </div>
+              </div>
+              {currentStep > 2 && (
+                <div className="flex gap-2">
+                  <img src={forliMascot} alt="פורלי" className="w-8 h-8 rounded-full flex-shrink-0" />
+                  <div className="bg-[#202c33] text-white rounded-lg rounded-bl-none px-4 py-2 max-w-[80%]">
+                    <p className="text-sm">מעולה! 👏</p>
+                    <p className="text-sm mt-1 text-gray-300">ספרו לי קצת על העסק - מה אתם עושים?</p>
+                    <span className="text-xs text-gray-400 mt-1 block">
+                      {new Date().toLocaleTimeString("he-IL", { 
+                        hour: "2-digit", 
+                        minute: "2-digit" 
+                      })}
+                    </span>
+                  </div>
+                </div>
+              )}
+            </>
+          )}
+
+          {/* User Business Description Message */}
+          {formData.businessDescription && (
+            <>
+              <div className="flex justify-end">
+                <div className="bg-[#005c4b] text-white rounded-lg rounded-br-none px-4 py-2 max-w-[80%]">
+                  <p className="text-sm">{formData.businessDescription}</p>
+                  <span className="text-xs text-gray-300 mt-1 block">✓✓</span>
+                </div>
+              </div>
+              {currentStep > 3 && (
+                <div className="flex gap-2">
+                  <img src={forliMascot} alt="פורלי" className="w-8 h-8 rounded-full flex-shrink-0" />
+                  <div className="bg-[#202c33] text-white rounded-lg rounded-bl-none px-4 py-2 max-w-[80%]">
+                    <p className="text-sm">מעניין! 🚀</p>
+                    <p className="text-sm mt-1 text-gray-300">מה מספר הטלפון?</p>
                     <span className="text-xs text-gray-400 mt-1 block">
                       {new Date().toLocaleTimeString("he-IL", { 
                         hour: "2-digit", 
@@ -278,34 +363,7 @@ const Contact = () => {
                   <span className="text-xs text-gray-300 mt-1 block">✓✓</span>
                 </div>
               </div>
-              {currentStep > 2 && (
-                <div className="flex gap-2">
-                  <img src={forliMascot} alt="פורלי" className="w-8 h-8 rounded-full flex-shrink-0" />
-                  <div className="bg-[#202c33] text-white rounded-lg rounded-bl-none px-4 py-2 max-w-[80%]">
-                    <p className="text-sm">אחלה! עוד רגע נתחיל 🚀</p>
-                    <p className="text-sm mt-1 text-gray-300">ספרו לי קצת על העסק שלכם ואיך נוכל לעזור</p>
-                    <span className="text-xs text-gray-400 mt-1 block">
-                      {new Date().toLocaleTimeString("he-IL", { 
-                        hour: "2-digit", 
-                        minute: "2-digit" 
-                      })}
-                    </span>
-                  </div>
-                </div>
-              )}
-            </>
-          )}
-
-          {/* User Message */}
-          {formData.message && (
-            <>
-              <div className="flex justify-end">
-                <div className="bg-[#005c4b] text-white rounded-lg rounded-br-none px-4 py-2 max-w-[80%]">
-                  <p className="text-sm">{formData.message}</p>
-                  <span className="text-xs text-gray-300 mt-1 block">✓✓</span>
-                </div>
-              </div>
-              {currentStep > 3 && (
+              {currentStep > 4 && (
                 <div className="flex gap-2">
                   <img src={forliMascot} alt="פורלי" className="w-8 h-8 rounded-full flex-shrink-0" />
                   <div className="bg-[#202c33] text-white rounded-lg rounded-bl-none px-4 py-2 max-w-[80%]">
@@ -323,7 +381,7 @@ const Contact = () => {
             </>
           )}
 
-          {currentStep === 4 && (
+          {currentStep === 5 && (
             <div className="text-center py-4">
               <Link to="/">
                 <Button className="bg-[#25D366] hover:bg-[#128C7E] rounded-full px-8">
@@ -335,7 +393,7 @@ const Contact = () => {
         </div>
 
         {/* Input Area */}
-        {currentStep >= 0 && currentStep <= 3 && (
+        {currentStep >= 0 && currentStep <= 4 && (
           <div className="p-4 bg-[#202c33] border-t border-gray-700">
             {renderInput()}
             {validationError && (

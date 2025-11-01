@@ -2,9 +2,10 @@ import { ContactFormData } from "@/schemas/contactValidation";
 
 interface ContactData {
   name: string;
+  companyName: string;
+  businessDescription: string;
   email: string;
   phone: string;
-  message: string;
 }
 
 const WEBHOOK_URL = "https://hook.eu2.make.com/plnfn1an3nb92tnvi6xctpt9wwylqfx8";
@@ -28,9 +29,10 @@ export class ContactIntegrationService {
     try {
       const payload = {
         name: data.name,
+        company_name: data.companyName,
+        business_description: data.businessDescription,
         email: data.email || '',
         phone: normalizePhoneNumber(data.phone),
-        message: data.message,
         timestamp: new Date().toISOString(),
         source: 'website',
         user_agent: navigator.userAgent,

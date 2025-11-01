@@ -7,6 +7,17 @@ export const contactFormSchema = z.object({
     .max(50, "השם לא יכול להכיל יותר מ-50 תווים")
     .regex(/^[א-ת\u0590-\u05FF\s\u200F\u200Ea-zA-Z\s]+$/, "השם יכול להכיל רק אותיות בעברית או באנגלית"),
 
+  companyName: z
+    .string()
+    .min(2, "שם החברה חייב להכיל לפחות 2 תווים")
+    .max(100, "שם החברה לא יכול להכיל יותר מ-100 תווים")
+    .regex(/^[א-ת\u0590-\u05FF\s\u200F\u200Ea-zA-Z0-9\s]+$/, "שם החברה יכול להכיל אותיות ומספרים בלבד"),
+
+  businessDescription: z
+    .string()
+    .min(10, "התיאור חייב להכיל לפחות 10 תווים")
+    .max(500, "התיאור לא יכול להכיל יותר מ-500 תווים"),
+
   phone: z
     .string()
     .min(9, "מספר הטלפון קצר מדי")
@@ -17,12 +28,7 @@ export const contactFormSchema = z.object({
     .string()
     .email("כתובת האימייל לא תקינה")
     .optional()
-    .or(z.literal("")),
-
-  message: z
-    .string()
-    .min(10, "ההודעה חייבת להכיל לפחות 10 תווים")
-    .max(500, "ההודעה לא יכולה להכיל יותר מ-500 תווים")
+    .or(z.literal(""))
 });
 
 export type ContactFormData = z.infer<typeof contactFormSchema>;
@@ -46,13 +52,17 @@ export const validateStep = (step: number, formData: ContactFormData): { isValid
       const nameError = validateField("name", formData.name);
       return { isValid: !nameError, error: nameError || undefined };
     
-    case 2: // Phone validation
+    case 2: // Company name validation
+      const companyError = validateField("companyName", formData.companyName);
+      return { isValid: !companyError, error: companyError || undefined };
+    
+    case 3: // Business description validation
+      const descriptionError = validateField("businessDescription", formData.businessDescription);
+      return { isValid: !descriptionError, error: descriptionError || undefined };
+    
+    case 4: // Phone validation
       const phoneError = validateField("phone", formData.phone);
       return { isValid: !phoneError, error: phoneError || undefined };
-    
-    case 3: // Message validation
-      const messageError = validateField("message", formData.message);
-      return { isValid: !messageError, error: messageError || undefined };
     
     default:
       return { isValid: true };
