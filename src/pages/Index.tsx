@@ -464,9 +464,9 @@ const Index = () => {
             <div>
               <h4 className="text-lg font-bold mb-4">קישורים</h4>
               <div className="space-y-2">
-                <a href="#" className="block text-primary-foreground/80 hover:text-white transition-colors">
+                <Link to="/privacy" className="block text-primary-foreground/80 hover:text-white transition-colors">
                   מדיניות פרטיות
-                </a>
+                </Link>
                 <a href="#" className="block text-primary-foreground/80 hover:text-white transition-colors">
                   תנאי שימוש
                 </a>
