@@ -8,12 +8,7 @@ import ctaMascotVid from "@/assets/cta_mascot_vid.mp4";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { PhoneIcon, MessageCircleIcon, ClipboardCheckIcon, TrendingUpIcon, ClockIcon, BrainIcon } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -27,9 +22,9 @@ const Index = () => {
   const expectedReturn = Math.round(dealValue * callsPerMonth * 0.3);
 
   // Counter animations
-  const businessCount = useCountUp({ end: 250, duration: 2500, suffix: '+' });
-  const callsCount = useCountUp({ end: 12500, duration: 2500, suffix: '+' });
-  const satisfactionCount = useCountUp({ end: 98, duration: 2000, suffix: '%' });
+  const businessCount = useCountUp({ end: 250, duration: 2500, suffix: "+" });
+  const callsCount = useCountUp({ end: 12500, duration: 2500, suffix: "+" });
+  const satisfactionCount = useCountUp({ end: 98, duration: 2000, suffix: "%" });
 
   const card1 = useScrollAnimation();
   const card2 = useScrollAnimation();
@@ -88,34 +83,22 @@ const Index = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <div ref={businessCount.countRef} className="relative group">
               <div className="bg-card border-2 border-primary/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 text-center">
-                <div className="text-5xl font-bold text-primary mb-4">
-                  {businessCount.formattedCount}
-                </div>
-                <p className="text-lg text-muted-foreground font-semibold">
-                  עסקים משתמשים בשירות
-                </p>
+                <div className="text-5xl font-bold text-primary mb-4">{businessCount.formattedCount}</div>
+                <p className="text-lg text-muted-foreground font-semibold">עסקים משתמשים בשירות</p>
               </div>
             </div>
-            
+
             <div ref={callsCount.countRef} className="relative group">
               <div className="bg-card border-2 border-accent/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 text-center">
-                <div className="text-5xl font-bold text-accent mb-4">
-                  {callsCount.formattedCount}
-                </div>
-                <p className="text-lg text-muted-foreground font-semibold">
-                  שיחות נשמרו בזכות הבוט
-                </p>
+                <div className="text-5xl font-bold text-accent mb-4">{callsCount.formattedCount}</div>
+                <p className="text-lg text-muted-foreground font-semibold">שיחות נשמרו בזכות הבוט</p>
               </div>
             </div>
-            
+
             <div ref={satisfactionCount.countRef} className="relative group">
               <div className="bg-card border-2 border-secondary/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-secondary/40 text-center">
-                <div className="text-5xl font-bold text-secondary mb-4">
-                  {satisfactionCount.formattedCount}
-                </div>
-                <p className="text-lg text-muted-foreground font-semibold">
-                  שביעות רצון לקוחות
-                </p>
+                <div className="text-5xl font-bold text-secondary mb-4">{satisfactionCount.formattedCount}</div>
+                <p className="text-lg text-muted-foreground font-semibold">שביעות רצון לקוחות</p>
               </div>
             </div>
           </div>
@@ -385,10 +368,6 @@ const Index = () => {
                   </li>
                   <li className="flex items-center gap-3">
                     <span className="w-2 h-2 bg-success rounded-full"></span>
-                    <span>אינטגרציה מלאה עם CRM</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 bg-success rounded-full"></span>
                     <span>ניתוח מתקדם וחדשנות AI</span>
                   </li>
                   <li className="flex items-center gap-3">
@@ -496,12 +475,8 @@ const Index = () => {
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              שאלות ותשובות
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              כל מה שרציתם לדעת על Forli
-            </p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">שאלות ותשובות</h2>
+            <p className="text-lg text-muted-foreground">כל מה שרציתם לדעת על Forli</p>
           </div>
 
           <Accordion type="single" collapsible className="w-full space-y-4">
@@ -510,7 +485,8 @@ const Index = () => {
                 מה זה Forli?
               </AccordionTrigger>
               <AccordionContent className="text-right text-muted-foreground">
-                Forli היא מערכת חכמה שמאפשרת לעסקים לענות על שאלות של לקוחות באופן אוטומטי ומדויק. המערכת משתמשת בטכנולוגיה מתקדמת כדי להבין שאלות ולספק תשובות מותאמות אישית בזמן אמת.
+                Forli היא מערכת חכמה שמאפשרת לעסקים לענות על שאלות של לקוחות באופן אוטומטי ומדויק. המערכת משתמשת
+                בטכנולוגיה מתקדמת כדי להבין שאלות ולספק תשובות מותאמות אישית בזמן אמת.
               </AccordionContent>
             </AccordionItem>
 
@@ -519,7 +495,8 @@ const Index = () => {
                 איך Forli עובד?
               </AccordionTrigger>
               <AccordionContent className="text-right text-muted-foreground">
-                Forli לומד את המידע על העסק שלך ומשתמש בו כדי לענות על שאלות לקוחות. המערכת מנתחת את השאלות, מחפשת את המידע הרלוונטי ומספקת תשובות מדויקות ומקצועיות.
+                Forli לומד את המידע על העסק שלך ומשתמש בו כדי לענות על שאלות לקוחות. המערכת מנתחת את השאלות, מחפשת את
+                המידע הרלוונטי ומספקת תשובות מדויקות ומקצועיות.
               </AccordionContent>
             </AccordionItem>
 
@@ -528,7 +505,8 @@ const Index = () => {
                 כמה זמן לוקח להתחיל להשתמש ב-Forli?
               </AccordionTrigger>
               <AccordionContent className="text-right text-muted-foreground">
-                תהליך ההטמעה הוא מהיר ופשוט. לאחר שתמלא את הטופס עם פרטי העסק שלך, נוכל להתחיל לעבוד על הגדרת המערכת והיא תהיה מוכנה לשימוש תוך זמן קצר.
+                תהליך ההטמעה הוא מהיר ופשוט. לאחר שתמלא את הטופס עם פרטי העסק שלך, נוכל להתחיל לעבוד על הגדרת המערכת
+                והיא תהיה מוכנה לשימוש תוך זמן קצר.
               </AccordionContent>
             </AccordionItem>
 
@@ -537,7 +515,8 @@ const Index = () => {
                 האם Forli יכול להתאים לכל סוג של עסק?
               </AccordionTrigger>
               <AccordionContent className="text-right text-muted-foreground">
-                כן! Forli הוא גמיש ומותאם לכל סוג עסק - בין אם אתה מנהל חנות אונליין, מספק שירותים מקצועיים, או מנהל עסק פיזי. המערכת מותאמת לצרכים הייחודיים של כל לקוח.
+                כן! Forli הוא גמיש ומותאם לכל סוג עסק - בין אם אתה מנהל חנות אונליין, מספק שירותים מקצועיים, או מנהל עסק
+                פיזי. המערכת מותאמת לצרכים הייחודיים של כל לקוח.
               </AccordionContent>
             </AccordionItem>
 
@@ -546,7 +525,8 @@ const Index = () => {
                 איזה סוג מידע אני צריך לספק?
               </AccordionTrigger>
               <AccordionContent className="text-right text-muted-foreground">
-                נזדקק למידע בסיסי על העסק שלך - שם החברה, תיאור קצר של העסק והשירותים שאתה מציע, ופרטי קשר. כמו כן, נשמח לקבל מידע נוסף שיעזור למערכת לספק תשובות מדויקות יותר.
+                נזדקק למידע בסיסי על העסק שלך - שם החברה, תיאור קצר של העסק והשירותים שאתה מציע, ופרטי קשר. כמו כן, נשמח
+                לקבל מידע נוסף שיעזור למערכת לספק תשובות מדויקות יותר.
               </AccordionContent>
             </AccordionItem>
 
@@ -555,7 +535,8 @@ const Index = () => {
                 האם המידע שלי מאובטח?
               </AccordionTrigger>
               <AccordionContent className="text-right text-muted-foreground">
-                בהחלט. אנחנו מקפידים על אבטחת מידע ברמה הגבוהה ביותר. כל המידע שאתה משתף איתנו נשמר בצורה מאובטחת ומוצפנת. ניתן לקרוא עוד במדיניות הפרטיות שלנו.
+                בהחלט. אנחנו מקפידים על אבטחת מידע ברמה הגבוהה ביותר. כל המידע שאתה משתף איתנו נשמר בצורה מאובטחת
+                ומוצפנת. ניתן לקרוא עוד במדיניות הפרטיות שלנו.
               </AccordionContent>
             </AccordionItem>
 
@@ -564,7 +545,8 @@ const Index = () => {
                 מה קורה אם הלקוח שואל שאלה שהמערכת לא יודעת לענות עליה?
               </AccordionTrigger>
               <AccordionContent className="text-right text-muted-foreground">
-                במקרה כזה, המערכת תודיע שהיא צריכה עזרה נוספת ותפנה את השאלה אליך. כך אתה תמיד בשליטה ויכול להבטיח שהלקוחות שלך מקבלים את התשובות המדויקות ביותר.
+                במקרה כזה, המערכת תודיע שהיא צריכה עזרה נוספת ותפנה את השאלה אליך. כך אתה תמיד בשליטה ויכול להבטיח
+                שהלקוחות שלך מקבלים את התשובות המדויקות ביותר.
               </AccordionContent>
             </AccordionItem>
 
@@ -573,7 +555,8 @@ const Index = () => {
                 האם אפשר לעדכן את המידע במערכת?
               </AccordionTrigger>
               <AccordionContent className="text-right text-muted-foreground">
-                כן, ניתן לעדכן ולשפר את המידע במערכת בכל עת. זה חשוב במיוחד כאשר יש שינויים בעסק, במוצרים או בשירותים שאתה מציע.
+                כן, ניתן לעדכן ולשפר את המידע במערכת בכל עת. זה חשוב במיוחד כאשר יש שינויים בעסק, במוצרים או בשירותים
+                שאתה מציע.
               </AccordionContent>
             </AccordionItem>
 
@@ -582,7 +565,8 @@ const Index = () => {
                 כיצד ניתן ליצור קשר עם צוות Forli?
               </AccordionTrigger>
               <AccordionContent className="text-right text-muted-foreground">
-                אפשר ליצור איתנו קשר דרך טופס יצירת הקשר באתר, לשלוח אימייל ל-contact@forli.ai, או להתקשר אלינו בטלפון 050-123-4567. אנחנו זמינים לכל שאלה ובקשה.
+                אפשר ליצור איתנו קשר דרך טופס יצירת הקשר באתר, לשלוח אימייל ל-contact@forli.ai, או להתקשר אלינו בטלפון
+                050-123-4567. אנחנו זמינים לכל שאלה ובקשה.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
