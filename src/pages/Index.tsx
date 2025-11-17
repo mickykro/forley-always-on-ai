@@ -467,6 +467,9 @@ const Index = () => {
                 <Link to="/privacy" className="block text-primary-foreground/80 hover:text-white transition-colors">
                   מדיניות פרטיות
                 </Link>
+                <Link to="/faq" className="block text-primary-foreground/80 hover:text-white transition-colors">
+                  שאלות נפוצות
+                </Link>
                 <a href="#" className="block text-primary-foreground/80 hover:text-white transition-colors">
                   תנאי שימוש
                 </a>
