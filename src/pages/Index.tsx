@@ -18,12 +18,18 @@ import { PhoneIcon, MessageCircleIcon, ClipboardCheckIcon, TrendingUpIcon, Clock
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useCountUp } from "@/hooks/useCountUp";
 
 const Index = () => {
   const [dealValue, setDealValue] = useState<number>(1000);
   const [callsPerMonth, setCallsPerMonth] = useState<number>(100);
 
   const expectedReturn = Math.round(dealValue * callsPerMonth * 0.3);
+
+  // Counter animations
+  const businessCount = useCountUp({ end: 250, duration: 2500, suffix: '+' });
+  const callsCount = useCountUp({ end: 12500, duration: 2500, suffix: '+' });
+  const satisfactionCount = useCountUp({ end: 98, duration: 2000, suffix: '%' });
 
   const card1 = useScrollAnimation();
   const card2 = useScrollAnimation();
@@ -77,34 +83,40 @@ const Index = () => {
       </section>
 
       {/* Statistics Counter */}
-      <section className="py-16 bg-background border-y">
+      <section className="py-16 bg-gradient-to-b from-background to-muted/20">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div className="space-y-2">
-              <div className="text-5xl font-bold text-primary mb-2">
-                250+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div ref={businessCount.countRef} className="relative group">
+              <div className="bg-card border-2 border-primary/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/40">
+                <div className="text-5xl font-bold text-primary mb-4">
+                  {businessCount.formattedCount}
+                </div>
+                <p className="text-lg text-muted-foreground font-semibold">
+                  עסקים משתמשים בשירות
+                </p>
               </div>
-              <p className="text-xl text-muted-foreground font-semibold">
-                עסקים משתמשים בשירות
-              </p>
             </div>
             
-            <div className="space-y-2">
-              <div className="text-5xl font-bold text-primary mb-2">
-                12,500+
+            <div ref={callsCount.countRef} className="relative group">
+              <div className="bg-card border-2 border-accent/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-accent/40">
+                <div className="text-5xl font-bold text-accent mb-4">
+                  {callsCount.formattedCount}
+                </div>
+                <p className="text-lg text-muted-foreground font-semibold">
+                  שיחות נשמרו בזכות הבוט
+                </p>
               </div>
-              <p className="text-xl text-muted-foreground font-semibold">
-                שיחות נשמרו בזכות הבוט
-              </p>
             </div>
             
-            <div className="space-y-2">
-              <div className="text-5xl font-bold text-primary mb-2">
-                98%
+            <div ref={satisfactionCount.countRef} className="relative group">
+              <div className="bg-card border-2 border-secondary/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-secondary/40">
+                <div className="text-5xl font-bold text-secondary mb-4">
+                  {satisfactionCount.formattedCount}
+                </div>
+                <p className="text-lg text-muted-foreground font-semibold">
+                  שביעות רצון לקוחות
+                </p>
               </div>
-              <p className="text-xl text-muted-foreground font-semibold">
-                שביעות רצון לקוחות
-              </p>
             </div>
           </div>
         </div>
