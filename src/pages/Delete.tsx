@@ -1,34 +1,46 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { logOnboardingEvent } from "@/services/onboardingIntegration";
 import forliMascot from "@/assets/forli_no_bg.png";
 
 const Delete = () => {
-  const { client_id } = useParams<{ client_id: string }>();
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [showCancelButton, setShowCancelButton] = useState(false);
 
-  useEffect(() => {
-    if (client_id) {
-      logOnboardingEvent({
-        event: "page_opened",
-        client_id,
+  const handlePhoneSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!phoneNumber.trim()) {
+      toast({
+        title: "שגיאה",
+        description: "יש להזין מספר טלפון",
+        variant: "destructive",
       });
+      return;
     }
-  }, [client_id]);
+
+    // Log the phone number submission
+    logOnboardingEvent({
+      event: "page_opened",
+      client_id: phoneNumber,
+    });
+
+    setShowCancelButton(true);
+  };
 
   const handleCancelClick = async () => {
-    if (!client_id) return;
-
     setIsLoading(true);
     
     try {
       await logOnboardingEvent({
         event: "button_clicked",
-        client_id,
+        client_id: phoneNumber,
         action: "cancel",
       });
 
@@ -50,18 +62,6 @@ const Delete = () => {
     }
   };
 
-  if (!client_id) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center p-4">
-        <Card className="w-full max-w-md">
-          <CardContent className="p-6 text-center">
-            <p className="text-destructive">קוד לקוח לא תקין</p>
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4" dir="rtl">
       <Card className="w-full max-w-md">
@@ -77,17 +77,44 @@ const Delete = () => {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <Button
-            className="w-full h-14 text-lg font-semibold bg-destructive text-destructive-foreground hover:bg-destructive/90"
-            onClick={handleCancelClick}
-            disabled={isLoading}
-          >
-            ביטול העברת שיחות
-          </Button>
-          
-          <div className="text-center text-sm text-muted-foreground mt-6">
-            קוד לקוח: {client_id}
-          </div>
+          {!showCancelButton ? (
+            <form onSubmit={handlePhoneSubmit} className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="phone" className="text-right block">
+                  מספר טלפון
+                </Label>
+                <Input
+                  id="phone"
+                  type="tel"
+                  placeholder="054-1234567"
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  className="text-right"
+                  dir="ltr"
+                />
+              </div>
+              <Button
+                type="submit"
+                className="w-full h-14 text-lg font-semibold bg-primary text-primary-foreground hover:bg-primary/90"
+              >
+                המשך
+              </Button>
+            </form>
+          ) : (
+            <>
+              <Button
+                className="w-full h-14 text-lg font-semibold bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                onClick={handleCancelClick}
+                disabled={isLoading}
+              >
+                ביטול העברת שיחות
+              </Button>
+              
+              <div className="text-center text-sm text-muted-foreground mt-6">
+                מספר טלפון: {phoneNumber}
+              </div>
+            </>
+          )}
         </CardContent>
       </Card>
     </div>
