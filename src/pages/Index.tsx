@@ -41,11 +41,13 @@ const Index = () => {
               <p className="text-sm text-muted-foreground">עם פורלי הינשוף החכם</p>
             </div>
           </div>
-          <Link to="/contact">
-            <Button variant="outline" className="text-secondary hover:bg-secondary hover:text-white">
-              להתחלת ניסיון חינם
-            </Button>
-          </Link>
+          <Button 
+            variant="outline" 
+            className="text-secondary hover:bg-secondary hover:text-white"
+            onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            להתחלת ניסיון חינם
+          </Button>
         </div>
       </header>
 
@@ -69,11 +71,13 @@ const Index = () => {
           <p className="text-xl mb-8 max-w-3xl mx-auto leading-relaxed text-text-custom">
             פורלי הינשוף החכם עונה כשאתה לא יכול – מתעד שיחות, יוצר קשר עם הלקוחות שלך, ושולח לך סיכום ברור
           </p>
-          <Link to="/contact">
-            <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6">
-              להתחלת ניסיון חינם
-            </Button>
-          </Link>
+          <Button 
+            size="lg" 
+            className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6"
+            onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            להתחלת ניסיון חינם
+          </Button>
         </div>
       </section>
 
@@ -296,7 +300,7 @@ const Index = () => {
       </section>
 
       {/* Pricing */}
-      <section className="py-20 bg-white">
+      <section id="pricing" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-primary mb-4">חבילות המחיר שלנו</h2>
