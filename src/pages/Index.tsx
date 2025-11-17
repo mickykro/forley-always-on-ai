@@ -76,6 +76,40 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Statistics Counter */}
+      <section className="py-16 bg-background border-y">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-8 text-center">
+            <div className="space-y-2">
+              <div className="text-5xl font-bold text-primary mb-2">
+                250+
+              </div>
+              <p className="text-xl text-muted-foreground font-semibold">
+                עסקים משתמשים בשירות
+              </p>
+            </div>
+            
+            <div className="space-y-2">
+              <div className="text-5xl font-bold text-primary mb-2">
+                12,500+
+              </div>
+              <p className="text-xl text-muted-foreground font-semibold">
+                שיחות נשמרו בזכות הבוט
+              </p>
+            </div>
+            
+            <div className="space-y-2">
+              <div className="text-5xl font-bold text-primary mb-2">
+                98%
+              </div>
+              <p className="text-xl text-muted-foreground font-semibold">
+                שביעות רצון לקוחות
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* How It Works */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
