@@ -87,7 +87,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8">
             <div ref={businessCount.countRef} className="relative group">
-              <div className="bg-card border-2 border-primary/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/40">
+              <div className="bg-card border-2 border-primary/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 text-center">
                 <div className="text-5xl font-bold text-primary mb-4">
                   {businessCount.formattedCount}
                 </div>
@@ -98,7 +98,7 @@ const Index = () => {
             </div>
             
             <div ref={callsCount.countRef} className="relative group">
-              <div className="bg-card border-2 border-accent/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-accent/40">
+              <div className="bg-card border-2 border-accent/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 text-center">
                 <div className="text-5xl font-bold text-accent mb-4">
                   {callsCount.formattedCount}
                 </div>
@@ -109,7 +109,7 @@ const Index = () => {
             </div>
             
             <div ref={satisfactionCount.countRef} className="relative group">
-              <div className="bg-card border-2 border-secondary/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-secondary/40">
+              <div className="bg-card border-2 border-secondary/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-secondary/40 text-center">
                 <div className="text-5xl font-bold text-secondary mb-4">
                   {satisfactionCount.formattedCount}
                 </div>
