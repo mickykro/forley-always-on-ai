@@ -15,7 +15,7 @@ export const useCountUp = ({
   start = 0,
   suffix = '',
   separator = ',',
-  incrementInterval = { min: 30000, max: 180000 }
+  incrementInterval
 }: UseCountUpOptions) => {
   const [count, setCount] = useState(start);
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -67,7 +67,7 @@ export const useCountUp = ({
 
   // Continue incrementing after reaching target
   useEffect(() => {
-    if (!hasAnimated) return;
+    if (!hasAnimated || !incrementInterval) return;
 
     const scheduleNextIncrement = () => {
       const randomDelay = Math.random() * (incrementInterval.max - incrementInterval.min) + incrementInterval.min;
@@ -89,7 +89,7 @@ export const useCountUp = ({
 
   // Set up recurring increments
   useEffect(() => {
-    if (!hasAnimated || count < end || showIncrement) return;
+    if (!hasAnimated || !incrementInterval || count < end || showIncrement) return;
 
     const scheduleNextIncrement = () => {
       const randomDelay = Math.random() * (incrementInterval.max - incrementInterval.min) + incrementInterval.min;
