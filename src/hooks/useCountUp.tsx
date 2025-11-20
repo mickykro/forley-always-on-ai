@@ -62,6 +62,46 @@ export const useCountUp = ({
     };
   }, [end, duration, start, hasAnimated]);
 
+  // Continue incrementing after reaching target
+  useEffect(() => {
+    if (!hasAnimated) return;
+
+    const scheduleNextIncrement = () => {
+      // Random interval between 30 seconds and 3 minutes (30000ms to 180000ms)
+      const randomDelay = Math.random() * (180000 - 30000) + 30000;
+      
+      return setTimeout(() => {
+        setCount(prev => prev + 1);
+      }, randomDelay);
+    };
+
+    // Wait for initial animation to complete before starting increments
+    const initialDelay = setTimeout(() => {
+      const timeoutId = scheduleNextIncrement();
+      
+      return () => clearTimeout(timeoutId);
+    }, duration + 1000);
+
+    return () => clearTimeout(initialDelay);
+  }, [hasAnimated, duration]);
+
+  // Set up recurring increments
+  useEffect(() => {
+    if (!hasAnimated || count < end) return;
+
+    const scheduleNextIncrement = () => {
+      const randomDelay = Math.random() * (180000 - 30000) + 30000;
+      
+      return setTimeout(() => {
+        setCount(prev => prev + 1);
+      }, randomDelay);
+    };
+
+    const timeoutId = scheduleNextIncrement();
+
+    return () => clearTimeout(timeoutId);
+  }, [count, hasAnimated, end]);
+
   const formattedCount = count.toLocaleString('en-US').replace(/,/g, separator);
   
   return { 
