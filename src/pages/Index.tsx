@@ -101,10 +101,12 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8">
             <div ref={businessCount.countRef} className="relative group">
-              <div className="bg-card border-2 border-primary/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 text-center">
+              <div className="bg-card border-2 border-primary/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 text-center overflow-hidden">
                 {businessCount.showIncrement && (
-                  <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 animate-[fade-out_2s_ease-out] text-primary font-bold text-lg">
-                    +1
+                  <div className="absolute top-2 left-1/2 transform -translate-x-1/2 animate-float-up-fade z-10">
+                    <div className="bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
+                      <span className="text-primary font-bold text-sm">+1</span>
+                    </div>
                   </div>
                 )}
                 <div className="text-5xl font-bold text-primary mb-4">{businessCount.formattedCount}</div>
@@ -113,10 +115,12 @@ const Index = () => {
             </div>
 
             <div ref={callsCount.countRef} className="relative group">
-              <div className="bg-card border-2 border-accent/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 text-center">
+              <div className="bg-card border-2 border-accent/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 text-center overflow-hidden">
                 {callsCount.showIncrement && (
-                  <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 animate-[fade-out_2s_ease-out] text-accent font-bold text-lg">
-                    +1
+                  <div className="absolute top-2 left-1/2 transform -translate-x-1/2 animate-float-up-fade z-10">
+                    <div className="bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
+                      <span className="text-accent font-bold text-sm">+1</span>
+                    </div>
                   </div>
                 )}
                 <div className="text-5xl font-bold text-accent mb-4">{callsCount.formattedCount}</div>
