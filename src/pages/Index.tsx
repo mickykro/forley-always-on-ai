@@ -384,7 +384,7 @@ const Index = () => {
                   </li>
                   <li className="flex items-center gap-3">
                     <span className="w-2 h-2 bg-success rounded-full"></span>
-                    <span>דוחות מתקדמים</span>
+                    <span>דוחות יומיים ושבועיים</span>
                   </li>
                 </ul>
                 <Link to="/contact" className="w-full">
