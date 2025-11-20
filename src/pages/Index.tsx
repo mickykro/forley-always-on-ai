@@ -102,6 +102,11 @@ const Index = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <div ref={businessCount.countRef} className="relative group">
               <div className="bg-card border-2 border-primary/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 text-center">
+                {businessCount.showIncrement && (
+                  <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 animate-[fade-out_2s_ease-out] text-primary font-bold text-lg">
+                    +1
+                  </div>
+                )}
                 <div className="text-5xl font-bold text-primary mb-4">{businessCount.formattedCount}</div>
                 <p className="text-lg text-muted-foreground font-semibold">עסקים משתמשים בשירות</p>
               </div>
@@ -109,6 +114,11 @@ const Index = () => {
 
             <div ref={callsCount.countRef} className="relative group">
               <div className="bg-card border-2 border-accent/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 text-center">
+                {callsCount.showIncrement && (
+                  <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 animate-[fade-out_2s_ease-out] text-accent font-bold text-lg">
+                    +1
+                  </div>
+                )}
                 <div className="text-5xl font-bold text-accent mb-4">{callsCount.formattedCount}</div>
                 <p className="text-lg text-muted-foreground font-semibold">שיחות נשמרו בזכות הבוט</p>
               </div>
