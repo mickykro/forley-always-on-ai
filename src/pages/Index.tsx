@@ -37,8 +37,8 @@ const Index = () => {
   const satisfactionCount = useCountUp({ 
     end: 98, 
     duration: 2000, 
-    suffix: "%",
-    incrementInterval: { min: 180000, max: 600000 } // 3-10 minutes (slowest)
+    suffix: "%"
+    // No incrementInterval - stays at 98%
   });
 
   const card1 = useScrollAnimation();
