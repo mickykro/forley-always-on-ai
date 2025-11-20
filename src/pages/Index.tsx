@@ -22,8 +22,18 @@ const Index = () => {
   const expectedReturn = Math.round(dealValue * callsPerMonth * 0.3);
 
   // Counter animations
-  const businessCount = useCountUp({ end: 124, duration: 2500, suffix: "+" });
-  const callsCount = useCountUp({ end: 6737, duration: 2500, suffix: "+" });
+  const businessCount = useCountUp({ 
+    end: 124, 
+    duration: 2500, 
+    suffix: "+",
+    incrementInterval: { min: 120000, max: 300000 } // 2-5 minutes
+  });
+  const callsCount = useCountUp({ 
+    end: 6737, 
+    duration: 2500, 
+    suffix: "+",
+    incrementInterval: { min: 10000, max: 30000 } // 10-30 seconds (much faster!)
+  });
   const satisfactionCount = useCountUp({ end: 98, duration: 2000, suffix: "%" });
 
   const card1 = useScrollAnimation();
