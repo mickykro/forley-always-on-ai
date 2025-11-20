@@ -6,6 +6,7 @@ interface UseCountUpOptions {
   start?: number;
   suffix?: string;
   separator?: string;
+  incrementInterval?: { min: number; max: number };
 }
 
 export const useCountUp = ({ 
@@ -13,7 +14,8 @@ export const useCountUp = ({
   duration = 2000, 
   start = 0,
   suffix = '',
-  separator = ','
+  separator = ',',
+  incrementInterval = { min: 30000, max: 180000 }
 }: UseCountUpOptions) => {
   const [count, setCount] = useState(start);
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -67,8 +69,7 @@ export const useCountUp = ({
     if (!hasAnimated) return;
 
     const scheduleNextIncrement = () => {
-      // Random interval between 30 seconds and 3 minutes (30000ms to 180000ms)
-      const randomDelay = Math.random() * (180000 - 30000) + 30000;
+      const randomDelay = Math.random() * (incrementInterval.max - incrementInterval.min) + incrementInterval.min;
       
       return setTimeout(() => {
         setCount(prev => prev + 1);
@@ -83,14 +84,14 @@ export const useCountUp = ({
     }, duration + 1000);
 
     return () => clearTimeout(initialDelay);
-  }, [hasAnimated, duration]);
+  }, [hasAnimated, duration, incrementInterval]);
 
   // Set up recurring increments
   useEffect(() => {
     if (!hasAnimated || count < end) return;
 
     const scheduleNextIncrement = () => {
-      const randomDelay = Math.random() * (180000 - 30000) + 30000;
+      const randomDelay = Math.random() * (incrementInterval.max - incrementInterval.min) + incrementInterval.min;
       
       return setTimeout(() => {
         setCount(prev => prev + 1);
@@ -100,7 +101,7 @@ export const useCountUp = ({
     const timeoutId = scheduleNextIncrement();
 
     return () => clearTimeout(timeoutId);
-  }, [count, hasAnimated, end]);
+  }, [count, hasAnimated, end, incrementInterval]);
 
   const formattedCount = count.toLocaleString('en-US').replace(/,/g, separator);
   
