@@ -95,6 +95,7 @@ export const useCountUp = ({
       const randomDelay = Math.random() * (incrementInterval.max - incrementInterval.min) + incrementInterval.min;
       
       return setTimeout(() => {
+        console.log('Counter incrementing, showing notification');
         setCount(prev => prev + 1);
         setShowIncrement(true);
         setTimeout(() => setShowIncrement(false), 2000);

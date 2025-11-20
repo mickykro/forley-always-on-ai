@@ -32,7 +32,7 @@ const Index = () => {
     end: 6737, 
     duration: 2500, 
     suffix: "+",
-    incrementInterval: { min: 10000, max: 30000 } // 10-30 seconds (much faster!)
+    incrementInterval: { min: 5000, max: 10000 } // Reduced to 5-10 seconds for testing
   });
   const satisfactionCount = useCountUp({ 
     end: 98, 
