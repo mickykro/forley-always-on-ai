@@ -22,22 +22,22 @@ const Index = () => {
   const expectedReturn = Math.round(dealValue * callsPerMonth * 0.3);
 
   // Counter animations
-  const businessCount = useCountUp({ 
-    end: 124, 
-    duration: 2500, 
+  const businessCount = useCountUp({
+    end: 124,
+    duration: 2500,
     suffix: "+",
-    incrementInterval: { min: 120000, max: 300000 } // 2-5 minutes
+    incrementInterval: { min: 12000, max: 300000 }, // 2-5 minutes
   });
-  const callsCount = useCountUp({ 
-    end: 6737, 
-    duration: 2500, 
+  const callsCount = useCountUp({
+    end: 6737,
+    duration: 2500,
     suffix: "+",
-    incrementInterval: { min: 5000, max: 10000 } // Reduced to 5-10 seconds for testing
+    incrementInterval: { min: 2000, max: 10000 }, // Reduced to 5-10 seconds for testing
   });
-  const satisfactionCount = useCountUp({ 
-    end: 98, 
-    duration: 2000, 
-    suffix: "%"
+  const satisfactionCount = useCountUp({
+    end: 98,
+    duration: 2000,
+    suffix: "%",
     // No incrementInterval - stays at 98%
   });
 
