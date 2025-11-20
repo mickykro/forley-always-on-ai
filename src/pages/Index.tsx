@@ -34,7 +34,12 @@ const Index = () => {
     suffix: "+",
     incrementInterval: { min: 10000, max: 30000 } // 10-30 seconds (much faster!)
   });
-  const satisfactionCount = useCountUp({ end: 98, duration: 2000, suffix: "%" });
+  const satisfactionCount = useCountUp({ 
+    end: 98, 
+    duration: 2000, 
+    suffix: "%",
+    incrementInterval: { min: 180000, max: 600000 } // 3-10 minutes (slowest)
+  });
 
   const card1 = useScrollAnimation();
   const card2 = useScrollAnimation();
