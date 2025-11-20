@@ -89,7 +89,7 @@ export const useCountUp = ({
 
   // Set up recurring increments
   useEffect(() => {
-    if (!hasAnimated || count < end) return;
+    if (!hasAnimated || count < end || showIncrement) return;
 
     const scheduleNextIncrement = () => {
       const randomDelay = Math.random() * (incrementInterval.max - incrementInterval.min) + incrementInterval.min;
@@ -98,14 +98,14 @@ export const useCountUp = ({
         console.log('Counter incrementing, showing notification');
         setCount(prev => prev + 1);
         setShowIncrement(true);
-        setTimeout(() => setShowIncrement(false), 2000);
+        setTimeout(() => setShowIncrement(false), 4000);
       }, randomDelay);
     };
 
     const timeoutId = scheduleNextIncrement();
 
     return () => clearTimeout(timeoutId);
-  }, [count, hasAnimated, end, incrementInterval]);
+  }, [count, hasAnimated, end, incrementInterval, showIncrement]);
 
   const formattedCount = count.toLocaleString('en-US').replace(/,/g, separator);
   
