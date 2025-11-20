@@ -31,7 +31,7 @@ export default {
           DEFAULT: "hsl(var(--success))",
           foreground: "hsl(var(--success-foreground))",
         },
-        'text-custom': "hsl(var(--text-custom))",
+        "text-custom": "hsl(var(--text-custom))",
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
@@ -69,7 +69,7 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        'heebo': ['Heebo', 'sans-serif'],
+        heebo: ["Heebo", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {
@@ -95,7 +95,7 @@ export default {
           },
           "100%": {
             opacity: "0",
-            transform: "translateY(-30px)",
+            transform: "translateY(-90px)",
           },
         },
       },
