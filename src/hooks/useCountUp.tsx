@@ -19,6 +19,7 @@ export const useCountUp = ({
 }: UseCountUpOptions) => {
   const [count, setCount] = useState(start);
   const [hasAnimated, setHasAnimated] = useState(false);
+  const [showIncrement, setShowIncrement] = useState(false);
   const countRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -95,6 +96,8 @@ export const useCountUp = ({
       
       return setTimeout(() => {
         setCount(prev => prev + 1);
+        setShowIncrement(true);
+        setTimeout(() => setShowIncrement(false), 2000);
       }, randomDelay);
     };
 
@@ -108,6 +111,7 @@ export const useCountUp = ({
   return { 
     count, 
     formattedCount: `${formattedCount}${suffix}`,
-    countRef 
+    countRef,
+    showIncrement
   };
 };
