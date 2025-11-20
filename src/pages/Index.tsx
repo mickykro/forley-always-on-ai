@@ -104,8 +104,8 @@ const Index = () => {
               <div className="bg-card border-2 border-primary/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 text-center overflow-hidden">
                 {businessCount.showIncrement && (
                   <div className="absolute top-2 left-1/2 transform -translate-x-1/2 animate-float-up-fade z-10">
-                    <div className="bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
-                      <span className="text-primary font-bold text-sm">+1</span>
+                    <div className="bg-white rounded-full w-20 h-20 flex items-center justify-center shadow-lg">
+                      <span className="text-primary font-bold text-xl">+1</span>
                     </div>
                   </div>
                 )}
@@ -118,8 +118,8 @@ const Index = () => {
               <div className="bg-card border-2 border-accent/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 text-center overflow-hidden">
                 {callsCount.showIncrement && (
                   <div className="absolute top-2 left-1/2 transform -translate-x-1/2 animate-float-up-fade z-10">
-                    <div className="bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
-                      <span className="text-accent font-bold text-sm">+1</span>
+                    <div className="bg-white rounded-full w-20 h-20 flex items-center justify-center shadow-lg">
+                      <span className="text-accent font-bold text-xl">+1</span>
                     </div>
                   </div>
                 )}
