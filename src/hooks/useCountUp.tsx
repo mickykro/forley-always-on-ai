@@ -98,7 +98,7 @@ export const useCountUp = ({
         console.log('Counter incrementing, showing notification');
         setCount(prev => prev + 1);
         setShowIncrement(true);
-        setTimeout(() => setShowIncrement(false), 4000);
+        setTimeout(() => setShowIncrement(false), 16000);
       }, randomDelay);
     };
 
