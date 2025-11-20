@@ -195,7 +195,7 @@ const Index = () => {
                     muted
                     loop
                     playsInline
-                    className="w-16 h-16 rounded-full object-cover bg-background border border-border"
+                    className="w-16 h-16 rounded-full object-cover"
                   />
                 </div>
                 <h3 className="text-2xl font-bold text-primary mb-4">סיכום מושלם</h3>
