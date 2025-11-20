@@ -22,8 +22,8 @@ const Index = () => {
   const expectedReturn = Math.round(dealValue * callsPerMonth * 0.3);
 
   // Counter animations
-  const businessCount = useCountUp({ end: 250, duration: 2500, suffix: "+" });
-  const callsCount = useCountUp({ end: 12500, duration: 2500, suffix: "+" });
+  const businessCount = useCountUp({ end: 124, duration: 2500, suffix: "+" });
+  const callsCount = useCountUp({ end: 6737, duration: 2500, suffix: "+" });
   const satisfactionCount = useCountUp({ end: 98, duration: 2000, suffix: "%" });
 
   const card1 = useScrollAnimation();
@@ -41,10 +41,10 @@ const Index = () => {
               <p className="text-sm text-muted-foreground">עם פורלי הינשוף החכם</p>
             </div>
           </div>
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             className="text-secondary hover:bg-secondary hover:text-white"
-            onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
           >
             להתחלת ניסיון חינם
           </Button>
@@ -71,10 +71,10 @@ const Index = () => {
           <p className="text-xl mb-8 max-w-3xl mx-auto leading-relaxed text-text-custom">
             פורלי הינשוף החכם עונה כשאתה לא יכול – מתעד שיחות, יוצר קשר עם הלקוחות שלך, ושולח לך סיכום ברור
           </p>
-          <Button 
-            size="lg" 
+          <Button
+            size="lg"
             className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6"
-            onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
           >
             להתחלת ניסיון חינם
           </Button>
