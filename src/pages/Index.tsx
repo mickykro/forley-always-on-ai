@@ -26,13 +26,13 @@ const Index = () => {
     end: 124,
     duration: 2500,
     suffix: "+",
-    incrementInterval: { min: 12000, max: 300000 }, // 2-5 minutes
+    incrementInterval: { min: 200, max: 300000 }, // 2 seconds - 5 minutes
   });
   const callsCount = useCountUp({
     end: 6737,
     duration: 2500,
     suffix: "+",
-    incrementInterval: { min: 200, max: 1000 }, // Reduced to 5-10 seconds for testing
+    incrementInterval: { min: 200, max: 1000 }, // Reduced to 2-10 seconds for testing
   });
   const satisfactionCount = useCountUp({
     end: 98,
