@@ -26,7 +26,7 @@ const Index = () => {
     end: 124,
     duration: 2500,
     suffix: "+",
-    incrementInterval: { min: 200, max: 300000 }, // 2 seconds - 5 minutes
+    incrementInterval: { min: 200, max: 1000000 }, // 2 seconds - 5 minutes
   });
   const callsCount = useCountUp({
     end: 6737,
