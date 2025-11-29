@@ -24,7 +24,7 @@ const Onboard = () => {
     if (!client_id) return;
 
     setIsLoading(true);
-    
+
     try {
       await logOnboardingEvent({
         event: "button_clicked",
@@ -69,9 +69,7 @@ const Onboard = () => {
           <div className="flex justify-center mb-4">
             <img src={forliMascot} alt="Forli Mascot" className="w-16 h-16" />
           </div>
-          <CardTitle className="text-2xl font-bold text-primary">
-            הפעלת Follow-Me לשיחות שלא נענו
-          </CardTitle>
+          <CardTitle className="text-2xl font-bold text-primary">הפעלת Follow-Me לשיחות שלא נענו</CardTitle>
           <CardDescription className="text-base">
             בלחיצה על הכפתור, הפלאפון שלך יגדיר העברת שיחות אוטומטית למספר Call4li.
           </CardDescription>
@@ -84,7 +82,7 @@ const Onboard = () => {
           >
             הפעל העברת שיחות
           </Button>
-          
+
           <Button
             className="w-full h-14 text-lg font-semibold bg-destructive text-destructive-foreground hover:bg-destructive/90"
             onClick={() => handleButtonClick("cancel", "tel:%23%23004%23")}
@@ -92,18 +90,16 @@ const Onboard = () => {
           >
             ביטול העברת שיחות
           </Button>
-          
+
           <Button
             className="w-full h-14 text-lg font-semibold bg-muted text-muted-foreground hover:bg-muted/80"
-            onClick={() => handleButtonClick("check", "tel:*%23004%23")}
+            onClick={() => handleButtonClick("check", "tel:*%2361%23")}
             disabled={isLoading}
           >
             בדיקת סטטוס
           </Button>
-          
-          <div className="text-center text-sm text-muted-foreground mt-6">
-            קוד לקוח: {client_id}
-          </div>
+
+          <div className="text-center text-sm text-muted-foreground mt-6">קוד לקוח: {client_id}</div>
         </CardContent>
       </Card>
     </div>
