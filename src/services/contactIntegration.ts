@@ -8,19 +8,19 @@ interface ContactData {
   phone: string;
 }
 
-const WEBHOOK_URL = "https://hook.eu2.make.com/plnfn1an3nb92tnvi6xctpt9wwylqfx8";
+const WEBHOOK_URL = "https://n8n.srv1173890.hstgr.cloud/webhook-test/1b3e6b9c-86c7-4b7b-80a0-091e927f61c2";
 
 const normalizePhoneNumber = (phone: string): string => {
   const cleanPhone = phone.trim();
-  
-  if (cleanPhone.startsWith('0')) {
+
+  if (cleanPhone.startsWith("0")) {
     return `+972${cleanPhone.substring(1)}`;
   }
-  
-  if (cleanPhone.startsWith('972')) {
+
+  if (cleanPhone.startsWith("972")) {
     return `+${cleanPhone}`;
   }
-  
+
   return cleanPhone;
 };
 
@@ -31,30 +31,30 @@ export class ContactIntegrationService {
         name: data.name,
         company_name: data.companyName,
         business_description: data.businessDescription,
-        email: data.email || '',
+        email: data.email || "",
         phone: normalizePhoneNumber(data.phone),
         timestamp: new Date().toISOString(),
-        source: 'website',
+        source: "website",
         user_agent: navigator.userAgent,
-        page_url: window.location.href
+        page_url: window.location.href,
       };
 
       const response = await fetch(WEBHOOK_URL, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        mode: 'no-cors',
+        mode: "no-cors",
         body: JSON.stringify(payload),
       });
 
-      console.log('Webhook sent successfully:', payload);
+      console.log("Webhook sent successfully:", payload);
       return { success: true, errors: [] };
     } catch (error) {
-      console.error('Failed to submit contact form:', error);
-      return { 
-        success: false, 
-        errors: ['שגיאה בשליחת הטופס. אנא נסה שוב מאוחר יותר.'] 
+      console.error("Failed to submit contact form:", error);
+      return {
+        success: false,
+        errors: ["שגיאה בשליחת הטופס. אנא נסה שוב מאוחר יותר."],
       };
     }
   }
