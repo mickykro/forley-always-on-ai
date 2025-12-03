@@ -1,4 +1,4 @@
-const WEBHOOK_URL = "https://hook.eu2.make.com/k5cd2cfp5bmt2vwjdywe1ha8g2mins1y";
+const WEBHOOK_URL = "https://n8n.srv1173890.hstgr.cloud/webhook-test/87b6449c-9a9d-4167-9ce4-cdce8428033f";
 
 export interface OnboardingEvent {
   event: "page_opened" | "button_clicked";
