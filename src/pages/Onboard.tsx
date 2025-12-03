@@ -90,8 +90,6 @@ const Onboard = () => {
           >
             בדיקת סטטוס
           </Button>
-
-          <div className="text-center text-sm text-muted-foreground mt-6">קוד לקוח: {client_id}</div>
         </CardContent>
       </Card>
     </div>
