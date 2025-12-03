@@ -84,14 +84,6 @@ const Onboard = () => {
           </Button>
 
           <Button
-            className="w-full h-14 text-lg font-semibold bg-destructive text-destructive-foreground hover:bg-destructive/90"
-            onClick={() => handleButtonClick("cancel", "tel:%23%23004%23")}
-            disabled={isLoading}
-          >
-            ביטול העברת שיחות
-          </Button>
-
-          <Button
             className="w-full h-14 text-lg font-semibold bg-muted text-muted-foreground hover:bg-muted/80"
             onClick={() => handleButtonClick("check", "tel:*%2361%23")}
             disabled={isLoading}
