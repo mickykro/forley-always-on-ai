@@ -8,7 +8,7 @@ interface ContactData {
   phone: string;
 }
 
-const WEBHOOK_URL = "https://n8n.srv1173890.hstgr.cloud/webhook-test/1b3e6b9c-86c7-4b7b-80a0-091e927f61c2";
+const WEBHOOK_URL = "https://n8n.srv1173890.hstgr.cloud/webhook/1b3e6b9c-86c7-4b7b-80a0-091e927f61c2";
 
 const normalizePhoneNumber = (phone: string): string => {
   const cleanPhone = phone.trim();
