@@ -18,9 +18,9 @@ const carriers: Carrier[] = [
   { name: "Pelephone", code: "pelephone", activationCode: "*61*0535972420%23" },
   { name: "Partner", code: "partner", activationCode: "*61*0535972420%23" },
   { name: "Cellcom", code: "cellcom", activationCode: "*61*0535972420%23" },
-  { name: "Golan Telecom", code: "golan", activationCode: "*61*0535972420%23" },
-  { name: "Rami Levy", code: "rami", activationCode: "*61*0535972420%23" },
-  { name: "012 Mobile", code: "012", activationCode: "*61*0535972420%23" },
+  { name: "Golan Telecom", code: "golan", activationCode: "*004*0535972420%23" },
+  { name: "Rami Levy", code: "rami", activationCode: "*004*0535972420%23" },
+  { name: "012 Mobile", code: "012", activationCode: "*004*0535972420%23" },
 ];
 
 const Onboard = () => {
