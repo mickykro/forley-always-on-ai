@@ -1,4 +1,4 @@
-const WEBHOOK_URL = "https://n8n.srv1173890.hstgr.cloud/webhook-test/87b6449c-9a9d-4167-9ce4-cdce8428033f";
+const WEBHOOK_URL = "https://n8n.srv1173890.hstgr.cloud/webhook/87b6449c-9a9d-4167-9ce4-cdce8428033f";
 
 export interface OnboardingEvent {
   event: "page_opened" | "button_clicked";
