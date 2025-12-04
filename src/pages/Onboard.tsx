@@ -14,13 +14,13 @@ interface Carrier {
 }
 
 const carriers: Carrier[] = [
-  { name: "HOT Mobile", code: "hot", activationCode: "*004*0535972420%23" },
-  { name: "Pelephone", code: "pelephone", activationCode: "*61*0535972420%23" },
-  { name: "Partner", code: "partner", activationCode: "*61*0535972420%23" },
-  { name: "Cellcom", code: "cellcom", activationCode: "*61*0535972420%23" },
-  { name: "Golan Telecom", code: "golan", activationCode: "*004*0535972420%23" },
-  { name: "Rami Levy", code: "rami", activationCode: "*004*0535972420%23" },
-  { name: "012 Mobile", code: "012", activationCode: "*004*0535972420%23" },
+  { name: "HOT Mobile", code: "hot", activationCode: "*004*0535972420**10%23" },
+  { name: "Pelephone", code: "pelephone", activationCode: "*61*0535972420**10%23" },
+  { name: "Partner", code: "partner", activationCode: "*61*0535972420**10%23" },
+  { name: "Cellcom", code: "cellcom", activationCode: "*61*0535972420**10%23" },
+  { name: "Golan Telecom", code: "golan", activationCode: "*004*0535972420**10%23" },
+  { name: "Rami Levy", code: "rami", activationCode: "*004*0535972420**10%23" },
+  { name: "012 Mobile", code: "012", activationCode: "*004*0535972420**10%23" },
 ];
 
 const Onboard = () => {
