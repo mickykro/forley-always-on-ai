@@ -6,7 +6,10 @@ const root = createRoot(document.getElementById("root")!);
 root.render(<App />);
 
 // Signal to prerenderer that the app has rendered
-// This event is listened to by @prerenderer/renderer-jsdom during build
+// Use setTimeout to ensure React has completed its initial render cycle
+// This is critical for JSDOM renderer to capture the full rendered content
 if (typeof document !== "undefined") {
-  document.dispatchEvent(new Event("app-rendered"));
+  setTimeout(() => {
+    document.dispatchEvent(new Event("app-rendered"));
+  }, 500);
 }
