@@ -7,6 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import forliMascot from "@/assets/cropped_circle_image.png";
 import { ContactIntegrationService } from "@/services/contactIntegration";
 import { validateStep, type ContactFormData } from "@/schemas/contactValidation";
+import SEO from "@/components/SEO";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -239,8 +240,14 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center p-4">
-      <Card className="w-full max-w-md mx-auto bg-[#111b21] border-gray-800">
+    <>
+      <SEO
+        title="צור קשר - Call4li"
+        description="צרו קשר עם צוות Call4li לקבלת הצעת מחיר מותאמת אישית. נחזור אליכם תוך 24 שעות."
+        canonicalUrl="https://call4li.com/contact"
+      />
+      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center p-4">
+        <Card className="w-full max-w-md mx-auto bg-[#111b21] border-gray-800">
         {/* WhatsApp Header */}
         <div className="bg-[#202c33] p-4 flex items-center gap-3">
           <Link to="/" className="text-white hover:text-gray-300">
@@ -396,6 +403,7 @@ const Contact = () => {
         )}
       </Card>
     </div>
+    </>
   );
 };
 

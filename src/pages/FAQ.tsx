@@ -6,6 +6,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { ArrowRight } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const FAQ = () => {
   const faqs = [
@@ -48,7 +49,13 @@ const FAQ = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEO
+        title="שאלות ותשובות - Call4li"
+        description="מצא תשובות לשאלות הנפוצות ביותר על Call4li - איך זה עובד, כמה זה עולה, ואיך להתחיל."
+        canonicalUrl="https://call4li.com/faq"
+      />
+      <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="border-b">
         <div className="container mx-auto px-4 py-4">
@@ -110,6 +117,7 @@ const FAQ = () => {
         </div>
       </footer>
     </div>
+    </>
   );
 };
 
