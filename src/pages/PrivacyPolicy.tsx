@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const PrivacyPolicy = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground" dir="rtl">
+    <>
+      <SEO
+        title="מדיניות פרטיות - Call4li"
+        description="מדיניות הפרטיות של Call4li - כיצד אנו אוספים, משתמשים ומגנים על המידע שלך."
+        canonicalUrl="https://call4li.com/privacy"
+      />
+      <div className="min-h-screen bg-background text-foreground" dir="rtl">
       <div className="container mx-auto px-4 py-12 max-w-4xl">
         <div className="mb-8">
           <Link to="/">
@@ -145,6 +152,7 @@ const PrivacyPolicy = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

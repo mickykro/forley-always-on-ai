@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { logOnboardingEvent } from "@/services/onboardingIntegration";
 import forliMascot from "@/assets/forli_no_bg.png";
+import SEO from "@/components/SEO";
 
 const Delete = () => {
   const { toast } = useToast();
@@ -63,8 +64,15 @@ const Delete = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-4" dir="rtl">
-      <Card className="w-full max-w-md">
+    <>
+      <SEO
+        title="ביטול שירות - Call4li"
+        description="ביטול העברת שיחות לשירות Call4li בלחיצה אחת."
+        canonicalUrl="https://call4li.com/delete"
+        noIndex={true}
+      />
+      <div className="min-h-screen bg-background flex items-center justify-center p-4" dir="rtl">
+        <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
             <img src={forliMascot} alt="Forli Mascot" className="w-16 h-16" />
@@ -118,6 +126,7 @@ const Delete = () => {
         </CardContent>
       </Card>
     </div>
+    </>
   );
 };
 

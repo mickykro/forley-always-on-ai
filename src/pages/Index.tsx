@@ -14,6 +14,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useCountUp } from "@/hooks/useCountUp";
+import SEO from "@/components/SEO";
 
 const Index = () => {
   const [dealValue, setDealValue] = useState<number>(1000);
@@ -45,7 +46,13 @@ const Index = () => {
   const card2 = useScrollAnimation();
   const card3 = useScrollAnimation();
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEO
+        title="Call4li - פורלי הינשוף החכם עונה כשאתה לא יכול"
+        description="מערכת בוט חכמה שמתעדת שיחות, יוצרת קשר עם לקוחות ושולחת סיכומים. לא מפספסים אף הזדמנות עסקית!"
+        canonicalUrl="https://call4li.com"
+      />
+      <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="bg-white shadow-sm border-b">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -652,6 +659,7 @@ const Index = () => {
         </div>
       </footer>
     </div>
+    </>
   );
 };
 
