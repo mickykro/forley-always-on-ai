@@ -116,3 +116,13 @@
     @apply bg-background text-foreground font-heebo;
   }
 }
+
+@layer utilities {
+  .bg-gradient-hero {
+    background: linear-gradient(135deg, hsl(225 84% 32%), hsl(213 94% 68%));
+  }
+  
+  .bg-gradient-accent {
+    background: linear-gradient(135deg, hsl(50 96% 53%), hsl(45 100% 60%));
+  }
+}
