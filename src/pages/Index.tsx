@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useCountUp } from "@/hooks/useCountUp";
 import SEO from "@/components/SEO";
-import WhatsAppStripes from "@/components/WhatsAppStripes";
+import WhatsAppChatSection from "@/components/WhatsAppChatSection";
 import MessageBubble from "@/components/MessageBubble";
 
 const Index = () => {
@@ -29,24 +29,24 @@ const Index = () => {
     end: 124,
     duration: 2500,
     suffix: "+",
-    incrementInterval: { min: 200, max: 1000000 }, // 2 seconds - 5 minutes
+    incrementInterval: { min: 200, max: 1000000 },
   });
   const callsCount = useCountUp({
     end: 6737,
     duration: 2500,
     suffix: "+",
-    incrementInterval: { min: 200, max: 1000 }, // Reduced to 2-10 seconds for testing
+    incrementInterval: { min: 200, max: 1000 },
   });
   const satisfactionCount = useCountUp({
     end: 98,
     duration: 2000,
     suffix: "%",
-    // No incrementInterval - stays at 98%
   });
 
   const card1 = useScrollAnimation();
   const card2 = useScrollAnimation();
   const card3 = useScrollAnimation();
+
   return (
     <>
       <SEO
@@ -54,646 +54,663 @@ const Index = () => {
         description="מערכת בוט חכמה שמתעדת שיחות, יוצרת קשר עם לקוחות ושולחת סיכומים. לא מפספסים אף הזדמנות עסקית!"
         canonicalUrl="https://call4li.com"
       />
-      <WhatsAppStripes />
-      <div className="min-h-screen relative z-10">
-      {/* Header */}
-      <header className="bg-white/80 backdrop-blur-sm shadow-sm border-b">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img src={forliMascot} alt="פורלי הינשוף" className="w-12 h-12" />
-            <div>
-              <h1 className="text-2xl font-bold text-primary">Call4li</h1>
-              <p className="text-sm text-muted-foreground">עם פורלי הינשוף החכם</p>
-            </div>
-          </div>
-          <Button
-            variant="outline"
-            className="text-secondary hover:bg-secondary hover:text-white"
-            onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
-          >
-            להתחלת ניסיון חינם
-          </Button>
-        </div>
-      </header>
-
-      {/* Hero Section */}
-      <section className="relative overflow-hidden py-20">
-        <div className="container mx-auto px-4 text-center text-text-custom">
-          <div className="flex justify-center mb-8">
-            <video
-              src={heroMascotVid}
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-32 h-32 rounded-full object-cover"
-            />
-          </div>
-          <MessageBubble className="mb-6">
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight text-primary">
-              לא מפספסים יותר שיחות –<br />
-              <span className="text-accent font-black">Call4li</span>, הבוט שמחזיר לך שליטה
-            </h1>
-          </MessageBubble>
-          <MessageBubble className="mb-8">
-            <p className="text-lg md:text-xl leading-relaxed text-muted-foreground">
-              פורלי הינשוף החכם עונה כשאתה לא יכול – מתעד שיחות, יוצר קשר עם הלקוחות שלך, ושולח לך סיכום ברור
-            </p>
-          </MessageBubble>
-          <Button
-            size="lg"
-            className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6"
-            onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
-          >
-            להתחלת ניסיון חינם
-          </Button>
-        </div>
-      </section>
-
-      {/* Statistics Counter */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div ref={businessCount.countRef} className="relative group">
-              <div className="bg-card border-2 border-primary/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 text-center overflow-hidden">
-                {businessCount.showIncrement && (
-                  <div className="absolute top-2 left-1/2 transform -translate-x-1/2 animate-float-up-fade z-10">
-                    <div className="bg-white rounded-full w-20 h-20 flex items-center justify-center shadow-lg">
-                      <span className="text-primary font-bold text-xl">+1</span>
-                    </div>
-                  </div>
-                )}
-                <div className="text-5xl font-bold text-primary mb-4">{businessCount.formattedCount}</div>
-                <p className="text-lg text-muted-foreground font-semibold">עסקים משתמשים בשירות</p>
+      <div className="min-h-screen">
+        {/* Header */}
+        <header className="bg-white/80 backdrop-blur-sm shadow-sm border-b sticky top-0 z-50">
+          <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <img src={forliMascot} alt="פורלי הינשוף" className="w-12 h-12" />
+              <div>
+                <h1 className="text-2xl font-bold text-primary">Call4li</h1>
+                <p className="text-sm text-muted-foreground">עם פורלי הינשוף החכם</p>
               </div>
             </div>
-
-            <div ref={callsCount.countRef} className="relative group">
-              <div className="bg-card border-2 border-accent/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 text-center overflow-hidden">
-                {callsCount.showIncrement && (
-                  <div className="absolute top-2 left-1/2 transform -translate-x-1/2 animate-float-up-fade z-10">
-                    <div className="bg-white rounded-full w-20 h-20 flex items-center justify-center shadow-lg">
-                      <span className="text-accent font-bold text-xl">+1</span>
-                    </div>
-                  </div>
-                )}
-                <div className="text-5xl font-bold text-accent mb-4">{callsCount.formattedCount}</div>
-                <p className="text-lg text-muted-foreground font-semibold">שיחות נשמרו בזכות הבוט</p>
-              </div>
-            </div>
-
-            <div ref={satisfactionCount.countRef} className="relative group">
-              <div className="bg-card border-2 border-secondary/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-secondary/40 text-center">
-                <div className="text-5xl font-bold text-secondary mb-4">{satisfactionCount.formattedCount}</div>
-                <p className="text-lg text-muted-foreground font-semibold">שביעות רצון לקוחות</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col items-center mb-16">
-            <MessageBubble className="mb-4">
-              <h2 className="text-4xl font-bold text-primary">איך זה עובד?</h2>
-            </MessageBubble>
-            <MessageBubble>
-              <p className="text-xl text-muted-foreground">3 שלבים פשוטים שמשנים את העסק</p>
-            </MessageBubble>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card
-              ref={card1.ref}
-              className={`text-center p-8 border-2 hover:border-secondary transition-all duration-700 ${
-                card1.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`}
+            <Button
+              variant="outline"
+              className="text-secondary hover:bg-secondary hover:text-white"
+              onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
             >
-              <CardContent className="pt-6">
-                <div className="flex justify-center mb-6">
-                  <div className="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center">
-                    <PhoneIcon className="w-10 h-10 text-secondary" />
-                  </div>
-                </div>
-                <div className="flex justify-center mb-4">
-                  <video
-                    src={answeringVid}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="w-16 h-16 rounded-full object-cover"
-                  />
-                </div>
-                <h3 className="text-2xl font-bold text-primary mb-4">לקוח מתקשר</h3>
-                <p className="text-muted-foreground text-lg">פורלי מזהה את השיחה הנכנסת ומתכונן לפעול</p>
-              </CardContent>
-            </Card>
-
-            <Card
-              ref={card2.ref}
-              className={`text-center p-8 border-2 hover:border-secondary transition-all duration-700 delay-150 ${
-                card2.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`}
-            >
-              <CardContent className="pt-6">
-                <div className="flex justify-center mb-6">
-                  <div className="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center">
-                    <MessageCircleIcon className="w-10 h-10 text-secondary" />
-                  </div>
-                </div>
-                <div className="flex justify-center mb-4">
-                  <video
-                    src={typingVid}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="w-16 h-16 rounded-full object-cover"
-                  />
-                </div>
-                <h3 className="text-2xl font-bold text-primary mb-4">תגובה חכמה</h3>
-                <p className="text-muted-foreground text-lg">
-                  אם לא ענית - פורלי שולח ווטסאפ ללקוח
-                  <br />
-                  אם ענית - פורלי מתעד ומסכם
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card
-              ref={card3.ref}
-              className={`text-center p-8 border-2 hover:border-secondary transition-all duration-700 delay-300 ${
-                card3.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`}
-            >
-              <CardContent className="pt-6">
-                <div className="flex justify-center mb-6">
-                  <div className="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center">
-                    <ClipboardCheckIcon className="w-10 h-10 text-secondary" />
-                  </div>
-                </div>
-                <div className="flex justify-center mb-4">
-                  <video
-                    src={summaryVid}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="w-16 h-16 rounded-full object-cover"
-                  />
-                </div>
-                <h3 className="text-2xl font-bold text-primary mb-4">סיכום מושלם</h3>
-                <p className="text-muted-foreground text-lg">כל השיחה נשמרת בגיליון או CRM עם סיכום ברור</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col items-center mb-16">
-            <MessageBubble className="mb-4">
-              <h2 className="text-4xl font-bold text-primary">למה פורלי?</h2>
-            </MessageBubble>
-            <MessageBubble>
-              <p className="text-xl text-muted-foreground">היתרונות שיהפכו את העסק שלך</p>
-            </MessageBubble>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
-              <CardContent className="pt-4">
-                <div className="w-16 h-16 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <TrendingUpIcon className="w-8 h-8 text-success" />
-                </div>
-                <h3 className="text-xl font-bold text-primary mb-2">🦉 לא מפספסים לידים</h3>
-                <p className="text-muted-foreground">כל שיחה הופכת להזדמנות עסקית</p>
-              </CardContent>
-            </Card>
-
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
-              <CardContent className="pt-4">
-                <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <ClipboardCheckIcon className="w-8 h-8 text-secondary" />
-                </div>
-                <h3 className="text-xl font-bold text-primary mb-2">📊 הכל מתועד אוטומטית</h3>
-                <p className="text-muted-foreground">מערכת ניהול לקוחות חכמה</p>
-              </CardContent>
-            </Card>
-
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
-              <CardContent className="pt-4">
-                <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <ClockIcon className="w-8 h-8 text-accent-foreground" />
-                </div>
-                <h3 className="text-xl font-bold text-primary mb-2">⏱️ זמן תגובה מהיר ומקצועי</h3>
-                <p className="text-muted-foreground">לקוחות מרוצים, עסק שגדל</p>
-              </CardContent>
-            </Card>
-
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
-              <CardContent className="pt-4">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <BrainIcon className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="text-xl font-bold text-primary mb-2">💡 מערכת חכמה עם סיכומי AI</h3>
-                <p className="text-muted-foreground">טכנולוגיה מתקדמת בשירותך</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Value Proposition */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 text-center">
-          <div className="flex justify-center mb-8">
-            <video src={valuePropositionVid} autoPlay muted loop playsInline className="w-24 h-24" />
-          </div>
-          <MessageBubble className="mb-4">
-            <h2 className="text-4xl font-bold text-primary">עסק ממוצע מפספס 30% מהשיחות</h2>
-          </MessageBubble>
-          <MessageBubble className="mb-8">
-            <p className="text-2xl text-muted-foreground">Call4li הופך אותן להזדמנויות!</p>
-          </MessageBubble>
-
-          <Card className="max-w-md mx-auto bg-white text-primary p-8">
-            <CardContent className="pt-4">
-              <h3 className="text-2xl font-bold mb-6">מחשבון החיסכון שלך</h3>
-              <div className="space-y-4 text-right">
-                <div>
-                  <label className="block text-sm font-medium mb-2">שווי עסקה ממוצעת (₪)</label>
-                  <input
-                    type="number"
-                    value={dealValue}
-                    onChange={(e) => setDealValue(Number(e.target.value) || 0)}
-                    className="w-full p-3 border rounded-lg text-center"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">שיחות בחודש</label>
-                  <input
-                    type="number"
-                    value={callsPerMonth}
-                    onChange={(e) => setCallsPerMonth(Number(e.target.value) || 0)}
-                    className="w-full p-3 border rounded-lg text-center"
-                  />
-                </div>
-                <div className="pt-4 border-t">
-                  <p className="text-lg font-bold text-success">החזר צפוי: ₪{expectedReturn.toLocaleString()}/חודש</p>
-                  <p className="text-sm text-muted-foreground">מ-30% מהשיחות שהפספסתם</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Pricing */}
-      <section id="pricing" className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col items-center mb-16">
-            <MessageBubble className="mb-4">
-              <h2 className="text-4xl font-bold text-primary">חבילות המחיר שלנו</h2>
-            </MessageBubble>
-            <MessageBubble>
-              <p className="text-xl text-muted-foreground">בחרו את החבילה המתאימה לעסק שלכם</p>
-            </MessageBubble>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="p-8 border-2 hover:border-secondary transition-colors">
-              <CardContent className="pt-4">
-                <div className="text-center mb-8">
-                  <Badge className="bg-muted text-muted-foreground mb-4">בסיסית</Badge>
-                  <div className="mb-4">
-                    <div className="relative">
-                      <h3 className="text-2xl font-bold text-muted-foreground line-through mb-1">₪150</h3>
-                      <h2 className="text-4xl font-bold text-success mb-1">₪50</h2>
-                      <p className="text-muted-foreground text-sm">החודש הראשון</p>
-                    </div>
-                    <div className="mt-4 pt-4 border-t border-muted">
-                      <p className="text-sm text-muted-foreground">לאחר מכן: ₪150/חודש</p>
-                    </div>
-                  </div>
-                </div>
-                <ul className="space-y-4 mb-8 text-right">
-                  <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 bg-success rounded-full"></span>
-                    <span>עד 100 שיחות בחודש</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 bg-success rounded-full"></span>
-                    <span>תגובה אוטומטית בווטסאפ</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 bg-success rounded-full"></span>
-                    <span>סיכומי שיחות AI</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 bg-success rounded-full"></span>
-                    <span>דוחות בסיסיים</span>
-                  </li>
-                </ul>
-                <Link to="/contact" className="w-full">
-                  <Button className="w-full bg-secondary hover:bg-secondary/90">התחילו עכשיו</Button>
-                </Link>
-              </CardContent>
-            </Card>
-
-            <Card className="p-8 border-2 border-accent shadow-lg relative">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <Badge className="bg-accent text-accent-foreground">הכי פופולרי</Badge>
-              </div>
-              <CardContent className="pt-4">
-                <div className="text-center mb-8">
-                  <Badge className="bg-primary text-primary-foreground mb-4">פרו</Badge>
-                  <div className="mb-4">
-                    <div className="relative">
-                      <h3 className="text-2xl font-bold text-muted-foreground line-through mb-1">₪450</h3>
-                      <h2 className="text-4xl font-bold text-accent-foreground mb-1">חינם!</h2>
-                      <p className="text-muted-foreground text-sm">החודש הראשון</p>
-                    </div>
-                    <div className="mt-4 pt-4 border-t border-muted">
-                      <p className="text-sm text-muted-foreground">לאחר מכן: ₪450/חודש</p>
-                    </div>
-                  </div>
-                </div>
-                <ul className="space-y-4 mb-8 text-right">
-                  <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 bg-success rounded-full"></span>
-                    <span>שיחות ללא הגבלה</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 bg-success rounded-full"></span>
-                    <span>ניתוח מתקדם וחדשנות AI</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 bg-success rounded-full"></span>
-                    <span>תזכורות אוטומטיות ללקוח ולעסק</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 bg-success rounded-full"></span>
-                    <span>תמיכה 24/7</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 bg-success rounded-full"></span>
-                    <span>דוחות יומיים ושבועיים</span>
-                  </li>
-                </ul>
-                <Link to="/contact" className="w-full">
-                  <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90">התחילו עכשיו</Button>
-                </Link>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col items-center mb-16">
-            <MessageBubble className="mb-4">
-              <h2 className="text-4xl font-bold text-primary">מה הלקוחות שלנו אומרים</h2>
-            </MessageBubble>
-            <MessageBubble>
-              <p className="text-xl text-muted-foreground">סיפורי הצלחה מעסקים כמוכם</p>
-            </MessageBubble>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="p-6">
-              <CardContent className="pt-4">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-gradient-hero rounded-full flex items-center justify-center text-white font-bold">
-                    א
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-primary">אבי כהן</h4>
-                    <p className="text-sm text-muted-foreground">בעל עסק שירותים</p>
-                  </div>
-                </div>
-                <p className="text-muted-foreground italic">
-                  "מאז שהתקנו את פורלי לא הפסדנו לקוחות. כל שיחה מתועדת ומטופלת בצורה מקצועית. החזר ההשקעה מיידי!"
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="p-6">
-              <CardContent className="pt-4">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-gradient-hero rounded-full flex items-center justify-center text-white font-bold">
-                    ש
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-primary">שרה לוי</h4>
-                    <p className="text-sm text-muted-foreground">מנהלת קליניקה</p>
-                  </div>
-                </div>
-                <p className="text-muted-foreground italic">
-                  "פורלי חסך לנו שעות של עבודה יומית. המערכת חכמה, נוחה ומשדרגת את השירות שלנו בצורה משמעותית."
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="p-6">
-              <CardContent className="pt-4">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-gradient-hero rounded-full flex items-center justify-center text-white font-bold">
-                    ד
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-primary">דן אברהם</h4>
-                    <p className="text-sm text-muted-foreground">יועץ עסקי</p>
-                  </div>
-                </div>
-                <p className="text-muted-foreground italic">
-                  "ההשקעה הכי חכמה שעשיתי השנה. פורלי הפך כל שיחה לעסק, ואני יכול להתמקד במה שאני הכי טוב בו."
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 text-center">
-          <div className="flex justify-center mb-8">
-            <video src={ctaMascotVid} autoPlay muted loop playsInline className="w-32 h-32 rounded-full object-cover" />
-          </div>
-          <MessageBubble className="mb-6">
-            <h2 className="text-4xl font-bold text-primary">מוכנים להתחיל?</h2>
-          </MessageBubble>
-          <MessageBubble className="mb-8">
-            <p className="text-xl text-muted-foreground max-w-2xl">הצטרפו לעסקים שכבר משתמשים בפורלי ולא מפספסים אף הזדמנות</p>
-          </MessageBubble>
-          <Link to="/contact">
-            <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6">
-              התחילו ניסיון חינם היום
+              להתחלת ניסיון חינם
             </Button>
-          </Link>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <div className="flex flex-col items-center mb-12">
-            <MessageBubble className="mb-4">
-              <h2 className="text-4xl md:text-5xl font-bold text-primary">שאלות ותשובות</h2>
-            </MessageBubble>
-            <MessageBubble>
-              <p className="text-lg text-muted-foreground">כל מה שרציתם לדעת על Forli</p>
-            </MessageBubble>
           </div>
+        </header>
 
-          <Accordion type="single" collapsible className="w-full space-y-4">
-            <AccordionItem value="item-1" className="bg-background border rounded-lg px-6">
-              <AccordionTrigger className="text-right text-lg font-semibold hover:no-underline">
-                מה זה Forli?
-              </AccordionTrigger>
-              <AccordionContent className="text-right text-muted-foreground">
-                Forli היא מערכת חכמה שמאפשרת לעסקים לענות על שאלות של לקוחות באופן אוטומטי ומדויק. המערכת משתמשת
-                בטכנולוגיה מתקדמת כדי להבין שאלות ולספק תשובות מותאמות אישית בזמן אמת.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-2" className="bg-background border rounded-lg px-6">
-              <AccordionTrigger className="text-right text-lg font-semibold hover:no-underline">
-                איך Forli עובד?
-              </AccordionTrigger>
-              <AccordionContent className="text-right text-muted-foreground">
-                Forli לומד את המידע על העסק שלך ומשתמש בו כדי לענות על שאלות לקוחות. המערכת מנתחת את השאלות, מחפשת את
-                המידע הרלוונטי ומספקת תשובות מדויקות ומקצועיות.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-3" className="bg-background border rounded-lg px-6">
-              <AccordionTrigger className="text-right text-lg font-semibold hover:no-underline">
-                כמה זמן לוקח להתחיל להשתמש ב-Forli?
-              </AccordionTrigger>
-              <AccordionContent className="text-right text-muted-foreground">
-                תהליך ההטמעה הוא מהיר ופשוט. לאחר שתמלא את הטופס עם פרטי העסק שלך, נוכל להתחיל לעבוד על הגדרת המערכת
-                והיא תהיה מוכנה לשימוש תוך זמן קצר.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-4" className="bg-background border rounded-lg px-6">
-              <AccordionTrigger className="text-right text-lg font-semibold hover:no-underline">
-                האם Forli יכול להתאים לכל סוג של עסק?
-              </AccordionTrigger>
-              <AccordionContent className="text-right text-muted-foreground">
-                כן! Forli הוא גמיש ומותאם לכל סוג עסק - בין אם אתה מנהל חנות אונליין, מספק שירותים מקצועיים, או מנהל עסק
-                פיזי. המערכת מותאמת לצרכים הייחודיים של כל לקוח.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-5" className="bg-background border rounded-lg px-6">
-              <AccordionTrigger className="text-right text-lg font-semibold hover:no-underline">
-                איזה סוג מידע אני צריך לספק?
-              </AccordionTrigger>
-              <AccordionContent className="text-right text-muted-foreground">
-                נזדקק למידע בסיסי על העסק שלך - שם החברה, תיאור קצר של העסק והשירותים שאתה מציע, ופרטי קשר. כמו כן, נשמח
-                לקבל מידע נוסף שיעזור למערכת לספק תשובות מדויקות יותר.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-6" className="bg-background border rounded-lg px-6">
-              <AccordionTrigger className="text-right text-lg font-semibold hover:no-underline">
-                האם המידע שלי מאובטח?
-              </AccordionTrigger>
-              <AccordionContent className="text-right text-muted-foreground">
-                בהחלט. אנחנו מקפידים על אבטחת מידע ברמה הגבוהה ביותר. כל המידע שאתה משתף איתנו נשמר בצורה מאובטחת
-                ומוצפנת. ניתן לקרוא עוד במדיניות הפרטיות שלנו.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-7" className="bg-background border rounded-lg px-6">
-              <AccordionTrigger className="text-right text-lg font-semibold hover:no-underline">
-                מה קורה אם הלקוח שואל שאלה שהמערכת לא יודעת לענות עליה?
-              </AccordionTrigger>
-              <AccordionContent className="text-right text-muted-foreground">
-                במקרה כזה, המערכת תודיע שהיא צריכה עזרה נוספת ותפנה את השאלה אליך. כך אתה תמיד בשליטה ויכול להבטיח
-                שהלקוחות שלך מקבלים את התשובות המדויקות ביותר.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-8" className="bg-background border rounded-lg px-6">
-              <AccordionTrigger className="text-right text-lg font-semibold hover:no-underline">
-                האם אפשר לעדכן את המידע במערכת?
-              </AccordionTrigger>
-              <AccordionContent className="text-right text-muted-foreground">
-                כן, ניתן לעדכן ולשפר את המידע במערכת בכל עת. זה חשוב במיוחד כאשר יש שינויים בעסק, במוצרים או בשירותים
-                שאתה מציע.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-9" className="bg-background border rounded-lg px-6">
-              <AccordionTrigger className="text-right text-lg font-semibold hover:no-underline">
-                כיצד ניתן ליצור קשר עם צוות Forli?
-              </AccordionTrigger>
-              <AccordionContent className="text-right text-muted-foreground">
-                אפשר ליצור איתנו קשר דרך טופס יצירת הקשר באתר, לשלוח אימייל ל-contact@forli.ai, או להתקשר אלינו בטלפון
-                050-123-4567. אנחנו זמינים לכל שאלה ובקשה.
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-primary/90 backdrop-blur-sm text-primary-foreground py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 text-center md:text-right">
-            <div>
-              <div className="flex items-center justify-center md:justify-start gap-3 mb-4">
-                <img src={forliMascot} alt="פורלי הינשוף" className="w-10 h-10" />
-                <h3 className="text-2xl font-bold">Call4li</h3>
+        {/* Hero Section */}
+        <WhatsAppChatSection name="Call4li 🦉" status="Always Online">
+          <section className="relative overflow-hidden py-20">
+            <div className="container mx-auto px-4 text-center text-text-custom">
+              <div className="flex justify-center mb-8">
+                <video
+                  src={heroMascotVid}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-32 h-32 rounded-full object-cover"
+                />
               </div>
-              <p className="text-primary-foreground/80">פורלי הינשוף שתמיד ער בשביל העסק שלך</p>
+              <MessageBubble className="mb-6">
+                <h1 className="text-4xl md:text-5xl font-bold leading-tight text-primary">
+                  לא מפספסים יותר שיחות –<br />
+                  <span className="text-accent font-black">Call4li</span>, הבוט שמחזיר לך שליטה
+                </h1>
+              </MessageBubble>
+              <MessageBubble className="mb-8">
+                <p className="text-lg md:text-xl leading-relaxed text-muted-foreground">
+                  פורלי הינשוף החכם עונה כשאתה לא יכול – מתעד שיחות, יוצר קשר עם הלקוחות שלך, ושולח לך סיכום ברור
+                </p>
+              </MessageBubble>
+              <Button
+                size="lg"
+                className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6"
+                onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
+              >
+                להתחלת ניסיון חינם
+              </Button>
             </div>
+          </section>
+        </WhatsAppChatSection>
 
-            <div>
-              <h4 className="text-lg font-bold mb-4">יצירת קשר</h4>
-              <div className="space-y-2 text-primary-foreground/80">
-                <p>📧 micky@call4li.com</p>
-                <p>📞 054-2045280</p>
-                <p>💬 ווטסאפ: 054-2045280</p>
+        {/* Statistics Counter */}
+        <WhatsAppChatSection name="הסטטיסטיקות 📊" status="מתעדכן בזמן אמת">
+          <section className="py-16">
+            <div className="container mx-auto px-4">
+              <div className="grid md:grid-cols-3 gap-8">
+                <div ref={businessCount.countRef} className="relative group">
+                  <div className="bg-card border-2 border-primary/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 text-center overflow-hidden">
+                    {businessCount.showIncrement && (
+                      <div className="absolute top-2 left-1/2 transform -translate-x-1/2 animate-float-up-fade z-10">
+                        <div className="bg-white rounded-full w-20 h-20 flex items-center justify-center shadow-lg">
+                          <span className="text-primary font-bold text-xl">+1</span>
+                        </div>
+                      </div>
+                    )}
+                    <div className="text-5xl font-bold text-primary mb-4">{businessCount.formattedCount}</div>
+                    <p className="text-lg text-muted-foreground font-semibold">עסקים משתמשים בשירות</p>
+                  </div>
+                </div>
+
+                <div ref={callsCount.countRef} className="relative group">
+                  <div className="bg-card border-2 border-accent/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 text-center overflow-hidden">
+                    {callsCount.showIncrement && (
+                      <div className="absolute top-2 left-1/2 transform -translate-x-1/2 animate-float-up-fade z-10">
+                        <div className="bg-white rounded-full w-20 h-20 flex items-center justify-center shadow-lg">
+                          <span className="text-accent font-bold text-xl">+1</span>
+                        </div>
+                      </div>
+                    )}
+                    <div className="text-5xl font-bold text-accent mb-4">{callsCount.formattedCount}</div>
+                    <p className="text-lg text-muted-foreground font-semibold">שיחות נשמרו בזכות הבוט</p>
+                  </div>
+                </div>
+
+                <div ref={satisfactionCount.countRef} className="relative group">
+                  <div className="bg-card border-2 border-secondary/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-secondary/40 text-center">
+                    <div className="text-5xl font-bold text-secondary mb-4">{satisfactionCount.formattedCount}</div>
+                    <p className="text-lg text-muted-foreground font-semibold">שביעות רצון לקוחות</p>
+                  </div>
+                </div>
               </div>
             </div>
+          </section>
+        </WhatsAppChatSection>
 
-            <div>
-              <h4 className="text-lg font-bold mb-4">קישורים</h4>
-              <div className="space-y-2">
-                <Link to="/privacy" className="block text-primary-foreground/80 hover:text-white transition-colors">
-                  מדיניות פרטיות
-                </Link>
-                <Link to="/faq" className="block text-primary-foreground/80 hover:text-white transition-colors">
-                  שאלות נפוצות
-                </Link>
-                <a href="#" className="block text-primary-foreground/80 hover:text-white transition-colors">
-                  תנאי שימוש
-                </a>
-                <a href="#" className="block text-primary-foreground/80 hover:text-white transition-colors">
-                  צור קשר
-                </a>
+        {/* How It Works */}
+        <WhatsAppChatSection name="איך זה עובד? 🔧" status="3 שלבים פשוטים">
+          <section className="py-20">
+            <div className="container mx-auto px-4">
+              <div className="flex flex-col items-center mb-16">
+                <MessageBubble className="mb-4">
+                  <h2 className="text-4xl font-bold text-primary">איך זה עובד?</h2>
+                </MessageBubble>
+                <MessageBubble>
+                  <p className="text-xl text-muted-foreground">3 שלבים פשוטים שמשנים את העסק</p>
+                </MessageBubble>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-8">
+                <Card
+                  ref={card1.ref}
+                  className={`text-center p-8 border-2 hover:border-secondary transition-all duration-700 ${
+                    card1.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                  }`}
+                >
+                  <CardContent className="pt-6">
+                    <div className="flex justify-center mb-6">
+                      <div className="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center">
+                        <PhoneIcon className="w-10 h-10 text-secondary" />
+                      </div>
+                    </div>
+                    <div className="flex justify-center mb-4">
+                      <video
+                        src={answeringVid}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="w-16 h-16 rounded-full object-cover"
+                      />
+                    </div>
+                    <h3 className="text-2xl font-bold text-primary mb-4">לקוח מתקשר</h3>
+                    <p className="text-muted-foreground text-lg">פורלי מזהה את השיחה הנכנסת ומתכונן לפעול</p>
+                  </CardContent>
+                </Card>
+
+                <Card
+                  ref={card2.ref}
+                  className={`text-center p-8 border-2 hover:border-secondary transition-all duration-700 delay-150 ${
+                    card2.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                  }`}
+                >
+                  <CardContent className="pt-6">
+                    <div className="flex justify-center mb-6">
+                      <div className="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center">
+                        <MessageCircleIcon className="w-10 h-10 text-secondary" />
+                      </div>
+                    </div>
+                    <div className="flex justify-center mb-4">
+                      <video
+                        src={typingVid}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="w-16 h-16 rounded-full object-cover"
+                      />
+                    </div>
+                    <h3 className="text-2xl font-bold text-primary mb-4">תגובה חכמה</h3>
+                    <p className="text-muted-foreground text-lg">
+                      אם לא ענית - פורלי שולח ווטסאפ ללקוח
+                      <br />
+                      אם ענית - פורלי מתעד ומסכם
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card
+                  ref={card3.ref}
+                  className={`text-center p-8 border-2 hover:border-secondary transition-all duration-700 delay-300 ${
+                    card3.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                  }`}
+                >
+                  <CardContent className="pt-6">
+                    <div className="flex justify-center mb-6">
+                      <div className="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center">
+                        <ClipboardCheckIcon className="w-10 h-10 text-secondary" />
+                      </div>
+                    </div>
+                    <div className="flex justify-center mb-4">
+                      <video
+                        src={summaryVid}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="w-16 h-16 rounded-full object-cover"
+                      />
+                    </div>
+                    <h3 className="text-2xl font-bold text-primary mb-4">סיכום מושלם</h3>
+                    <p className="text-muted-foreground text-lg">כל השיחה נשמרת בגיליון או CRM עם סיכום ברור</p>
+                  </CardContent>
+                </Card>
               </div>
             </div>
-          </div>
+          </section>
+        </WhatsAppChatSection>
 
-          <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center">
-            <p className="text-primary-foreground/60">© 2024 Call4li. כל הזכויות שמורות.</p>
+        {/* Benefits */}
+        <WhatsAppChatSection name="למה פורלי? 💡" status="היתרונות שלנו">
+          <section className="py-20">
+            <div className="container mx-auto px-4">
+              <div className="flex flex-col items-center mb-16">
+                <MessageBubble className="mb-4">
+                  <h2 className="text-4xl font-bold text-primary">למה פורלי?</h2>
+                </MessageBubble>
+                <MessageBubble>
+                  <p className="text-xl text-muted-foreground">היתרונות שיהפכו את העסק שלך</p>
+                </MessageBubble>
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <Card className="p-6 text-center hover:shadow-lg transition-shadow">
+                  <CardContent className="pt-4">
+                    <div className="w-16 h-16 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <TrendingUpIcon className="w-8 h-8 text-success" />
+                    </div>
+                    <h3 className="text-xl font-bold text-primary mb-2">🦉 לא מפספסים לידים</h3>
+                    <p className="text-muted-foreground">כל שיחה הופכת להזדמנות עסקית</p>
+                  </CardContent>
+                </Card>
+
+                <Card className="p-6 text-center hover:shadow-lg transition-shadow">
+                  <CardContent className="pt-4">
+                    <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <ClipboardCheckIcon className="w-8 h-8 text-secondary" />
+                    </div>
+                    <h3 className="text-xl font-bold text-primary mb-2">📊 הכל מתועד אוטומטית</h3>
+                    <p className="text-muted-foreground">מערכת ניהול לקוחות חכמה</p>
+                  </CardContent>
+                </Card>
+
+                <Card className="p-6 text-center hover:shadow-lg transition-shadow">
+                  <CardContent className="pt-4">
+                    <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <ClockIcon className="w-8 h-8 text-accent-foreground" />
+                    </div>
+                    <h3 className="text-xl font-bold text-primary mb-2">⏱️ זמן תגובה מהיר ומקצועי</h3>
+                    <p className="text-muted-foreground">לקוחות מרוצים, עסק שגדל</p>
+                  </CardContent>
+                </Card>
+
+                <Card className="p-6 text-center hover:shadow-lg transition-shadow">
+                  <CardContent className="pt-4">
+                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <BrainIcon className="w-8 h-8 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-bold text-primary mb-2">💡 מערכת חכמה עם סיכומי AI</h3>
+                    <p className="text-muted-foreground">טכנולוגיה מתקדמת בשירותך</p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </section>
+        </WhatsAppChatSection>
+
+        {/* Value Proposition */}
+        <WhatsAppChatSection name="מחשבון החיסכון 💰" status="כמה כסף אתה מפסיד?">
+          <section className="py-20">
+            <div className="container mx-auto px-4 text-center">
+              <div className="flex justify-center mb-8">
+                <video src={valuePropositionVid} autoPlay muted loop playsInline className="w-24 h-24" />
+              </div>
+              <MessageBubble className="mb-4">
+                <h2 className="text-4xl font-bold text-primary">עסק ממוצע מפספס 30% מהשיחות</h2>
+              </MessageBubble>
+              <MessageBubble className="mb-8">
+                <p className="text-2xl text-muted-foreground">Call4li הופך אותן להזדמנויות!</p>
+              </MessageBubble>
+
+              <Card className="max-w-md mx-auto bg-white text-primary p-8">
+                <CardContent className="pt-4">
+                  <h3 className="text-2xl font-bold mb-6">מחשבון החיסכון שלך</h3>
+                  <div className="space-y-4 text-right">
+                    <div>
+                      <label className="block text-sm font-medium mb-2">שווי עסקה ממוצעת (₪)</label>
+                      <input
+                        type="number"
+                        value={dealValue}
+                        onChange={(e) => setDealValue(Number(e.target.value) || 0)}
+                        className="w-full p-3 border rounded-lg text-center"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium mb-2">שיחות בחודש</label>
+                      <input
+                        type="number"
+                        value={callsPerMonth}
+                        onChange={(e) => setCallsPerMonth(Number(e.target.value) || 0)}
+                        className="w-full p-3 border rounded-lg text-center"
+                      />
+                    </div>
+                    <div className="pt-4 border-t">
+                      <p className="text-lg font-bold text-success">החזר צפוי: ₪{expectedReturn.toLocaleString()}/חודש</p>
+                      <p className="text-sm text-muted-foreground">מ-30% מהשיחות שהפספסתם</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </section>
+        </WhatsAppChatSection>
+
+        {/* Pricing */}
+        <WhatsAppChatSection name="חבילות מחיר 🏷️" status="בחר את המתאימה לך">
+          <section id="pricing" className="py-20">
+            <div className="container mx-auto px-4">
+              <div className="flex flex-col items-center mb-16">
+                <MessageBubble className="mb-4">
+                  <h2 className="text-4xl font-bold text-primary">חבילות המחיר שלנו</h2>
+                </MessageBubble>
+                <MessageBubble>
+                  <p className="text-xl text-muted-foreground">בחרו את החבילה המתאימה לעסק שלכם</p>
+                </MessageBubble>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <Card className="p-8 border-2 hover:border-secondary transition-colors">
+                  <CardContent className="pt-4">
+                    <div className="text-center mb-8">
+                      <Badge className="bg-muted text-muted-foreground mb-4">בסיסית</Badge>
+                      <div className="mb-4">
+                        <div className="relative">
+                          <h3 className="text-2xl font-bold text-muted-foreground line-through mb-1">₪150</h3>
+                          <h2 className="text-4xl font-bold text-success mb-1">₪50</h2>
+                          <p className="text-muted-foreground text-sm">החודש הראשון</p>
+                        </div>
+                        <div className="mt-4 pt-4 border-t border-muted">
+                          <p className="text-sm text-muted-foreground">לאחר מכן: ₪150/חודש</p>
+                        </div>
+                      </div>
+                    </div>
+                    <ul className="space-y-4 mb-8 text-right">
+                      <li className="flex items-center gap-3">
+                        <span className="w-2 h-2 bg-success rounded-full"></span>
+                        <span>עד 100 שיחות בחודש</span>
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <span className="w-2 h-2 bg-success rounded-full"></span>
+                        <span>תגובה אוטומטית בווטסאפ</span>
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <span className="w-2 h-2 bg-success rounded-full"></span>
+                        <span>סיכומי שיחות AI</span>
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <span className="w-2 h-2 bg-success rounded-full"></span>
+                        <span>דוחות בסיסיים</span>
+                      </li>
+                    </ul>
+                    <Link to="/contact" className="w-full">
+                      <Button className="w-full bg-secondary hover:bg-secondary/90">התחילו עכשיו</Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+
+                <Card className="p-8 border-2 border-accent shadow-lg relative">
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <Badge className="bg-accent text-accent-foreground">הכי פופולרי</Badge>
+                  </div>
+                  <CardContent className="pt-4">
+                    <div className="text-center mb-8">
+                      <Badge className="bg-primary text-primary-foreground mb-4">פרו</Badge>
+                      <div className="mb-4">
+                        <div className="relative">
+                          <h3 className="text-2xl font-bold text-muted-foreground line-through mb-1">₪450</h3>
+                          <h2 className="text-4xl font-bold text-accent-foreground mb-1">חינם!</h2>
+                          <p className="text-muted-foreground text-sm">החודש הראשון</p>
+                        </div>
+                        <div className="mt-4 pt-4 border-t border-muted">
+                          <p className="text-sm text-muted-foreground">לאחר מכן: ₪450/חודש</p>
+                        </div>
+                      </div>
+                    </div>
+                    <ul className="space-y-4 mb-8 text-right">
+                      <li className="flex items-center gap-3">
+                        <span className="w-2 h-2 bg-success rounded-full"></span>
+                        <span>שיחות ללא הגבלה</span>
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <span className="w-2 h-2 bg-success rounded-full"></span>
+                        <span>ניתוח מתקדם וחדשנות AI</span>
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <span className="w-2 h-2 bg-success rounded-full"></span>
+                        <span>תזכורות אוטומטיות ללקוח ולעסק</span>
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <span className="w-2 h-2 bg-success rounded-full"></span>
+                        <span>תמיכה 24/7</span>
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <span className="w-2 h-2 bg-success rounded-full"></span>
+                        <span>דוחות יומיים ושבועיים</span>
+                      </li>
+                    </ul>
+                    <Link to="/contact" className="w-full">
+                      <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90">התחילו עכשיו</Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </section>
+        </WhatsAppChatSection>
+
+        {/* Testimonials */}
+        <WhatsAppChatSection name="לקוחות ממליצים 💬" status="ראו מה אומרים עלינו">
+          <section className="py-20">
+            <div className="container mx-auto px-4">
+              <div className="flex flex-col items-center mb-16">
+                <MessageBubble className="mb-4">
+                  <h2 className="text-4xl font-bold text-primary">מה הלקוחות שלנו אומרים</h2>
+                </MessageBubble>
+                <MessageBubble>
+                  <p className="text-xl text-muted-foreground">סיפורי הצלחה מעסקים כמוכם</p>
+                </MessageBubble>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-8">
+                <Card className="p-6">
+                  <CardContent className="pt-4">
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="w-12 h-12 bg-gradient-hero rounded-full flex items-center justify-center text-white font-bold">
+                        א
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-primary">אבי כהן</h4>
+                        <p className="text-sm text-muted-foreground">בעל עסק שירותים</p>
+                      </div>
+                    </div>
+                    <p className="text-muted-foreground italic">
+                      "מאז שהתקנו את פורלי לא הפסדנו לקוחות. כל שיחה מתועדת ומטופלת בצורה מקצועית. החזר ההשקעה מיידי!"
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card className="p-6">
+                  <CardContent className="pt-4">
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="w-12 h-12 bg-gradient-hero rounded-full flex items-center justify-center text-white font-bold">
+                        ש
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-primary">שרה לוי</h4>
+                        <p className="text-sm text-muted-foreground">מנהלת קליניקה</p>
+                      </div>
+                    </div>
+                    <p className="text-muted-foreground italic">
+                      "פורלי חסך לנו שעות של עבודה יומית. המערכת חכמה, נוחה ומשדרגת את השירות שלנו בצורה משמעותית."
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card className="p-6">
+                  <CardContent className="pt-4">
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="w-12 h-12 bg-gradient-hero rounded-full flex items-center justify-center text-white font-bold">
+                        ד
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-primary">דן אברהם</h4>
+                        <p className="text-sm text-muted-foreground">יועץ עסקי</p>
+                      </div>
+                    </div>
+                    <p className="text-muted-foreground italic">
+                      "ההשקעה הכי חכמה שעשיתי השנה. פורלי הפך כל שיחה לעסק, ואני יכול להתמקד במה שאני הכי טוב בו."
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </section>
+        </WhatsAppChatSection>
+
+        {/* CTA Section */}
+        <WhatsAppChatSection name="בואו נתחיל! 🚀" status="הצטרפו אלינו">
+          <section className="py-20">
+            <div className="container mx-auto px-4 text-center">
+              <div className="flex justify-center mb-8">
+                <video src={ctaMascotVid} autoPlay muted loop playsInline className="w-32 h-32 rounded-full object-cover" />
+              </div>
+              <MessageBubble className="mb-6">
+                <h2 className="text-4xl font-bold text-primary">מוכנים להתחיל?</h2>
+              </MessageBubble>
+              <MessageBubble className="mb-8">
+                <p className="text-xl text-muted-foreground max-w-2xl">הצטרפו לעסקים שכבר משתמשים בפורלי ולא מפספסים אף הזדמנות</p>
+              </MessageBubble>
+              <Link to="/contact">
+                <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6">
+                  התחילו ניסיון חינם היום
+                </Button>
+              </Link>
+            </div>
+          </section>
+        </WhatsAppChatSection>
+
+        {/* FAQ Section */}
+        <WhatsAppChatSection name="שאלות ותשובות ❓" status="כל התשובות כאן">
+          <section className="py-20">
+            <div className="container mx-auto px-4 max-w-4xl">
+              <div className="flex flex-col items-center mb-12">
+                <MessageBubble className="mb-4">
+                  <h2 className="text-4xl md:text-5xl font-bold text-primary">שאלות ותשובות</h2>
+                </MessageBubble>
+                <MessageBubble>
+                  <p className="text-lg text-muted-foreground">כל מה שרציתם לדעת על Forli</p>
+                </MessageBubble>
+              </div>
+
+              <Accordion type="single" collapsible className="w-full space-y-4">
+                <AccordionItem value="item-1" className="bg-background border rounded-lg px-6">
+                  <AccordionTrigger className="text-right text-lg font-semibold hover:no-underline">
+                    מה זה Forli?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-right text-muted-foreground">
+                    Forli היא מערכת חכמה שמאפשרת לעסקים לענות על שאלות של לקוחות באופן אוטומטי ומדויק. המערכת משתמשת
+                    בטכנולוגיה מתקדמת כדי להבין שאלות ולספק תשובות מותאמות אישית בזמן אמת.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-2" className="bg-background border rounded-lg px-6">
+                  <AccordionTrigger className="text-right text-lg font-semibold hover:no-underline">
+                    איך Forli עובד?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-right text-muted-foreground">
+                    Forli לומד את המידע על העסק שלך ומשתמש בו כדי לענות על שאלות לקוחות. המערכת מנתחת את השאלות, מחפשת את
+                    המידע הרלוונטי ומספקת תשובות מדויקות ומקצועיות.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-3" className="bg-background border rounded-lg px-6">
+                  <AccordionTrigger className="text-right text-lg font-semibold hover:no-underline">
+                    כמה זמן לוקח להתחיל להשתמש ב-Forli?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-right text-muted-foreground">
+                    תהליך ההטמעה הוא מהיר ופשוט. לאחר שתמלא את הטופס עם פרטי העסק שלך, נוכל להתחיל לעבוד על הגדרת המערכת
+                    והיא תהיה מוכנה לשימוש תוך זמן קצר.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-4" className="bg-background border rounded-lg px-6">
+                  <AccordionTrigger className="text-right text-lg font-semibold hover:no-underline">
+                    האם Forli יכול להתאים לכל סוג של עסק?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-right text-muted-foreground">
+                    כן! Forli הוא גמיש ומותאם לכל סוג עסק - בין אם אתה מנהל חנות אונליין, מספק שירותים מקצועיים, או מנהל עסק
+                    פיזי. המערכת מותאמת לצרכים הייחודיים של כל לקוח.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-5" className="bg-background border rounded-lg px-6">
+                  <AccordionTrigger className="text-right text-lg font-semibold hover:no-underline">
+                    איזה סוג מידע אני צריך לספק?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-right text-muted-foreground">
+                    נזדקק למידע בסיסי על העסק שלך - שם החברה, תיאור קצר של העסק והשירותים שאתה מציע, ופרטי קשר. כמו כן, נשמח
+                    לקבל מידע נוסף שיעזור למערכת לספק תשובות מדויקות יותר.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-6" className="bg-background border rounded-lg px-6">
+                  <AccordionTrigger className="text-right text-lg font-semibold hover:no-underline">
+                    האם המידע שלי מאובטח?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-right text-muted-foreground">
+                    בהחלט. אנחנו מקפידים על אבטחת מידע ברמה הגבוהה ביותר. כל המידע שאתה משתף איתנו נשמר בצורה מאובטחת
+                    ומוצפנת. ניתן לקרוא עוד במדיניות הפרטיות שלנו.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-7" className="bg-background border rounded-lg px-6">
+                  <AccordionTrigger className="text-right text-lg font-semibold hover:no-underline">
+                    מה קורה אם הלקוח שואל שאלה שהמערכת לא יודעת לענות עליה?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-right text-muted-foreground">
+                    במקרה כזה, המערכת תודיע שהיא צריכה עזרה נוספת ותפנה את השאלה אליך. כך אתה תמיד בשליטה ויכול להבטיח
+                    שהלקוחות שלך מקבלים את התשובות המדויקות ביותר.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-8" className="bg-background border rounded-lg px-6">
+                  <AccordionTrigger className="text-right text-lg font-semibold hover:no-underline">
+                    האם אפשר לעדכן את המידע במערכת?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-right text-muted-foreground">
+                    כן, ניתן לעדכן ולשפר את המידע במערכת בכל עת. זה חשוב במיוחד כאשר יש שינויים בעסק, במוצרים או בשירותים
+                    שאתה מציע.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-9" className="bg-background border rounded-lg px-6">
+                  <AccordionTrigger className="text-right text-lg font-semibold hover:no-underline">
+                    כיצד ניתן ליצור קשר עם צוות Forli?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-right text-muted-foreground">
+                    אפשר ליצור איתנו קשר דרך טופס יצירת הקשר באתר, לשלוח אימייל ל-contact@forli.ai, או להתקשר אלינו בטלפון
+                    050-123-4567. אנחנו זמינים לכל שאלה ובקשה.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </div>
+          </section>
+        </WhatsAppChatSection>
+
+        {/* Footer */}
+        <footer className="bg-primary/90 backdrop-blur-sm text-primary-foreground py-12">
+          <div className="container mx-auto px-4">
+            <div className="grid md:grid-cols-3 gap-8 text-center md:text-right">
+              <div>
+                <div className="flex items-center justify-center md:justify-start gap-3 mb-4">
+                  <img src={forliMascot} alt="פורלי הינשוף" className="w-10 h-10" />
+                  <h3 className="text-2xl font-bold">Call4li</h3>
+                </div>
+                <p className="text-primary-foreground/80">פורלי הינשוף שתמיד ער בשביל העסק שלך</p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-bold mb-4">יצירת קשר</h4>
+                <div className="space-y-2 text-primary-foreground/80">
+                  <p>📧 micky@call4li.com</p>
+                  <p>📞 054-2045280</p>
+                  <p>💬 ווטסאפ: 054-2045280</p>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-bold mb-4">קישורים</h4>
+                <div className="space-y-2">
+                  <Link to="/privacy" className="block text-primary-foreground/80 hover:text-white transition-colors">
+                    מדיניות פרטיות
+                  </Link>
+                  <Link to="/faq" className="block text-primary-foreground/80 hover:text-white transition-colors">
+                    שאלות נפוצות
+                  </Link>
+                  <a href="#" className="block text-primary-foreground/80 hover:text-white transition-colors">
+                    תנאי שימוש
+                  </a>
+                  <a href="#" className="block text-primary-foreground/80 hover:text-white transition-colors">
+                    צור קשר
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center">
+              <p className="text-primary-foreground/60">© 2024 Call4li. כל הזכויות שמורות.</p>
+            </div>
           </div>
-        </div>
-      </footer>
-    </div>
+        </footer>
+      </div>
     </>
   );
 };
