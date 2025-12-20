@@ -614,7 +614,7 @@ const Index = () => {
         </WhatsAppChatSection>
 
         {/* Footer */}
-        <footer className="backdrop-blur-sm py-12 bg-[#f1ebe4] text-sidebar-foreground">
+        <footer className="backdrop-blur-sm py-12 bg-[#f1ebe4] text-sidebar-foreground border-dashed border-2 border-accent-foreground">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-3 gap-8 text-center md:text-right">
               <div>
@@ -636,17 +636,17 @@ const Index = () => {
 
               <div>
                 <h4 className="text-lg font-bold mb-4">קישורים</h4>
-                <div className="space-y-2">
-                  <Link to="/privacy" className="block text-primary-foreground/80 hover:text-white transition-colors">
+                <div className="space-y-2 text-accent-foreground">
+                  <Link to="/privacy" className="block transition-colors text-popover-foreground">
                     מדיניות פרטיות
                   </Link>
-                  <Link to="/faq" className="block text-primary-foreground/80 hover:text-white transition-colors">
+                  <Link to="/faq" className="block transition-colors text-popover-foreground">
                     שאלות נפוצות
                   </Link>
-                  <a href="#" className="block text-primary-foreground/80 hover:text-white transition-colors">
+                  <a href="#" className="block transition-colors text-popover-foreground">
                     תנאי שימוש
                   </a>
-                  <a href="#" className="block text-primary-foreground/80 hover:text-white transition-colors">
+                  <a href="#" className="block transition-colors text-accent-foreground">
                     צור קשר
                   </a>
                 </div>
@@ -654,7 +654,7 @@ const Index = () => {
             </div>
 
             <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center">
-              <p className="text-primary-foreground/60">© 2024 Call4li. כל הזכויות שמורות.</p>
+              <p className="text-slate-600">© 2024 Call4li. כל הזכויות שמורות.</p>
             </div>
           </div>
         </footer>
