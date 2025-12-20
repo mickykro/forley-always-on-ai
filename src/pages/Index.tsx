@@ -548,17 +548,23 @@ const Index = () => {
               <div className="flex justify-center mb-8">
                 <video src={ctaMascotVid} autoPlay muted loop playsInline className="w-32 h-32 rounded-full object-cover" />
               </div>
-              <MessageBubble className="mb-6">
-                <h2 className="text-4xl font-bold text-primary">מוכנים להתחיל?</h2>
-              </MessageBubble>
-              <MessageBubble className="mb-8">
-                <p className="text-xl text-muted-foreground max-w-2xl">הצטרפו לעסקים שכבר משתמשים בפורלי ולא מפספסים אף הזדמנות</p>
-              </MessageBubble>
-              <Link to="/contact">
-                <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6">
-                  התחילו ניסיון חינם היום
-                </Button>
-              </Link>
+              <div className="block w-full">
+                <MessageBubble className="mb-6">
+                  <h2 className="text-4xl font-bold text-primary">מוכנים להתחיל?</h2>
+                </MessageBubble>
+              </div>
+              <div className="block w-full">
+                <MessageBubble className="mb-8">
+                  <p className="text-xl text-muted-foreground max-w-2xl">הצטרפו לעסקים שכבר משתמשים בפורלי ולא מפספסים אף הזדמנות</p>
+                </MessageBubble>
+              </div>
+              <div className="block w-full">
+                <Link to="/contact">
+                  <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6">
+                    התחילו ניסיון חינם היום
+                  </Button>
+                </Link>
+              </div>
             </div>
           </section>
         </WhatsAppChatSection>
