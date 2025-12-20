@@ -614,7 +614,7 @@ const Index = () => {
         </WhatsAppChatSection>
 
         {/* Footer */}
-        <footer className="bg-primary/90 backdrop-blur-sm text-primary-foreground py-12">
+        <footer className="backdrop-blur-sm py-12 bg-[#f1ebe4] text-sidebar-foreground">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-3 gap-8 text-center md:text-right">
               <div>
@@ -622,12 +622,12 @@ const Index = () => {
                   <img src={forliMascot} alt="פורלי הינשוף" className="w-10 h-10" />
                   <h3 className="text-2xl font-bold">Call4li</h3>
                 </div>
-                <p className="text-primary-foreground/80">פורלי הינשוף שתמיד ער בשביל העסק שלך</p>
+                <p className="text-accent-foreground">פורלי הינשוף שתמיד ער בשביל העסק שלך</p>
               </div>
 
               <div>
                 <h4 className="text-lg font-bold mb-4">יצירת קשר</h4>
-                <div className="space-y-2 text-primary-foreground/80">
+                <div className="space-y-2 text-accent-foreground">
                   <p>📧 micky@call4li.com</p>
                   <p>📞 054-2045280</p>
                   <p>💬 ווטסאפ: 054-2045280</p>
