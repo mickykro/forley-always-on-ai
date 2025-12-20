@@ -10,7 +10,13 @@ const MessageBubble = ({ children, className = "" }: MessageBubbleProps) => {
     <div className={`relative inline-block max-w-[85%] ${className}`}>
       <div className="bg-white rounded-lg rounded-tr-none px-4 py-3 shadow-md relative">
         {/* WhatsApp bubble tail */}
-        <div className="absolute -top-0 -right-2 w-0 h-0 border-l-[10px] border-l-white border-t-[10px] border-t-transparent" />
+        <div 
+          className="absolute -top-0 -right-4 w-0 h-0"
+          style={{
+            borderLeft: '16px solid white',
+            borderTop: '20px solid transparent',
+          }}
+        />
         {children}
       </div>
     </div>
