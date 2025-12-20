@@ -1,16 +1,16 @@
 import { ArrowRight, Video, Phone, MoreVertical } from "lucide-react";
 
 const contacts = [
-  { name: "אמא 💚", status: "Online" },
-  { name: "אבא", status: "last seen today" },
-  { name: "יוסי כהן", status: "typing..." },
-  { name: "רונית לוי", status: "Online" },
-  { name: "משפחה 👨‍👩‍👧‍👦", status: "last seen yesterday" },
-  { name: "עבודה 💼", status: "Online" },
-  { name: "דוד", status: "last seen 2h ago" },
-  { name: "שרה", status: "typing..." },
-  { name: "מיכל ברק", status: "Online" },
-  { name: "חברים 🎉", status: "last seen today" },
+  { name: "יוסי טכנאי 🔧", status: "Online" },
+  { name: "אריק שליח", status: "last seen today" },
+  { name: "שמעון רואה חשבון", status: "typing..." },
+  { name: "דני אינסטלטור 🚿", status: "Online" },
+  { name: "מוטי חשמלאי ⚡", status: "last seen yesterday" },
+  { name: "רונית עורכת דין", status: "Online" },
+  { name: "אבי מסעדן 🍽️", status: "last seen 2h ago" },
+  { name: "גילי מעצבת", status: "typing..." },
+  { name: "עמית קבלן 🏗️", status: "Online" },
+  { name: "נועה פיזיותרפיסטית", status: "last seen today" },
 ];
 
 const WhatsAppStripes = () => {
