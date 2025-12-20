@@ -7,8 +7,8 @@
 @layer base {
   :root {
     /* Text & base neutrals */
-    --background: 0 0% 100%;           /* used for cards, not page bg */
-    --foreground: 0 0% 10%;           /* almost black text */
+    --background: 0 0% 100%; /* used for cards, not page bg */
+    --foreground: 0 0% 10%; /* almost black text */
 
     --card: 0 0% 100%;
     --card-foreground: 0 0% 10%;
@@ -29,7 +29,7 @@
     --muted-foreground: 0 0% 30%;
 
     /* Chat-bubble style accent (light green) */
-    --accent: 94 78% 87%;             /* #DCF8C6-ish */
+    --accent: 94 78% 87%; /* #DCF8C6-ish */
     --accent-foreground: 0 0% 10%;
 
     /* Success = primary-ish */
@@ -40,20 +40,9 @@
     --text-custom: 0 0% 15%;
 
     /* Your requested background gradient (full page) - x10 vertical repeating */
-    --gradient-hero: repeating-linear-gradient(
-      180deg,
-      #19fa14 0%,
-      #4b9a4a 2.5%,
-      #ffffff 5%,
-      #4b9a4a 7.5%,
-      #19fa14 10%
-    );
+    --gradient-hero: repeating-linear-gradient(180deg, #19fa14 0%, #4b9a4a 5%, #ffffff 10%, #4b9a4a 15%, #19fa14 20%);
 
-    --gradient-accent: linear-gradient(
-      135deg,
-      hsl(142 70% 49%),
-      hsl(173 77% 31%)
-    );
+    --gradient-accent: linear-gradient(135deg, hsl(142 70% 49%), hsl(173 77% 31%));
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
@@ -124,7 +113,7 @@
   body {
     @apply font-heebo;
     color: hsl(var(--foreground));
-    background-color: #19fa14;          /* fallback */
+    background-color: #19fa14; /* fallback */
     background-image: var(--gradient-hero);
     background-attachment: fixed;
     background-size: cover;
