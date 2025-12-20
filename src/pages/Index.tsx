@@ -398,9 +398,9 @@ const Index = () => {
                         <span>דוחות יומיים ושבועיים</span>
                       </li>
                     </ul>
-                    <Link to="/contact" className="w-full">
+                    <a href="https://wa.me/972553163293?text=היי" target="_blank" rel="noopener noreferrer" className="w-full">
                       <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90">התחילו עכשיו</Button>
-                    </Link>
+                    </a>
                   </CardContent>
                 </Card>
               </div>
@@ -495,11 +495,11 @@ const Index = () => {
                 </MessageBubble>
               </div>
               <div className="block w-full">
-                <Link to="/contact">
+                <a href="https://wa.me/972553163293?text=היי" target="_blank" rel="noopener noreferrer">
                   <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6">
                     התחילו ניסיון חינם היום
                   </Button>
-                </Link>
+                </a>
               </div>
             </div>
           </section>
