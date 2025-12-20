@@ -2,108 +2,127 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Call4li Design System - Professional business colors with Forli the owl theme */
+/* Call4li Design System - WhatsApp-inspired colors */
 
 @layer base {
   :root {
-    /* Brand Colors */
-    --background: 218 24% 98%;
-    --foreground: 225 84% 20%;
+    /* Brand Colors (Light theme) */
+    /* WhatsApp chat background: #ECE5DD ≈ hsl(32 28% 90%) */
+    --background: 32 28% 90%;
+    /* WhatsApp dark text: #111B21 ≈ hsl(202 32% 10%) */
+    --foreground: 202 32% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 225 84% 20%;
+    --card-foreground: 202 32% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 225 84% 20%;
+    --popover-foreground: 202 32% 10%;
 
-    /* Call4li Brand Primary - Dark Blue */
-    --primary: 225 84% 32%;
+    /* WhatsApp primary green: #25D366 ≈ hsl(142 70% 49%) */
+    --primary: 142 70% 49%;
     --primary-foreground: 0 0% 100%;
 
-    /* Call4li Brand Secondary - Light Blue */
-    --secondary: 213 94% 68%;
+    /* WhatsApp teal / header: #128C7E ≈ hsl(173 77% 31%) */
+    --secondary: 173 77% 31%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 218 11% 92%;
-    --muted-foreground: 225 15% 50%;
+    /* Muted neutrals based on WA background */
+    --muted: 32 20% 85%;
+    --muted-foreground: 210 9% 40%;
 
-    /* Call4li Brand Accent - Gold Yellow */
-    --accent: 50 96% 53%;
-    --accent-foreground: 225 84% 20%;
+    /* Chat bubble green: #DCF8C6 ≈ hsl(94 78% 87%) */
+    --accent: 94 78% 87%;
+    --accent-foreground: 202 32% 10%;
     
-    /* Call4li Brand Success - Professional Green */
-    --success: 142 76% 36%;
+    /* Success = primary green variant */
+    --success: 142 70% 40%;
     --success-foreground: 0 0% 100%;
     
-    /* Custom text color */
-    --text-custom: 210 37% 44%;
+    /* Custom text color (slightly softer than foreground) */
+    --text-custom: 210 15% 30%;
     
     /* Custom gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(225 84% 32%), hsl(213 94% 68%));
-    --gradient-accent: linear-gradient(135deg, hsl(50 96% 53%), hsl(45 100% 60%));
+    /* Your requested background gradient: [#19fa14,#4b9a4a,white,#4b9a4a,#19fa14] */
+    --gradient-hero: linear-gradient(
+      90deg,
+      #19fa14 0%,
+      #4b9a4a 25%,
+      #ffffff 50%,
+      #4b9a4a 75%,
+      #19fa14 100%
+    );
 
-    --destructive: 0 84.2% 60.2%;
+    /* Accent gradient between WA green and teal */
+    --gradient-accent: linear-gradient(
+      135deg,
+      hsl(142 70% 49%),
+      hsl(173 77% 31%)
+    );
+
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 32 15% 80%;
+    --input: 32 15% 80%;
+    --ring: 142 70% 49%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar (light) similar to WA sidebar */
+    --sidebar-background: 32 28% 90%;
+    --sidebar-foreground: 202 32% 10%;
+    --sidebar-primary: 142 70% 49%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 94 78% 87%;
+    --sidebar-accent-foreground: 202 32% 10%;
+    --sidebar-border: 32 15% 80%;
+    --sidebar-ring: 142 70% 49%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    /* WhatsApp dark background: #111B21 ≈ hsl(202 32% 10%) */
+    --background: 202 32% 10%;
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    /* Slightly lighter cards: #202C33 ≈ hsl(202 23% 16%) */
+    --card: 202 23% 16%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
+    --popover: 202 23% 16%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    /* Keep WA green as primary in dark mode */
+    --primary: 142 70% 49%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 217.2 32.6% 17.5%;
+    /* WhatsApp teal as secondary */
+    --secondary: 173 77% 31%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    /* Muted / surfaces */
+    --muted: 202 23% 16%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    /* Accent bubble-style green still works on dark */
+    --accent: 94 78% 87%;
+    --accent-foreground: 202 32% 10%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --border: 202 23% 16%;
+    --input: 202 23% 16%;
+    --ring: 142 70% 49%;
+
+    /* Sidebar (dark) similar to WhatsApp dark sidebar */
+    --sidebar-background: 202 32% 10%;
+    --sidebar-foreground: 240 4% 96%;
+    --sidebar-primary: 142 70% 49%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 202 23% 16%;
+    --sidebar-accent-foreground: 240 4% 96%;
+    --sidebar-border: 202 23% 16%;
+    --sidebar-ring: 142 70% 49%;
   }
 }
 
@@ -113,6 +132,12 @@
   }
 
   body {
-    @apply bg-background text-foreground font-heebo;
+    @apply text-foreground font-heebo;
+    /* Fallback color + WhatsApp-style green gradient background */
+    background-color: hsl(var(--background));
+    background-image: var(--gradient-hero);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 }
