@@ -62,11 +62,11 @@ const Index = () => {
                 <p className="text-sm text-muted-foreground">עם פורלי הינשוף החכם</p>
               </div>
             </div>
-            <Button variant="outline" className="text-secondary hover:bg-secondary hover:text-white" onClick={() => document.getElementById("pricing")?.scrollIntoView({
-            behavior: "smooth"
-          })}>
-              להתחלת ניסיון חינם
-            </Button>
+            <a href="https://wa.me/972553163293?text=היי" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" className="text-secondary hover:bg-secondary hover:text-white">
+                להתחלת ניסיון חינם
+              </Button>
+            </a>
           </div>
         </header>
 
@@ -89,11 +89,11 @@ const Index = () => {
                 </p>
               </MessageBubble>
               <div className="block mt-4">
-                <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6" onClick={() => document.getElementById("pricing")?.scrollIntoView({
-                behavior: "smooth"
-              })}>
-                  להתחלת ניסיון חינם
-                </Button>
+                <a href="https://wa.me/972553163293?text=היי" target="_blank" rel="noopener noreferrer">
+                  <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6">
+                    להתחלת ניסיון חינם
+                  </Button>
+                </a>
               </div>
             </div>
           </section>
@@ -352,9 +352,9 @@ const Index = () => {
                         <span>דוחות בסיסיים</span>
                       </li>
                     </ul>
-                    <Link to="/contact" className="w-full">
+                    <a href="https://wa.me/972553163293?text=היי" target="_blank" rel="noopener noreferrer" className="w-full">
                       <Button className="w-full bg-secondary hover:bg-secondary/90">התחילו עכשיו</Button>
-                    </Link>
+                    </a>
                   </CardContent>
                 </Card>
 
