@@ -100,13 +100,15 @@ const Index = () => {
                   פורלי הינשוף החכם עונה כשאתה לא יכול – מתעד שיחות, יוצר קשר עם הלקוחות שלך, ושולח לך סיכום ברור
                 </p>
               </MessageBubble>
-              <Button
-                size="lg"
-                className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6"
-                onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
-              >
-                להתחלת ניסיון חינם
-              </Button>
+              <div className="block mt-4">
+                <Button
+                  size="lg"
+                  className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6"
+                  onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
+                >
+                  להתחלת ניסיון חינם
+                </Button>
+              </div>
             </div>
           </section>
         </WhatsAppChatSection>
