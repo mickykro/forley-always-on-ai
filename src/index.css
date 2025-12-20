@@ -2,47 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Call4li Design System - WhatsApp-inspired colors */
+/* Call4li Design System - WhatsApp-inspired with full-page green gradient */
 
 @layer base {
   :root {
-    /* Brand Colors (Light theme) */
-    /* WhatsApp chat background: #ECE5DD ≈ hsl(32 28% 90%) */
-    --background: 32 28% 90%;
-    /* WhatsApp dark text: #111B21 ≈ hsl(202 32% 10%) */
-    --foreground: 202 32% 10%;
+    /* Text & base neutrals */
+    --background: 0 0% 100%;           /* used for cards, not page bg */
+    --foreground: 0 0% 10%;           /* almost black text */
 
     --card: 0 0% 100%;
-    --card-foreground: 202 32% 10%;
+    --card-foreground: 0 0% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 202 32% 10%;
+    --popover-foreground: 0 0% 10%;
 
-    /* WhatsApp primary green: #25D366 ≈ hsl(142 70% 49%) */
+    /* WhatsApp primary green: #25D366 */
     --primary: 142 70% 49%;
     --primary-foreground: 0 0% 100%;
 
-    /* WhatsApp teal / header: #128C7E ≈ hsl(173 77% 31%) */
+    /* WhatsApp teal: #128C7E */
     --secondary: 173 77% 31%;
     --secondary-foreground: 0 0% 100%;
 
-    /* Muted neutrals based on WA background */
-    --muted: 32 20% 85%;
-    --muted-foreground: 210 9% 40%;
+    /* Soft muted background for chips, subtle areas */
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 30%;
 
-    /* Chat bubble green: #DCF8C6 ≈ hsl(94 78% 87%) */
-    --accent: 94 78% 87%;
-    --accent-foreground: 202 32% 10%;
-    
-    /* Success = primary green variant */
+    /* Chat-bubble style accent (light green) */
+    --accent: 94 78% 87%;             /* #DCF8C6-ish */
+    --accent-foreground: 0 0% 10%;
+
+    /* Success = primary-ish */
     --success: 142 70% 40%;
     --success-foreground: 0 0% 100%;
-    
-    /* Custom text color (slightly softer than foreground) */
-    --text-custom: 210 15% 30%;
-    
-    /* Custom gradients */
-    /* Your requested background gradient: [#19fa14,#4b9a4a,white,#4b9a4a,#19fa14] */
+
+    /* Slightly softer body text option */
+    --text-custom: 0 0% 15%;
+
+    /* Your requested background gradient (full page) */
     --gradient-hero: linear-gradient(
       90deg,
       #19fa14 0%,
@@ -52,7 +49,6 @@
       #19fa14 100%
     );
 
-    /* Accent gradient between WA green and teal */
     --gradient-accent: linear-gradient(
       135deg,
       hsl(142 70% 49%),
@@ -60,68 +56,62 @@
     );
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 32 15% 80%;
-    --input: 32 15% 80%;
+    --border: 0 0% 84%;
+    --input: 0 0% 90%;
     --ring: 142 70% 49%;
 
     --radius: 0.5rem;
 
-    /* Sidebar (light) similar to WA sidebar */
-    --sidebar-background: 32 28% 90%;
-    --sidebar-foreground: 202 32% 10%;
+    /* Sidebar (if you use one) */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 10%;
     --sidebar-primary: 142 70% 49%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 94 78% 87%;
-    --sidebar-accent-foreground: 202 32% 10%;
-    --sidebar-border: 32 15% 80%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 0 0% 84%;
     --sidebar-ring: 142 70% 49%;
   }
 
   .dark {
-    /* WhatsApp dark background: #111B21 ≈ hsl(202 32% 10%) */
-    --background: 202 32% 10%;
-    --foreground: 210 40% 98%;
+    /* If you use dark mode, keep the same gradient and flip text to white */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
 
-    /* Slightly lighter cards: #202C33 ≈ hsl(202 23% 16%) */
-    --card: 202 23% 16%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 202 23% 16%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
 
-    /* Keep WA green as primary in dark mode */
     --primary: 142 70% 49%;
     --primary-foreground: 0 0% 100%;
 
-    /* WhatsApp teal as secondary */
-    --secondary: 173 77% 31%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 173 77% 40%;
+    --secondary-foreground: 0 0% 100%;
 
-    /* Muted / surfaces */
-    --muted: 202 23% 16%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 0 0% 8%;
+    --muted-foreground: 0 0% 80%;
 
-    /* Accent bubble-style green still works on dark */
     --accent: 94 78% 87%;
-    --accent-foreground: 202 32% 10%;
+    --accent-foreground: 0 0% 10%;
 
     --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 202 23% 16%;
-    --input: 202 23% 16%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
     --ring: 142 70% 49%;
 
-    /* Sidebar (dark) similar to WhatsApp dark sidebar */
-    --sidebar-background: 202 32% 10%;
-    --sidebar-foreground: 240 4% 96%;
+    --sidebar-background: 0 0% 0%;
+    --sidebar-foreground: 0 0% 100%;
     --sidebar-primary: 142 70% 49%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 202 23% 16%;
-    --sidebar-accent-foreground: 240 4% 96%;
-    --sidebar-border: 202 23% 16%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 20%;
     --sidebar-ring: 142 70% 49%;
   }
 }
@@ -133,10 +123,11 @@
 
   body {
     @apply font-heebo;
-    /* WhatsApp-style green gradient background */
-    background: var(--gradient-hero);
+    color: hsl(var(--foreground));
+    background-color: #19fa14;          /* fallback */
+    background-image: var(--gradient-hero);
     background-attachment: fixed;
-    min-height: 100vh;
-    color: #000000;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 }
