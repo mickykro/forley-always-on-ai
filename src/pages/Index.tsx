@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useCountUp } from "@/hooks/useCountUp";
 import SEO from "@/components/SEO";
+import WhatsAppStripes from "@/components/WhatsAppStripes";
 
 const Index = () => {
   const [dealValue, setDealValue] = useState<number>(1000);
@@ -52,7 +53,8 @@ const Index = () => {
         description="מערכת בוט חכמה שמתעדת שיחות, יוצרת קשר עם לקוחות ושולחת סיכומים. לא מפספסים אף הזדמנות עסקית!"
         canonicalUrl="https://call4li.com"
       />
-      <div className="min-h-screen">
+      <WhatsAppStripes />
+      <div className="min-h-screen relative z-10">
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-sm shadow-sm border-b">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
