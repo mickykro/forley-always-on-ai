@@ -40,7 +40,7 @@
     --text-custom: 0 0% 15%;
 
     /* Your requested background gradient (full page) - x10 vertical repeating */
-    --gradient-hero: repeating-linear-gradient(180deg, #19fa14 10%, #4b9a4a 10%, #ffffff 10%, #4b9a4a 30%, #19fa14 40%);
+    --gradient-hero: repeating-linear-gradient(180deg, #19fa14 10%, #4b9a4a 10%, #ffffff 10%, #4b9a4a 30%, #19fa14 30%);
 
     --gradient-accent: linear-gradient(135deg, hsl(142 70% 49%), hsl(173 77% 31%));
 
