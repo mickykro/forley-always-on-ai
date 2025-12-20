@@ -325,12 +325,16 @@ const Index = () => {
               <div className="flex justify-center mb-8">
                 <video src={valuePropositionVid} autoPlay muted loop playsInline className="w-24 h-24" />
               </div>
-              <MessageBubble className="mb-4">
-                <h2 className="text-4xl font-bold text-primary">עסק ממוצע מפספס 30% מהשיחות</h2>
-              </MessageBubble>
-              <MessageBubble className="mb-8">
-                <p className="text-2xl text-muted-foreground">Call4li הופך אותן להזדמנויות!</p>
-              </MessageBubble>
+              <div className="block w-full">
+                <MessageBubble className="mb-4">
+                  <h2 className="text-4xl font-bold text-primary">עסק ממוצע מפספס 30% מהשיחות</h2>
+                </MessageBubble>
+              </div>
+              <div className="block w-full">
+                <MessageBubble className="mb-8">
+                  <p className="text-2xl text-muted-foreground">Call4li הופך אותן להזדמנויות!</p>
+                </MessageBubble>
+              </div>
 
               <Card className="max-w-md mx-auto bg-white text-primary p-8">
                 <CardContent className="pt-4">
