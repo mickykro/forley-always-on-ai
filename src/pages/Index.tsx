@@ -52,9 +52,9 @@ const Index = () => {
         description="מערכת בוט חכמה שמתעדת שיחות, יוצרת קשר עם לקוחות ושולחת סיכומים. לא מפספסים אף הזדמנות עסקית!"
         canonicalUrl="https://call4li.com"
       />
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
+      <header className="bg-white/80 backdrop-blur-sm shadow-sm border-b">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <img src={forliMascot} alt="פורלי הינשוף" className="w-12 h-12" />
@@ -74,7 +74,7 @@ const Index = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-hero py-20">
+      <section className="relative overflow-hidden py-20">
         <div className="container mx-auto px-4 text-center text-text-custom">
           <div className="flex justify-center mb-8">
             <video
@@ -104,7 +104,7 @@ const Index = () => {
       </section>
 
       {/* Statistics Counter */}
-      <section className="py-16 bg-gradient-to-b from-background to-muted/20">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8">
             <div ref={businessCount.countRef} className="relative group">
@@ -146,7 +146,7 @@ const Index = () => {
       </section>
 
       {/* How It Works */}
-      <section className="py-20 bg-white">
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-primary mb-4">איך זה עובד?</h2>
@@ -243,7 +243,7 @@ const Index = () => {
       </section>
 
       {/* Benefits */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-primary mb-4">למה פורלי?</h2>
@@ -295,7 +295,7 @@ const Index = () => {
       </section>
 
       {/* Value Proposition */}
-      <section className="py-20 bg-white">
+      <section className="py-20">
         <div className="container mx-auto px-4 text-center">
           <div className="flex justify-center mb-8">
             <video src={valuePropositionVid} autoPlay muted loop playsInline className="w-24 h-24" />
@@ -336,7 +336,7 @@ const Index = () => {
       </section>
 
       {/* Pricing */}
-      <section id="pricing" className="py-20 bg-white">
+      <section id="pricing" className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-primary mb-4">חבילות המחיר שלנו</h2>
@@ -433,7 +433,7 @@ const Index = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-primary mb-4">מה הלקוחות שלנו אומרים</h2>
@@ -496,7 +496,7 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-hero text-text-custom">
+      <section className="py-20">
         <div className="container mx-auto px-4 text-center">
           <div className="flex justify-center mb-8">
             <video src={ctaMascotVid} autoPlay muted loop playsInline className="w-32 h-32 rounded-full object-cover" />
@@ -512,7 +512,7 @@ const Index = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">שאלות ותשובות</h2>
@@ -614,7 +614,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-primary text-text-custom py-12">
+      <footer className="bg-primary/90 backdrop-blur-sm text-primary-foreground py-12">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8 text-center md:text-right">
             <div>
