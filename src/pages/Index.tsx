@@ -16,6 +16,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useCountUp } from "@/hooks/useCountUp";
 import SEO from "@/components/SEO";
 import WhatsAppStripes from "@/components/WhatsAppStripes";
+import MessageBubble from "@/components/MessageBubble";
 
 const Index = () => {
   const [dealValue, setDealValue] = useState<number>(1000);
@@ -88,13 +89,17 @@ const Index = () => {
               className="w-32 h-32 rounded-full object-cover"
             />
           </div>
-          <h1 className="text-5xl font-bold mb-6 leading-tight text-text-custom">
-            לא מפספסים יותר שיחות –<br />
-            <span className="text-accent font-black">Call4li</span>, הבוט שמחזיר לך שליטה
-          </h1>
-          <p className="text-xl mb-8 max-w-3xl mx-auto leading-relaxed text-text-custom">
-            פורלי הינשוף החכם עונה כשאתה לא יכול – מתעד שיחות, יוצר קשר עם הלקוחות שלך, ושולח לך סיכום ברור
-          </p>
+          <MessageBubble className="mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold leading-tight text-primary">
+              לא מפספסים יותר שיחות –<br />
+              <span className="text-accent font-black">Call4li</span>, הבוט שמחזיר לך שליטה
+            </h1>
+          </MessageBubble>
+          <MessageBubble className="mb-8">
+            <p className="text-lg md:text-xl leading-relaxed text-muted-foreground">
+              פורלי הינשוף החכם עונה כשאתה לא יכול – מתעד שיחות, יוצר קשר עם הלקוחות שלך, ושולח לך סיכום ברור
+            </p>
+          </MessageBubble>
           <Button
             size="lg"
             className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6"
@@ -150,9 +155,13 @@ const Index = () => {
       {/* How It Works */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-primary mb-4">איך זה עובד?</h2>
-            <p className="text-xl text-muted-foreground">3 שלבים פשוטים שמשנים את העסק</p>
+          <div className="flex flex-col items-center mb-16">
+            <MessageBubble className="mb-4">
+              <h2 className="text-4xl font-bold text-primary">איך זה עובד?</h2>
+            </MessageBubble>
+            <MessageBubble>
+              <p className="text-xl text-muted-foreground">3 שלבים פשוטים שמשנים את העסק</p>
+            </MessageBubble>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -247,9 +256,13 @@ const Index = () => {
       {/* Benefits */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-primary mb-4">למה פורלי?</h2>
-            <p className="text-xl text-muted-foreground">היתרונות שיהפכו את העסק שלך</p>
+          <div className="flex flex-col items-center mb-16">
+            <MessageBubble className="mb-4">
+              <h2 className="text-4xl font-bold text-primary">למה פורלי?</h2>
+            </MessageBubble>
+            <MessageBubble>
+              <p className="text-xl text-muted-foreground">היתרונות שיהפכו את העסק שלך</p>
+            </MessageBubble>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -302,8 +315,12 @@ const Index = () => {
           <div className="flex justify-center mb-8">
             <video src={valuePropositionVid} autoPlay muted loop playsInline className="w-24 h-24" />
           </div>
-          <h2 className="text-4xl font-bold text-primary mb-6">עסק ממוצע מפספס 30% מהשיחות</h2>
-          <p className="text-2xl text-muted-foreground mb-8">Call4li הופך אותן להזדמנויות!</p>
+          <MessageBubble className="mb-4">
+            <h2 className="text-4xl font-bold text-primary">עסק ממוצע מפספס 30% מהשיחות</h2>
+          </MessageBubble>
+          <MessageBubble className="mb-8">
+            <p className="text-2xl text-muted-foreground">Call4li הופך אותן להזדמנויות!</p>
+          </MessageBubble>
 
           <Card className="max-w-md mx-auto bg-white text-primary p-8">
             <CardContent className="pt-4">
@@ -340,9 +357,13 @@ const Index = () => {
       {/* Pricing */}
       <section id="pricing" className="py-20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-primary mb-4">חבילות המחיר שלנו</h2>
-            <p className="text-xl text-muted-foreground">בחרו את החבילה המתאימה לעסק שלכם</p>
+          <div className="flex flex-col items-center mb-16">
+            <MessageBubble className="mb-4">
+              <h2 className="text-4xl font-bold text-primary">חבילות המחיר שלנו</h2>
+            </MessageBubble>
+            <MessageBubble>
+              <p className="text-xl text-muted-foreground">בחרו את החבילה המתאימה לעסק שלכם</p>
+            </MessageBubble>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -437,9 +458,13 @@ const Index = () => {
       {/* Testimonials */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-primary mb-4">מה הלקוחות שלנו אומרים</h2>
-            <p className="text-xl text-muted-foreground">סיפורי הצלחה מעסקים כמוכם</p>
+          <div className="flex flex-col items-center mb-16">
+            <MessageBubble className="mb-4">
+              <h2 className="text-4xl font-bold text-primary">מה הלקוחות שלנו אומרים</h2>
+            </MessageBubble>
+            <MessageBubble>
+              <p className="text-xl text-muted-foreground">סיפורי הצלחה מעסקים כמוכם</p>
+            </MessageBubble>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -503,8 +528,12 @@ const Index = () => {
           <div className="flex justify-center mb-8">
             <video src={ctaMascotVid} autoPlay muted loop playsInline className="w-32 h-32 rounded-full object-cover" />
           </div>
-          <h2 className="text-4xl font-bold mb-6">מוכנים להתחיל?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">הצטרפו לעסקים שכבר משתמשים בפורלי ולא מפספסים אף הזדמנות</p>
+          <MessageBubble className="mb-6">
+            <h2 className="text-4xl font-bold text-primary">מוכנים להתחיל?</h2>
+          </MessageBubble>
+          <MessageBubble className="mb-8">
+            <p className="text-xl text-muted-foreground max-w-2xl">הצטרפו לעסקים שכבר משתמשים בפורלי ולא מפספסים אף הזדמנות</p>
+          </MessageBubble>
           <Link to="/contact">
             <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6">
               התחילו ניסיון חינם היום
@@ -516,9 +545,13 @@ const Index = () => {
       {/* FAQ Section */}
       <section className="py-20">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">שאלות ותשובות</h2>
-            <p className="text-lg text-muted-foreground">כל מה שרציתם לדעת על Forli</p>
+          <div className="flex flex-col items-center mb-12">
+            <MessageBubble className="mb-4">
+              <h2 className="text-4xl md:text-5xl font-bold text-primary">שאלות ותשובות</h2>
+            </MessageBubble>
+            <MessageBubble>
+              <p className="text-lg text-muted-foreground">כל מה שרציתם לדעת על Forli</p>
+            </MessageBubble>
           </div>
 
           <Accordion type="single" collapsible className="w-full space-y-4">
