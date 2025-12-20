@@ -17,11 +17,9 @@ import { useCountUp } from "@/hooks/useCountUp";
 import SEO from "@/components/SEO";
 import WhatsAppChatSection from "@/components/WhatsAppChatSection";
 import MessageBubble from "@/components/MessageBubble";
-
 const Index = () => {
   const [dealValue, setDealValue] = useState<number>(1000);
   const [callsPerMonth, setCallsPerMonth] = useState<number>(100);
-
   const expectedReturn = Math.round(dealValue * callsPerMonth * 0.3);
 
   // Counter animations
@@ -29,31 +27,30 @@ const Index = () => {
     end: 124,
     duration: 2500,
     suffix: "+",
-    incrementInterval: { min: 200, max: 1000000 },
+    incrementInterval: {
+      min: 200,
+      max: 1000000
+    }
   });
   const callsCount = useCountUp({
     end: 6737,
     duration: 2500,
     suffix: "+",
-    incrementInterval: { min: 200, max: 1000 },
+    incrementInterval: {
+      min: 200,
+      max: 1000
+    }
   });
   const satisfactionCount = useCountUp({
     end: 98,
     duration: 2000,
-    suffix: "%",
+    suffix: "%"
   });
-
   const card1 = useScrollAnimation();
   const card2 = useScrollAnimation();
   const card3 = useScrollAnimation();
-
-  return (
-    <>
-      <SEO
-        title="Call4li - פורלי הינשוף החכם עונה כשאתה לא יכול"
-        description="מערכת בוט חכמה שמתעדת שיחות, יוצרת קשר עם לקוחות ושולחת סיכומים. לא מפספסים אף הזדמנות עסקית!"
-        canonicalUrl="https://call4li.com"
-      />
+  return <>
+      <SEO title="Call4li - פורלי הינשוף החכם עונה כשאתה לא יכול" description="מערכת בוט חכמה שמתעדת שיחות, יוצרת קשר עם לקוחות ושולחת סיכומים. לא מפספסים אף הזדמנות עסקית!" canonicalUrl="https://call4li.com" />
       <div className="min-h-screen">
         {/* Header */}
         <header className="bg-white/80 backdrop-blur-sm shadow-sm border-b sticky top-0 z-50">
@@ -65,11 +62,9 @@ const Index = () => {
                 <p className="text-sm text-muted-foreground">עם פורלי הינשוף החכם</p>
               </div>
             </div>
-            <Button
-              variant="outline"
-              className="text-secondary hover:bg-secondary hover:text-white"
-              onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
-            >
+            <Button variant="outline" className="text-secondary hover:bg-secondary hover:text-white" onClick={() => document.getElementById("pricing")?.scrollIntoView({
+            behavior: "smooth"
+          })}>
               להתחלת ניסיון חינם
             </Button>
           </div>
@@ -80,19 +75,12 @@ const Index = () => {
           <section className="relative overflow-hidden py-20">
             <div className="container mx-auto px-4 text-center text-text-custom">
               <div className="flex justify-center mb-8">
-                <video
-                  src={heroMascotVid}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="w-32 h-32 rounded-full object-cover"
-                />
+                <video src={heroMascotVid} autoPlay muted loop playsInline className="w-32 h-32 rounded-full object-cover" />
               </div>
               <MessageBubble className="mb-6">
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight text-primary">
+                <h1 className="text-4xl md:text-5xl font-bold leading-tight text-card-foreground">
                   לא מפספסים יותר שיחות –<br />
-                  <span className="text-accent font-black">Call4li</span>, הבוט שמחזיר לך שליטה
+                  <span className="font-black text-primary">Call4li</span>, הבוט שמחזיר לך שליטה
                 </h1>
               </MessageBubble>
               <MessageBubble className="mb-8">
@@ -101,11 +89,9 @@ const Index = () => {
                 </p>
               </MessageBubble>
               <div className="block mt-4">
-                <Button
-                  size="lg"
-                  className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6"
-                  onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
-                >
+                <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6" onClick={() => document.getElementById("pricing")?.scrollIntoView({
+                behavior: "smooth"
+              })}>
                   להתחלת ניסיון חינם
                 </Button>
               </div>
@@ -120,13 +106,11 @@ const Index = () => {
               <div className="grid md:grid-cols-3 gap-8">
                 <div ref={businessCount.countRef} className="relative group">
                   <div className="bg-card border-2 border-primary/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 text-center overflow-hidden">
-                    {businessCount.showIncrement && (
-                      <div className="absolute top-2 left-1/2 transform -translate-x-1/2 animate-float-up-fade z-10">
+                    {businessCount.showIncrement && <div className="absolute top-2 left-1/2 transform -translate-x-1/2 animate-float-up-fade z-10">
                         <div className="bg-white rounded-full w-20 h-20 flex items-center justify-center shadow-lg">
                           <span className="text-primary font-bold text-xl">+1</span>
                         </div>
-                      </div>
-                    )}
+                      </div>}
                     <div className="text-5xl font-bold text-primary mb-4">{businessCount.formattedCount}</div>
                     <p className="text-lg text-muted-foreground font-semibold">עסקים משתמשים בשירות</p>
                   </div>
@@ -134,13 +118,11 @@ const Index = () => {
 
                 <div ref={callsCount.countRef} className="relative group">
                   <div className="bg-card border-2 border-accent/20 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 text-center overflow-hidden">
-                    {callsCount.showIncrement && (
-                      <div className="absolute top-2 left-1/2 transform -translate-x-1/2 animate-float-up-fade z-10">
+                    {callsCount.showIncrement && <div className="absolute top-2 left-1/2 transform -translate-x-1/2 animate-float-up-fade z-10">
                         <div className="bg-white rounded-full w-20 h-20 flex items-center justify-center shadow-lg">
                           <span className="text-accent font-bold text-xl">+1</span>
                         </div>
-                      </div>
-                    )}
+                      </div>}
                     <div className="text-5xl font-bold text-accent mb-4">{callsCount.formattedCount}</div>
                     <p className="text-lg text-muted-foreground font-semibold">שיחות נשמרו בזכות הבוט</p>
                   </div>
@@ -171,12 +153,7 @@ const Index = () => {
               </div>
 
               <div className="grid md:grid-cols-3 gap-8">
-                <Card
-                  ref={card1.ref}
-                  className={`text-center p-8 border-2 hover:border-secondary transition-all duration-700 ${
-                    card1.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-                  }`}
-                >
+                <Card ref={card1.ref} className={`text-center p-8 border-2 hover:border-secondary transition-all duration-700 ${card1.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
                   <CardContent className="pt-6">
                     <div className="flex justify-center mb-6">
                       <div className="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center">
@@ -184,26 +161,14 @@ const Index = () => {
                       </div>
                     </div>
                     <div className="flex justify-center mb-4">
-                      <video
-                        src={answeringVid}
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        className="w-16 h-16 rounded-full object-cover"
-                      />
+                      <video src={answeringVid} autoPlay muted loop playsInline className="w-16 h-16 rounded-full object-cover" />
                     </div>
                     <h3 className="text-2xl font-bold text-primary mb-4">לקוח מתקשר</h3>
                     <p className="text-muted-foreground text-lg">פורלי מזהה את השיחה הנכנסת ומתכונן לפעול</p>
                   </CardContent>
                 </Card>
 
-                <Card
-                  ref={card2.ref}
-                  className={`text-center p-8 border-2 hover:border-secondary transition-all duration-700 delay-150 ${
-                    card2.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-                  }`}
-                >
+                <Card ref={card2.ref} className={`text-center p-8 border-2 hover:border-secondary transition-all duration-700 delay-150 ${card2.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
                   <CardContent className="pt-6">
                     <div className="flex justify-center mb-6">
                       <div className="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center">
@@ -211,14 +176,7 @@ const Index = () => {
                       </div>
                     </div>
                     <div className="flex justify-center mb-4">
-                      <video
-                        src={typingVid}
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        className="w-16 h-16 rounded-full object-cover"
-                      />
+                      <video src={typingVid} autoPlay muted loop playsInline className="w-16 h-16 rounded-full object-cover" />
                     </div>
                     <h3 className="text-2xl font-bold text-primary mb-4">תגובה חכמה</h3>
                     <p className="text-muted-foreground text-lg">
@@ -229,12 +187,7 @@ const Index = () => {
                   </CardContent>
                 </Card>
 
-                <Card
-                  ref={card3.ref}
-                  className={`text-center p-8 border-2 hover:border-secondary transition-all duration-700 delay-300 ${
-                    card3.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-                  }`}
-                >
+                <Card ref={card3.ref} className={`text-center p-8 border-2 hover:border-secondary transition-all duration-700 delay-300 ${card3.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
                   <CardContent className="pt-6">
                     <div className="flex justify-center mb-6">
                       <div className="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center">
@@ -242,14 +195,7 @@ const Index = () => {
                       </div>
                     </div>
                     <div className="flex justify-center mb-4">
-                      <video
-                        src={summaryVid}
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        className="w-16 h-16 rounded-full object-cover"
-                      />
+                      <video src={summaryVid} autoPlay muted loop playsInline className="w-16 h-16 rounded-full object-cover" />
                     </div>
                     <h3 className="text-2xl font-bold text-primary mb-4">סיכום מושלם</h3>
                     <p className="text-muted-foreground text-lg">כל השיחה נשמרת בגיליון או CRM עם סיכום ברור</p>
@@ -342,21 +288,11 @@ const Index = () => {
                   <div className="space-y-4 text-right">
                     <div>
                       <label className="block text-sm font-medium mb-2">שווי עסקה ממוצעת (₪)</label>
-                      <input
-                        type="number"
-                        value={dealValue}
-                        onChange={(e) => setDealValue(Number(e.target.value) || 0)}
-                        className="w-full p-3 border rounded-lg text-center"
-                      />
+                      <input type="number" value={dealValue} onChange={e => setDealValue(Number(e.target.value) || 0)} className="w-full p-3 border rounded-lg text-center" />
                     </div>
                     <div>
                       <label className="block text-sm font-medium mb-2">שיחות בחודש</label>
-                      <input
-                        type="number"
-                        value={callsPerMonth}
-                        onChange={(e) => setCallsPerMonth(Number(e.target.value) || 0)}
-                        className="w-full p-3 border rounded-lg text-center"
-                      />
+                      <input type="number" value={callsPerMonth} onChange={e => setCallsPerMonth(Number(e.target.value) || 0)} className="w-full p-3 border rounded-lg text-center" />
                     </div>
                     <div className="pt-4 border-t">
                       <p className="text-lg font-bold text-success">החזר צפוי: ₪{expectedReturn.toLocaleString()}/חודש</p>
@@ -723,8 +659,6 @@ const Index = () => {
           </div>
         </footer>
       </div>
-    </>
-  );
+    </>;
 };
-
 export default Index;
