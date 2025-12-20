@@ -132,12 +132,11 @@
   }
 
   body {
-    @apply text-foreground font-heebo;
-    /* Fallback color + WhatsApp-style green gradient background */
-    background-color: hsl(var(--background));
-    background-image: var(--gradient-hero);
+    @apply font-heebo;
+    /* WhatsApp-style green gradient background */
+    background: var(--gradient-hero);
     background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
+    min-height: 100vh;
+    color: #000000;
   }
 }
