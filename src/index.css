@@ -113,10 +113,6 @@
   body {
     @apply font-heebo;
     color: hsl(var(--foreground));
-    background-color: #19fa14; /* fallback */
-    background-image: var(--gradient-hero);
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-color: #ECE5DD;
   }
 }
