@@ -14,13 +14,25 @@ interface Carrier {
 }
 
 const carriers: Carrier[] = [
-  { name: "HOT Mobile", code: "hot", activationCode: "*004*0535972420**10%23" },
-  { name: "Pelephone", code: "pelephone", activationCode: "*61*0535972420**10%23" },
-  { name: "Partner", code: "partner", activationCode: "*61*0535972420**10%23" },
-  { name: "Cellcom", code: "cellcom", activationCode: "*61*0535972420**10%23" },
-  { name: "Golan Telecom", code: "golan", activationCode: "*004*0535972420**10%23" },
-  { name: "Rami Levy", code: "rami", activationCode: "*004*0535972420**10%23" },
-  { name: "012 Mobile", code: "012", activationCode: "*004*0535972420**10%23" },
+  // HOT Mobile supports 004
+  { name: "HOT Mobile", code: "hot", activationCode: "**004*0535972420**10%23" },
+
+  // Golan supports 004
+  { name: "Golan Telecom", code: "golan", activationCode: "**004*0535972420**10%23" },
+
+  // Rami Levy (MVNO) usually supports 004
+  { name: "Rami Levy", code: "rami", activationCode: "**004*0535972420**10%23" },
+
+  // 012 Mobile is Partner. If Partner needs 61/62/67, 012 likely does too.
+  // If you are sure 004 works for 012, keep it.
+  { name: "012 Mobile", code: "012", activationCode: "**004*0535972420**10%23" },
+
+  // --- THE PROBLEMATIC ONES ---
+  // If you confirmed *004* fails on these, using *61* is a partial fix.
+  // Ideally, test **004* on these. If it fails, they need 67/62 as well.
+  { name: "Pelephone", code: "pelephone", activationCode: "**004*0535972420**10%23" },
+  { name: "Partner", code: "partner", activationCode: "**004*0535972420**10%23" },
+  { name: "Cellcom", code: "cellcom", activationCode: "**004*0535972420**10%23" },
 ];
 
 const Onboard = () => {
