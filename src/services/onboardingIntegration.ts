@@ -1,4 +1,4 @@
-const WEBHOOK_URL = "https://n8n.srv1173890.hstgr.cloud/webhook/87b6449c-9a9d-4167-9ce4-cdce8428033f";
+import { supabase } from "@/integrations/supabase/client";
 
 export interface OnboardingEvent {
   event: "page_opened" | "button_clicked";
@@ -8,16 +8,12 @@ export interface OnboardingEvent {
 
 export const logOnboardingEvent = async (eventData: OnboardingEvent): Promise<void> => {
   try {
-    const response = await fetch(WEBHOOK_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(eventData),
+    const { error } = await supabase.functions.invoke('onboarding-webhook', {
+      body: eventData,
     });
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    if (error) {
+      console.error("Failed to log onboarding event:", error);
     }
   } catch (error) {
     console.error("Failed to log onboarding event:", error);
