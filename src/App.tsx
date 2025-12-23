@@ -12,6 +12,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import FAQ from "./pages/FAQ";
 import NotFound from "./pages/NotFound";
 
+// App version: 2024-12-23
 const queryClient = new QueryClient();
 
 const App = () => (
