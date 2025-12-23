@@ -1,4 +1,5 @@
 import { supabase } from "@/integrations/supabase/client";
+import { hashClientId } from "@/lib/hashUtils";
 
 export interface OnboardingEvent {
   event: "page_opened" | "button_clicked";
@@ -8,15 +9,21 @@ export interface OnboardingEvent {
 
 export const logOnboardingEvent = async (eventData: OnboardingEvent): Promise<void> => {
   try {
+    // Hash the client_id to prevent PII exposure in logs
+    const hashedClientId = await hashClientId(eventData.client_id);
+    
     const { error } = await supabase.functions.invoke('onboarding-webhook', {
-      body: eventData,
+      body: {
+        ...eventData,
+        client_id: hashedClientId, // Send hashed version to external systems
+      },
     });
 
     if (error) {
-      console.error("Failed to log onboarding event:", error);
+      console.error("Failed to log onboarding event");
     }
   } catch (error) {
-    console.error("Failed to log onboarding event:", error);
+    console.error("Failed to log onboarding event");
     // Silently fail - don't block user experience
   }
 };
