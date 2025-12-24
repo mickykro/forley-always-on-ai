@@ -68,7 +68,7 @@ const Delete = () => {
       <SEO
         title="ביטול שירות - Call4li"
         description="ביטול העברת שיחות לשירות Call4li בלחיצה אחת."
-        canonicalUrl="https://call4li.com/delete"
+        canonicalUrl={`${import.meta.env.VITE_DOMAIN_URL || "https://call4li.com"}/delete`}
         noIndex={true}
       />
       <div className="min-h-screen bg-background flex items-center justify-center p-4" dir="rtl">

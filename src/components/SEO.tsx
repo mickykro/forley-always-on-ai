@@ -12,8 +12,8 @@ interface SEOProps {
 const SEO = ({
   title,
   description,
-  canonicalUrl = "https://call4li.com",
-  ogImage = "https://storage.googleapis.com/gpt-engineer-file-uploads/BznbHi8FA0h8NpJ5xTQqZqFHOWw2/social-images/social-1758443376531-forli-mascot.png",
+  canonicalUrl = import.meta.env.VITE_DOMAIN_URL || "https://call4li.com",
+  ogImage = import.meta.env.VITE_OG_IMAGE || "https://storage.googleapis.com/gpt-engineer-file-uploads/BznbHi8FA0h8NpJ5xTQqZqFHOWw2/social-images/social-1758443376531-forli-mascot.png",
   ogType = "website",
   noIndex = false,
 }: SEOProps) => {

@@ -244,7 +244,7 @@ const Contact = () => {
       <SEO
         title="צור קשר - Call4li"
         description="צרו קשר עם צוות Call4li לקבלת הצעת מחיר מותאמת אישית. נחזור אליכם תוך 24 שעות."
-        canonicalUrl="https://call4li.com/contact"
+        canonicalUrl={`${import.meta.env.VITE_DOMAIN_URL || "https://call4li.com"}/contact`}
       />
       <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center p-4">
         <Card className="w-full max-w-md mx-auto bg-[#111b21] border-gray-800">

@@ -1,7 +1,7 @@
 project_id = "qmnybnnmoyvpytjhnmfe"
 
 [functions.contact-webhook]
-verify_jwt = false
+verify_jwt = true
 
 [functions.onboarding-webhook]
-verify_jwt = false
+verify_jwt = true

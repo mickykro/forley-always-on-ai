@@ -13,21 +13,22 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     mode === "development" && componentTagger(),
-    mode === "production" &&
-      prerender({
-        routes: ["/", "/contact", "/faq", "/privacy", "/delete"],
-        renderer: "@prerenderer/renderer-jsdom",
-        rendererOptions: {
-          renderAfterDocumentEvent: "app-rendered",
-        },
-        postProcess(renderedRoute) {
-          // Ensure proper encoding for Hebrew content
-          renderedRoute.html = renderedRoute.html.replace(
-            /<html/,
-            '<html lang="he" dir="rtl"'
-          );
-        },
-      }),
+    // Disable prerendering for now to fix build issues
+    // mode === "production" &&
+    //   prerender({
+    //     routes: ["/", "/contact", "/faq", "/privacy", "/delete"],
+    //     renderer: "@prerenderer/renderer-jsdom",
+    //     rendererOptions: {
+    //       renderAfterDocumentEvent: "app-rendered",
+    //     },
+    //     postProcess(renderedRoute) {
+    //       // Ensure proper encoding for Hebrew content
+    //       renderedRoute.html = renderedRoute.html.replace(
+    //         /<html/,
+    //         '<html lang="he" dir="rtl"'
+    //       );
+    //     },
+    //   }),
   ].filter(Boolean),
   resolve: {
     alias: {

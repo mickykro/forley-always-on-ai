@@ -53,7 +53,7 @@ const FAQ = () => {
       <SEO
         title="שאלות ותשובות - Call4li"
         description="מצא תשובות לשאלות הנפוצות ביותר על Call4li - איך זה עובד, כמה זה עולה, ואיך להתחיל."
-        canonicalUrl="https://call4li.com/faq"
+        canonicalUrl={`${import.meta.env.VITE_DOMAIN_URL || "https://call4li.com"}/faq`}
       />
       <div className="min-h-screen bg-background">
       {/* Header */}

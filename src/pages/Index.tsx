@@ -22,6 +22,8 @@ const Index = () => {
   const [callsPerMonth, setCallsPerMonth] = useState<number>(100);
   const expectedReturn = Math.round(dealValue * callsPerMonth * 0.3);
 
+  const whatsappUrl = `https://wa.me/${import.meta.env.VITE_WHATSAPP_PHONE || "972553163293"}?text=היי`;
+
   // Counter animations
   const businessCount = useCountUp({
     end: 123,
@@ -54,7 +56,7 @@ const Index = () => {
       <SEO
         title="Call4li - פורלי הינשוף החכם עונה כשאתה לא יכול"
         description="מערכת בוט חכמה שמתעדת שיחות, יוצרת קשר עם לקוחות ושולחת סיכומים. לא מפספסים אף הזדמנות עסקית!"
-        canonicalUrl="https://call4li.com"
+        canonicalUrl={import.meta.env.VITE_DOMAIN_URL || "https://call4li.com"}
       />
       <div className="min-h-screen">
         {/* Header */}
@@ -67,7 +69,7 @@ const Index = () => {
                 <p className="text-sm text-muted-foreground">עם פורלי הינשוף החכם</p>
               </div>
             </div>
-            <a href="https://wa.me/972553163293?text=היי" target="_blank" rel="noopener noreferrer">
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
               <Button variant="outline" className="text-secondary hover:bg-secondary hover:text-white">
                 להתחלת ניסיון חינם
               </Button>
@@ -101,7 +103,7 @@ const Index = () => {
                 </p>
               </MessageBubble>
               <div className="block mt-4">
-                <a href="https://wa.me/972553163293?text=היי" target="_blank" rel="noopener noreferrer">
+                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                   <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6">
                     להתחלת ניסיון חינם
                   </Button>
@@ -411,7 +413,7 @@ const Index = () => {
                       </li>
                     </ul>
                     <a
-                      href="https://wa.me/972553163293?text=היי"
+                      href={whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full"
@@ -462,7 +464,7 @@ const Index = () => {
                       </li>
                     </ul>
                     <a
-                      href="https://wa.me/972553163293?text=היי"
+                      href={whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full"
@@ -574,7 +576,7 @@ const Index = () => {
                 </MessageBubble>
               </div>
               <div className="block w-full">
-                <a href="https://wa.me/972553163293?text=היי" target="_blank" rel="noopener noreferrer">
+                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                   <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6">
                     התחילו ניסיון חינם היום
                   </Button>
