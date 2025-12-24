@@ -22,7 +22,7 @@ const Index = () => {
   const [callsPerMonth, setCallsPerMonth] = useState<number>(100);
   const expectedReturn = Math.round(dealValue * callsPerMonth * 0.3);
 
-  const whatsappUrl = `https://wa.me/${import.meta.env.VITE_WHATSAPP_PHONE || "972553163293"}?text=היי`;
+  const whatsappUrl = `https://wa.me/${import.meta.env.VITE_WHATSAPP_PHONE || "972553163293"}?text=${encodeURIComponent("שלום, אשמח לקבל מידע נוסף על המערכת")}`;
 
   // Counter animations
   const businessCount = useCountUp({
