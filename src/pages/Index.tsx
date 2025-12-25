@@ -17,6 +17,7 @@ import { useCountUp } from "@/hooks/useCountUp";
 import SEO from "@/components/SEO";
 import WhatsAppChatSection from "@/components/WhatsAppChatSection";
 import MessageBubble from "@/components/MessageBubble";
+import PromoModal from "@/components/PromoModal";
 const Index = () => {
   const [dealValue, setDealValue] = useState<number>(1000);
   const [callsPerMonth, setCallsPerMonth] = useState<number>(100);
@@ -58,6 +59,7 @@ const Index = () => {
         description="מערכת בוט חכמה שמתעדת שיחות, יוצרת קשר עם לקוחות ושולחת סיכומים. לא מפספסים אף הזדמנות עסקית!"
         canonicalUrl={import.meta.env.VITE_DOMAIN_URL || "https://call4li.com"}
       />
+      <PromoModal whatsappUrl={whatsappUrl} />
       <div className="min-h-screen">
         {/* Header */}
         <header className="bg-white/80 backdrop-blur-sm shadow-sm border-b sticky top-0 z-50">
