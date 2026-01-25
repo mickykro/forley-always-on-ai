@@ -62,6 +62,14 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Futuristic Tech Colors
+        cyber: {
+          cyan: "#00E5FF",
+          blue: "#00FFFF",
+          void: "#050A1E",
+          midnight: "#020612",
+          teal: "#2E5A75",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -98,11 +106,37 @@ export default {
             transform: "translateY(-90px)",
           },
         },
+        "pop-in": {
+          "0%": {
+            opacity: "0",
+            transform: "scale(0.5)",
+          },
+          "60%": {
+            opacity: "1",
+            transform: "scale(1.1)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "scale(1)",
+          },
+        },
+        "glow-pulse": {
+          "0%, 100%": {
+            opacity: "1",
+            filter: "drop-shadow(0 0 8px #00E5FF)",
+          },
+          "50%": {
+            opacity: "0.8",
+            filter: "drop-shadow(0 0 20px #00E5FF)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "float-up-fade": "float-up-fade 16s ease-out forwards",
+        "pop-in": "pop-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+        "glow-pulse": "glow-pulse 2s ease-in-out infinite",
       },
     },
   },
