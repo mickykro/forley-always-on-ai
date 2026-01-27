@@ -210,7 +210,7 @@ const CircuitBackground = ({
       {/* Static circuit pattern overlay */}
       <div 
         className="absolute inset-0 pointer-events-none circuit-pattern opacity-30"
-        style={{ backgroundSize: "80px 80px" }}
+        style={{ backgroundSize: "180px 180px" }}
       />
       
       {/* Radial gradient overlay for depth */}
