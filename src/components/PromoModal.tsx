@@ -72,7 +72,7 @@ const PromoModal = ({ whatsappUrl }: PromoModalProps) => {
             </p>
             <div className="bg-white rounded-lg p-4 shadow-sm">
               <p className="text-2xl font-bold text-accent-foreground line-through decoration-2 mb-1">
-                ₪450
+                ₪159
               </p>
               <p className="text-4xl font-bold text-success">
                 חינם!
