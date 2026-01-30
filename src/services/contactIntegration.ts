@@ -3,6 +3,14 @@ import { supabase } from "@/integrations/supabase/client";
 
 export class ContactIntegrationService {
   static async submitContactForm(data: ContactFormData): Promise<{ success: boolean; errors: string[] }> {
+    if (!supabase) {
+      console.warn("Skipping contact form submission because Supabase is not configured.");
+      return {
+        success: false,
+        errors: ["המערכת אינה מוגדרת. אנא נסה מאוחר יותר או צור קשר עם התמיכה."],
+      };
+    }
+
     try {
       const { data: responseData, error } = await supabase.functions.invoke('contact-webhook', {
         body: {

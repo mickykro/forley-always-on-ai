@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { useToast } from "@/hooks/use-toast";
 import { logOnboardingEvent } from "@/services/onboardingIntegration";
 import forliMascot from "@/assets/forli_no_bg.png";
@@ -10,29 +11,32 @@ import forliMascot from "@/assets/forli_no_bg.png";
 interface Carrier {
   name: string;
   code: string;
-  activationCode: string;
+  activationCodeTemplate: string;
 }
+
+const WAITING_TIME_PLACEHOLDER = "{wait}";
+const WAITING_TIME_OPTIONS = [10, 20, 30];
 
 const carriers: Carrier[] = [
   // HOT Mobile supports 004
-  { name: "HOT Mobile", code: "hot", activationCode: "**004*0535972420**10%23" },
+  { name: "HOT Mobile", code: "hot", activationCodeTemplate: "**004*0535972420**{wait}%23" },
 
   // Golan supports 004
-  { name: "Golan Telecom", code: "golan", activationCode: "**004*0535972420**10%23" },
+  { name: "Golan Telecom", code: "golan", activationCodeTemplate: "**004*0535972420**{wait}%23" },
 
   // Rami Levy (MVNO) usually supports 004
-  { name: "Rami Levy", code: "rami", activationCode: "**004*0535972420**10%23" },
+  { name: "Rami Levy", code: "rami", activationCodeTemplate: "**004*0535972420**{wait}%23" },
 
   // 012 Mobile is Partner. If Partner needs 61/62/67, 012 likely does too.
   // If you are sure 004 works for 012, keep it.
-  { name: "012 Mobile", code: "012", activationCode: "**004*0535972420**10%23" },
+  { name: "012 Mobile", code: "012", activationCodeTemplate: "**004*0535972420**{wait}%23" },
 
   // --- THE PROBLEMATIC ONES ---
   // If you confirmed *004* fails on these, using *61* is a partial fix.
   // Ideally, test **004* on these. If it fails, they need 67/62 as well.
-  { name: "Pelephone", code: "pelephone", activationCode: "**004*0535972420**10%23" },
-  { name: "Partner", code: "partner", activationCode: "**004*0535972420**10%23" },
-  { name: "Cellcom", code: "cellcom", activationCode: "**004*0535972420**10%23" },
+  { name: "Pelephone", code: "pelephone", activationCodeTemplate: "**004*0535972420**{wait}%23" },
+  { name: "Partner", code: "partner", activationCodeTemplate: "**004*0535972420**{wait}%23" },
+  { name: "Cellcom", code: "cellcom", activationCodeTemplate: "**004*0535972420**{wait}%23" },
 ];
 
 const Onboard = () => {
@@ -40,6 +44,7 @@ const Onboard = () => {
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [isCarrierDialogOpen, setIsCarrierDialogOpen] = useState(false);
+  const [waitingTime, setWaitingTime] = useState<number>(WAITING_TIME_OPTIONS[0]);
 
   useEffect(() => {
     if (client_id) {
@@ -66,7 +71,12 @@ const Onboard = () => {
         action: "activate",
       });
 
-      window.location.href = `tel:${carrier.activationCode}`;
+      const template = carrier.activationCodeTemplate;
+      const activationCode = template.includes(WAITING_TIME_PLACEHOLDER)
+        ? template.replace(WAITING_TIME_PLACEHOLDER, waitingTime.toString())
+        : template;
+
+      window.location.href = `tel:${activationCode}`;
 
       toast({
         title: "פעולה בוצעה בהצלחה",
@@ -114,6 +124,7 @@ const Onboard = () => {
   };
 
   if (!client_id) {
+    
     return (
       <div className="min-h-screen bg-background flex items-center justify-center p-4">
         <Card className="w-full max-w-md">
@@ -138,6 +149,26 @@ const Onboard = () => {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
+          <div className="space-y-2 text-center">
+            <p className="text-sm text-muted-foreground">בחר זמן המתנה לפני העברת השיחה</p>
+            <ToggleGroup
+              type="single"
+              value={String(waitingTime)}
+              onValueChange={(value) => {
+                if (value) {
+                  setWaitingTime(Number(value));
+                }
+              }}
+              aria-label="זמן המתנה"
+              className="w-full justify-center gap-2"
+            >
+              {WAITING_TIME_OPTIONS.map((option) => (
+                <ToggleGroupItem key={option} value={String(option)} className="flex-1">
+                  {option} שניות
+                </ToggleGroupItem>
+              ))}
+            </ToggleGroup>
+          </div>
           <Button
             className="w-full h-14 text-lg font-semibold bg-primary text-primary-foreground hover:bg-primary/90"
             onClick={handleActivateClick}
@@ -169,11 +200,11 @@ const Onboard = () => {
               <Button
                 key={carrier.code}
                 variant="outline"
-                className="w-full h-12 text-base font-medium"
+                className="w-full h-12 text-base font-medium flex items-center justify-between"
                 onClick={() => handleCarrierSelect(carrier)}
                 disabled={isLoading}
               >
-                {carrier.name}
+                <span className="w-full ">{carrier.name}</span>
               </Button>
             ))}
           </div>

@@ -54,13 +54,15 @@ export const useCountUp = ({
       { threshold: 0.5 }
     );
 
-    if (countRef.current) {
-      observer.observe(countRef.current);
+    const target = countRef.current;
+
+    if (target) {
+      observer.observe(target);
     }
 
     return () => {
-      if (countRef.current) {
-        observer.unobserve(countRef.current);
+      if (target) {
+        observer.unobserve(target);
       }
     };
   }, [end, duration, start, hasAnimated]);

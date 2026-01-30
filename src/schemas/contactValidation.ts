@@ -47,22 +47,26 @@ export const validateField = (field: keyof ContactFormData, value: string): stri
 
 export const validateStep = (step: number, formData: ContactFormData): { isValid: boolean; error?: string } => {
   switch (step) {
-    case 1: // Name validation
+    case 1: {
       const nameError = validateField("name", formData.name);
       return { isValid: !nameError, error: nameError || undefined };
-    
-    case 2: // Company name validation
+    }
+
+    case 2: {
       const companyError = validateField("companyName", formData.companyName);
       return { isValid: !companyError, error: companyError || undefined };
-    
-    case 3: // Business description validation
+    }
+
+    case 3: {
       const descriptionError = validateField("businessDescription", formData.businessDescription);
       return { isValid: !descriptionError, error: descriptionError || undefined };
-    
-    case 4: // Phone validation
+    }
+
+    case 4: {
       const phoneError = validateField("phone", formData.phone);
       return { isValid: !phoneError, error: phoneError || undefined };
-    
+    }
+
     default:
       return { isValid: true };
   }

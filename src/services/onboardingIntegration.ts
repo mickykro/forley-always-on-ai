@@ -9,6 +9,11 @@ export interface OnboardingEvent {
 
 export const logOnboardingEvent = async (eventData: OnboardingEvent): Promise<void> => {
   try {
+    if (!supabase) {
+      console.warn("Skipping onboarding event logging because Supabase is not configured.");
+      return;
+    }
+
     // Hash the client_id to prevent PII exposure in logs
     const hashedClientId = await hashClientId(eventData.client_id);
     
