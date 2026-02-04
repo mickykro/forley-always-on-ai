@@ -18,7 +18,7 @@ const PromoModal = ({ whatsappUrl }: PromoModalProps) => {
 
   useEffect(() => {
     // Check if user has seen the modal before
-    const hasSeenModal = localStorage.getItem("hasSeenPromoModal");
+    const hasSeenModal = false// localStorage.getItem("hasSeenPromoModal");
 
     if (!hasSeenModal) {
       // Show modal after 2 seconds delay
@@ -46,13 +46,13 @@ const PromoModal = ({ whatsappUrl }: PromoModalProps) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="sm:max-w-md bg-gradient-to-br from-primary/5 to-accent/5 border-2 border-primary/20">
-        <button
+        {/* <button
           onClick={handleClose}
           className="absolute left-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
         >
           <X className="h-4 w-4" />
           <span className="sr-only">Close</span>
-        </button>
+        </button> */}
 
         <DialogHeader className="text-center space-y-4 pt-6">
           <div className="mx-auto">
@@ -72,7 +72,7 @@ const PromoModal = ({ whatsappUrl }: PromoModalProps) => {
             </p>
             <div className="bg-white rounded-lg p-4 shadow-sm">
               <p className="text-2xl font-bold text-accent-foreground line-through decoration-2 mb-1">
-                ₪450
+                ₪159
               </p>
               <p className="text-4xl font-bold text-success">
                 חינם!

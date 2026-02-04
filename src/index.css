@@ -157,4 +157,76 @@
       transform: translateX(100%);
     }
   }
+
+  .silver-section {
+    background-color: #52565f;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .silver-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0) 20%,
+      rgba(255, 255, 255, 0.9) 44%,
+      rgba(255, 255, 255, 0.9) 54%,
+      rgba(255, 255, 255, 0) 78%
+    );
+    opacity: 0.85;
+    transform: translateX(-100%);
+    animation: silver-sweep 5s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .silver-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.15), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @keyframes silver-sweep {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .button-shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .button-shine::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.65) 45%, rgba(255, 255, 255, 0) 90%);
+    opacity: 0.65;
+    transform: translateX(-100%);
+    animation: button-shine-sweep 2s linear infinite;
+    pointer-events: none;
+  }
+
+  .button-shine > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  @keyframes button-shine-sweep {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
 }
