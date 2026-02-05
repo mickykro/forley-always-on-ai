@@ -1,5 +1,8 @@
 import forliMascot from "@/assets/forli_no_bg.png";
 import forliChats from "@/assets/forli-chats.png";
+import chat1 from "@/assets/chat1.jpg";
+import chat2 from "@/assets/chat2.jpeg";
+import chat3 from "@/assets/chat3.png";
 import answeringVid from "@/assets/answering_vid.mp4";
 import typingVid from "@/assets/typing_vid.mp4";
 import summaryVid from "@/assets/summary_vid.mp4";
@@ -85,6 +88,8 @@ const Index = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const chatImages = [chat1, chat2, chat3, chat1, chat2, chat3];
+
   const activeObjection = objectionHighlights[activeObjectionIndex];
   return (
     <>
@@ -131,19 +136,35 @@ const Index = () => {
                 כל שיחה שלא נענית = לקוח שהלך. פורלי מחזיר אותו אליך
               </h1>
             </MessageBubble>
-            <MessageBubble className="">
+            <MessageBubble>
               <p className="text-lg md:text-xl leading-relaxed text-foreground">
                 פורלי עונה בשמך, שולח ווטסאפ ללקוח, מתעד את השיחה – ואתה לא מפספס הזדמנות </p>
             </MessageBubble>
 
-            <div className="flex justify-center">
-              <img
+            <div className="carousel">
+            <div className="flex justify-center carousel-group">
+              {chatImages.map((forliChats, index) => (
+                <div key={index} className="chat-card w-200 h-200 object-fill">
+                  <img src={forliChats} alt="דוגמת שיחה מהבוט"/>
+                </div>
+              ))}
+            </div>
+            <div className="flex justify-center carousel-group">
+              {chatImages.map((forliChats, index) => (
+                <div key={index} className="chat-card w-200 h-200 object-fill">
+                  <img src={forliChats} alt="דוגמת שיחה מהבוט"/>
+                </div>
+              ))}
+              
+  
+              {/* <img
                 src={forliChats}
                 alt="דוגמת שיחה מהרגע שהלקוח מגיע"
                 className="w-full max-w-4xl rounded-3xl"
-              />
+                /> */}
             </div>
-
+            </div>
+            
             {/* Rounded Text Field */}
             <div className="w-full md:w-4/5 mx-auto">
               <input

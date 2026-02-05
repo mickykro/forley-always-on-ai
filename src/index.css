@@ -221,6 +221,35 @@
     z-index: 1;
   }
 
+  .carousel {
+    margin: 60px auto;
+    overflow-x: auto;
+    width: 80%;
+    display: flex;
+    padding-left: 10em;
+    padding-right: 10em;
+    gap: 4em;
+  }
+  .carousel-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4em;
+    animation: carousel 20s infinite linear;
+  }
+.carousel::-webkit-scrollbar{
+  display: none;
+}
+  .chat-card {
+    flex: 0 0 15em;
+  }
+
+  @keyframes carousel {
+    from { translate: 0; }
+    to { translate: 100%;}
+
+  }
+
   @keyframes button-shine-sweep {
     0% {
       transform: translateX(-100%);
