@@ -144,6 +144,7 @@ const Index = () => {
                 <p className="text-sm text-muted-foreground">עם פורלי הינשוף החכם</p>
               </div>
             </div>
+            
             <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
               <Button variant="outline" className="text-primary hover:bg-primary hover:text-black border-primary cyber-border">
                 להתחלת ניסיון חינם
@@ -213,7 +214,7 @@ const Index = () => {
             <p className=" mt-6 text-lg md:text-xl leading-relaxed text-foreground">הצילו לקוח אחד היום</p>
             <div className="block ">
               <a href={heroWhatsAppUrl} target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="bg-primary text-black hover:bg-primary/90 text-lg rounded-full px-4 py-6 shadow-[0_0_30px_rgba(0,229,255,0.4)] hover:shadow-[0_0_50px_rgba(0,229,255,0.6)] transition-all">
+                <Button size="lg" className="bg-primary text-black hover:bg-primary/90 text-sm md:text-lg rounded-full px-4 py-6 shadow-[0_0_30px_rgba(0,229,255,0.4)] hover:shadow-[0_0_50px_rgba(0,229,255,0.6)] transition-all">
                   שלחו הודעה לפורלי – התחילו חינם
                 </Button>
               </a>

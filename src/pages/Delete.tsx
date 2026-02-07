@@ -75,7 +75,7 @@ const Delete = () => {
         <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
-            <img src={forliMascot} alt="Forli Mascot" className="w-16 h-16" />
+            <img src={forliMascot} alt="Forli Mascot" className="w-28 h-16" />
           </div>
           <CardTitle className="text-2xl font-bold text-primary">
             ביטול שירות Call4li
