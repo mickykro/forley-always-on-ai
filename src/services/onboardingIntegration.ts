@@ -1,4 +1,3 @@
-import { supabase } from "@/integrations/supabase/client";
 import { hashClientId } from "@/lib/hashUtils";
 
 export interface OnboardingEvent {
@@ -7,23 +6,37 @@ export interface OnboardingEvent {
   action?: "activate" | "cancel" | "check";
 }
 
+const ONBOARDING_WEBHOOK_URL = import.meta.env.VITE_N8N_ONBOARDING_WEBHOOK_URL;
+
 export const logOnboardingEvent = async (eventData: OnboardingEvent): Promise<void> => {
+  if (!ONBOARDING_WEBHOOK_URL) {
+    console.error("Onboarding webhook URL not configured");
+    return;
+  }
+
   try {
-    // Hash the client_id to prevent PII exposure in logs
-    const hashedClientId = await hashClientId(eventData.client_id);
-    
-    const { error } = await supabase.functions.invoke('onboarding-webhook', {
-      body: {
-        ...eventData,
-        client_id: hashedClientId, // Send hashed version to external systems
+    const hashedClientId = await eventData.client_id;
+    const payload = {
+      event: eventData.event,
+      client_id: hashedClientId,
+      action: eventData.action,
+      timestamp: new Date().toISOString(),
+    };
+
+    const response = await fetch(ONBOARDING_WEBHOOK_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
+      body: JSON.stringify(payload),
     });
 
-    if (error) {
-      console.error("Failed to log onboarding event");
+    if (!response.ok) {
+      const responseText = await response.text().catch(() => "<no body>");
+      console.error("Onboarding webhook responded with error:", response.status, responseText);
     }
   } catch (error) {
-    console.error("Failed to log onboarding event");
+    console.error("Failed to log onboarding event:", error);
     // Silently fail - don't block user experience
   }
 };

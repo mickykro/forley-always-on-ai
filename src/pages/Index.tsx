@@ -15,7 +15,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { PhoneIcon, MessageCircleIcon, ClipboardCheckIcon, TrendingUpIcon, ClockIcon, BrainIcon } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useCountUp } from "@/hooks/useCountUp";
@@ -23,6 +23,8 @@ import SEO from "@/components/SEO";
 import MessageBubble from "@/components/MessageBubble";
 import PromoModal from "@/components/PromoModal";
 import CircuitBackground from "@/components/CircuitBackground";
+
+const wheelListenerOptions: AddEventListenerOptions = { passive: false, capture: true };
 
 const objectionHighlights = [
   {
@@ -39,6 +41,38 @@ const objectionHighlights = [
   },
 ];
 
+const HIGHLIGHT_BUSINESS = "עסקים שעובדים עם Call4li";
+const businessTypes = [
+  "עורכי דין", "רואי חשבון", "קליניקות", "מתווכים",
+  "מאמנים אישיים", "יועצים עסקיים", "פסיכולוגים", "אדריכלים",
+  "קוסמטיקאיות", "מספרות", "מוסכים", "טכנאים",
+  "סוכני ביטוח", "צלמים", "מעצבים גרפיים", "וטרינרים",
+  "רופאי שיניים", "פיזיותרפיסטים", "קבלנים", "חשמלאים",
+  "אינסטלטורים", HIGHLIGHT_BUSINESS, "שפים פרטיים", "מורי נהיגה",
+  "מפתחי אתרים", "יועצי משכנתאות", "תזונאים", "מנעולנים",
+  "מדבירים", "חברות ניקיון", "שירותי קייטרינג", "מפיקי אירועים",
+  "סדנאות", "חוגים", "מרפאות", "משרדי נסיעות",
+  "חנויות בוטיק", "מאפיות"
+];
+
+
+// Shuffle all items except the highlight, then force the highlight
+// to always be at position 9 (index 8).
+const shuffledBusinesses = [...businessTypes]
+  .filter((business) => business !== HIGHLIGHT_BUSINESS)
+  .sort(() => Math.random() - 0.5);
+
+const orderedBusinesses = [
+  ...shuffledBusinesses.slice(0,2),
+  HIGHLIGHT_BUSINESS,
+  ...shuffledBusinesses.slice(2),
+];
+
+const gridItems = orderedBusinesses.map((business) => ({
+  content: business,
+  isSpecial: business === HIGHLIGHT_BUSINESS,
+}));
+
 const Index = () => {
   const defaultWhatsAppMessage = "היי פורלי, אני מעוניין/ת להירשם";
   const phoneNumber = import.meta.env.VITE_WHATSAPP_PHONE || "972553163293";
@@ -47,6 +81,7 @@ const Index = () => {
   const [callsPerMonth, setCallsPerMonth] = useState<number>(100);
   const [heroMessage, setHeroMessage] = useState<string>(defaultWhatsAppMessage);
   const expectedReturn = Math.round(dealValue * callsPerMonth * 0.3);
+  const stuckGridSectionRef = useRef<HTMLDivElement | null>(null);
 
   const whatsappUrl = `${whatsappBaseUrl}${encodeURIComponent(defaultWhatsAppMessage)}`;
   const heroWhatsAppUrl = `${whatsappBaseUrl}${encodeURIComponent(heroMessage || defaultWhatsAppMessage)}`;
@@ -188,47 +223,65 @@ const Index = () => {
             </div>
           </div>
         </section>
-        {/* Statistics Counter */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-3 gap-8">
-              <div ref={businessCount.countRef} className="relative group">
-                <div className="bg-card/30 backdrop-blur-sm border-2 border-primary/30 rounded-2xl p-8 shadow-lg hover:shadow-[0_0_40px_rgba(0,229,255,0.4)] transition-all duration-300 hover:-translate-y-1 hover:border-primary text-center overflow-hidden">
-                  {businessCount.showIncrement && (
-                    <div className="absolute top-2 left-1/2 transform -translate-x-1/2 animate-float-up-fade z-10">
-                      <div className="bg-primary rounded-full w-20 h-20 flex items-center justify-center shadow-lg">
-                        <span className="text-black font-bold text-xl">+1</span>
-                      </div>
-                    </div>
-                  )}
-                  <div className="text-5xl font-bold text-primary cyber-glow mb-4">{businessCount.formattedCount}</div>
-                  <p className="text-lg text-foreground font-semibold">עסקים משתמשים בשירות</p>
-                </div>
-              </div>
 
-              <div ref={callsCount.countRef} className="relative group">
-                <div className="bg-card/30 backdrop-blur-sm border-2 border-accent/30 rounded-2xl p-8 shadow-lg hover:shadow-[0_0_40px_rgba(0,255,255,0.4)] transition-all duration-300 hover:-translate-y-1 hover:border-accent text-center overflow-hidden">
-                  {callsCount.showIncrement && (
-                    <div className="absolute top-2 left-1/2 transform -translate-x-1/2 animate-float-up-fade z-10">
-                      <div className="bg-accent rounded-full w-20 h-20 flex items-center justify-center shadow-lg">
-                        <span className="text-black font-bold text-xl">+1</span>
-                      </div>
-                    </div>
-                  )}
-                  <div className="text-5xl font-bold text-accent cyber-glow mb-4">{callsCount.formattedCount}</div>
-                  <p className="text-lg text-foreground font-semibold">שיחות נשמרו בזכות הבוט</p>
-                </div>
+        <div ref={stuckGridSectionRef} className="stuck-grid-container full-width-section">
+          {/* Stuck Grid Section */}
+          <section className="stuck-grid" aria-hidden="true">
+            {gridItems.map((item, index) => {
+              console.log(item, index);
+              return (
+              <div
+                key={index}
+                className={`grid-item${item.isSpecial ? " special" : ""}`}
+              >
+                {item.content}
               </div>
+            )})}
+          </section>
+          </div>
 
-              <div ref={satisfactionCount.countRef} className="relative group">
-                <div className="bg-card/30 backdrop-blur-sm border-2 border-secondary/30 rounded-2xl p-8 shadow-lg hover:shadow-[0_0_40px_rgba(46,90,117,0.6)] transition-all duration-300 hover:-translate-y-1 hover:border-secondary text-center">
-                  <div className="text-5xl font-bold text-secondary mb-4">{satisfactionCount.formattedCount}</div>
-                  <p className="text-lg text-foreground font-semibold">שביעות רצון לקוחות</p>
+          {/* Statistics Counter */}
+          <section className="py-16">
+            <div className="container mx-auto px-4">
+              <div className="grid md:grid-cols-3 gap-8">
+                <div ref={businessCount.countRef} className="relative group">
+                  <div className="bg-card/30 backdrop-blur-sm border-2 border-primary/30 rounded-2xl p-8 shadow-lg hover:shadow-[0_0_40px_rgba(0,229,255,0.4)] transition-all duration-300 hover:-translate-y-1 hover:border-primary text-center overflow-hidden">
+                    {businessCount.showIncrement && (
+                      <div className="absolute top-2 left-1/2 transform -translate-x-1/2 animate-float-up-fade z-10">
+                        <div className="bg-primary rounded-full w-20 h-20 flex items-center justify-center shadow-lg">
+                          <span className="text-black font-bold text-xl">+1</span>
+                        </div>
+                      </div>
+                    )}
+                    <div className="text-5xl font-bold text-primary cyber-glow mb-4">{businessCount.formattedCount}</div>
+                    <p className="text-lg text-foreground font-semibold">עסקים משתמשים בשירות</p>
+                  </div>
+                </div>
+
+                <div ref={callsCount.countRef} className="relative group">
+                  <div className="bg-card/30 backdrop-blur-sm border-2 border-accent/30 rounded-2xl p-8 shadow-lg hover:shadow-[0_0_40px_rgba(0,255,255,0.4)] transition-all duration-300 hover:-translate-y-1 hover:border-accent text-center overflow-hidden">
+                    {callsCount.showIncrement && (
+                      <div className="absolute top-2 left-1/2 transform -translate-x-1/2 animate-float-up-fade z-10">
+                        <div className="bg-accent rounded-full w-20 h-20 flex items-center justify-center shadow-lg">
+                          <span className="text-black font-bold text-xl">+1</span>
+                        </div>
+                      </div>
+                    )}
+                    <div className="text-5xl font-bold text-accent cyber-glow mb-4">{callsCount.formattedCount}</div>
+                    <p className="text-lg text-foreground font-semibold">שיחות נשמרו בזכות הבוט</p>
+                  </div>
+                </div>
+
+                <div ref={satisfactionCount.countRef} className="relative group">
+                  <div className="bg-card/30 backdrop-blur-sm border-2 border-secondary/30 rounded-2xl p-8 shadow-lg hover:shadow-[0_0_40px_rgba(46,90,117,0.6)] transition-all duration-300 hover:-translate-y-1 hover:border-secondary text-center">
+                    <div className="text-5xl font-bold text-secondary mb-4">{satisfactionCount.formattedCount}</div>
+                    <p className="text-lg text-foreground font-semibold">שביעות רצון לקוחות</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        
         {/* How It Works */}
         <section className="py-2 pb-10">
           <div className="container mx-auto px-4">

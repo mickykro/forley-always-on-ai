@@ -69,7 +69,7 @@ if (!existsSync(assetsPath)) {
 
 // Check 5: Read and display environment variable requirements
 console.log('✓ Required environment variables for Vercel:\n');
-const envExamplePath = join(projectRoot, '.env.example');
+const envExamplePath = join(projectRoot, '.env');
 if (existsSync(envExamplePath)) {
   const envContent = readFileSync(envExamplePath, 'utf-8');
   const envVars = envContent
@@ -97,7 +97,7 @@ if (hasErrors) {
   console.log('\nNext steps:');
   console.log('  1. Push your code to GitHub/GitLab/Bitbucket');
   console.log('  2. Import the project in Vercel dashboard');
-  console.log('  3. Set environment variables from .env.example');
+  console.log('  3. Set environment variables from .env');
   console.log('  4. Deploy!');
 }
 console.log('━'.repeat(60));
