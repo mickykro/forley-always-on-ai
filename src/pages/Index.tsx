@@ -41,14 +41,14 @@ const objectionHighlights = [
   },
 ];
 
-const HIGHLIGHT_BUSINESS = "עסקים שעובדים עם Call4li";
+const HIGHLIGHT_BUSINESS = "Call4li";
 const businessTypes = [
   "עורכי דין", "רואי חשבון", "קליניקות", "מתווכים",
   "מאמנים אישיים", "יועצים עסקיים", "פסיכולוגים", "אדריכלים",
   "קוסמטיקאיות", "מספרות", "מוסכים", "טכנאים",
   "סוכני ביטוח", "צלמים", "מעצבים גרפיים", "וטרינרים",
   "רופאי שיניים", "פיזיותרפיסטים", "קבלנים", "חשמלאים",
-  "אינסטלטורים", HIGHLIGHT_BUSINESS, "שפים פרטיים", "מורי נהיגה",
+  "אינסטלטורים", "שפים פרטיים", "מורי נהיגה",
   "מפתחי אתרים", "יועצי משכנתאות", "תזונאים", "מנעולנים",
   "מדבירים", "חברות ניקיון", "שירותי קייטרינג", "מפיקי אירועים",
   "סדנאות", "חוגים", "מרפאות", "משרדי נסיעות",
@@ -63,9 +63,8 @@ const shuffledBusinesses = [...businessTypes]
   .sort(() => Math.random() - 0.5);
 
 const orderedBusinesses = [
-  ...shuffledBusinesses.slice(0,2),
-  HIGHLIGHT_BUSINESS,
-  ...shuffledBusinesses.slice(2),
+  ...shuffledBusinesses.slice(0,8),
+  ...shuffledBusinesses.slice(8),
 ];
 
 const gridItems = orderedBusinesses.map((business) => ({
@@ -137,7 +136,7 @@ const Index = () => {
       <CircuitBackground className="min-h-screen">
         {/* Header */}
         <header className="bg-cyber-void/80 backdrop-blur-sm shadow-lg border-b border-cyber-cyan/30 sticky top-0 z-50">
-          <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="container mx-auto px-4 py-4 flex flex-col gap-4 items-center justify-between md:flex-row md:items-center md:justify-between">
             <div className="flex items-center gap-3">
               <img src={forliMascot} alt="פורלי הינשוף" className="w-22 h-12 animate-glow-pulse" />
               <div>
@@ -167,12 +166,12 @@ const Index = () => {
               />
             </div>
             <MessageBubble className="mb-6">
-              <h1 className="text-4xl md:text-4xl font-bold leading-tight text-primary cyber-glow">
+              <h1 className="text-md md:text-4xl font-bold leading-tight text-primary cyber-glow">
                 כל שיחה שלא נענית = לקוח שהלך. פורלי מחזיר אותו אליך
               </h1>
             </MessageBubble>
-            <MessageBubble>
-              <p className="text-lg md:text-xl leading-relaxed text-foreground">
+            <MessageBubble className="max-w-[100%] w-full md:w-4/5">
+              <p className="text-md md:text-xl leading-relaxed text-foreground">
                 פורלי עונה בשמך, שולח ווטסאפ ללקוח, מתעד את השיחה – ואתה לא מפספס הזדמנות </p>
             </MessageBubble>
 
@@ -205,7 +204,7 @@ const Index = () => {
               <input
                 type="text"
                 placeholder="כאן כותבים הודעה לפורלי."
-                className="w-full px-6 py-4 rounded-full bg-card/50 backdrop-blur-sm border-2 border-primary/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:shadow-[0_0_20px_rgba(0,229,255,0.5)] transition-all duration-300 text-center text-lg"
+                className="w-full px-6 py-4 rounded-full bg-card/50 backdrop-blur-sm border-2 border-primary/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:shadow-[0_0_20px_rgba(0,229,255,0.5)] transition-all duration-300 text-center text-md"
                 value={heroMessage}
                 onChange={(e) => setHeroMessage(e.target.value)}
               />
@@ -214,7 +213,7 @@ const Index = () => {
             <p className=" mt-6 text-lg md:text-xl leading-relaxed text-foreground">הצילו לקוח אחד היום</p>
             <div className="block ">
               <a href={heroWhatsAppUrl} target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="bg-primary text-black hover:bg-primary/90 text-lg px-8 py-6 shadow-[0_0_30px_rgba(0,229,255,0.4)] hover:shadow-[0_0_50px_rgba(0,229,255,0.6)] transition-all">
+                <Button size="lg" className="bg-primary text-black hover:bg-primary/90 text-lg rounded-full px-4 py-6 shadow-[0_0_30px_rgba(0,229,255,0.4)] hover:shadow-[0_0_50px_rgba(0,229,255,0.6)] transition-all">
                   שלחו הודעה לפורלי – התחילו חינם
                 </Button>
               </a>
@@ -224,6 +223,9 @@ const Index = () => {
           </div>
         </section>
 
+          <div>
+            <p className=" text-lg md:text-xl leading-relaxed text-foreground">העסקים שעובדים איתנו </p>
+          </div>
         <div ref={stuckGridSectionRef} className="stuck-grid-container full-width-section">
           {/* Stuck Grid Section */}
           <section className="stuck-grid" aria-hidden="true">
