@@ -133,10 +133,10 @@ const Index = () => {
         canonicalUrl={import.meta.env.VITE_DOMAIN_URL || "https://call4li.com"}
       />
       <PromoModal whatsappUrl={whatsappUrl} />
-      <CircuitBackground className="min-h-screen">
+      <CircuitBackground className="min-h-screen w-full">
         {/* Header */}
         <header className="bg-cyber-void/80 backdrop-blur-sm shadow-lg border-b border-cyber-cyan/30 sticky top-0 z-50">
-          <div className="container mx-auto px-4 py-4 flex flex-col gap-4 items-center justify-between md:flex-row md:items-center md:justify-between">
+          <div className="px-4 py-4 flex flex-col gap-4 items-center justify-between md:flex-row md:items-center md:justify-between">
             <div className="flex items-center gap-3">
               <img src={forliMascot} alt="פורלי הינשוף" className="w-22 h-12 animate-glow-pulse" />
               <div>
@@ -155,7 +155,7 @@ const Index = () => {
 
         {/* Hero Section */}
         <section className="relative overflow-hidden py-20">
-          <div className="container mx-auto px-4 text-center relative z-10">
+          <div className="px-4 text-center relative z-10">
             <div className="flex justify-center mb-8">
               <video
                 src={heroMascotVid}
@@ -229,6 +229,18 @@ const Index = () => {
           </div>
         <div ref={stuckGridSectionRef} className="stuck-grid-container full-width-section">
           {/* Stuck Grid Section */}
+          <section className="stuck-grid">
+            {gridItems.map((item, index) => {
+              console.log(item, index);
+              return (
+              <div
+                key={index}
+                className={`grid-item${item.isSpecial ? " special" : ""}`}
+              >
+                {item.content}
+              </div>
+            )})}
+          </section>
           <section className="stuck-grid" aria-hidden="true">
             {gridItems.map((item, index) => {
               console.log(item, index);
@@ -245,7 +257,7 @@ const Index = () => {
 
           {/* Statistics Counter */}
           <section className="py-16">
-            <div className="container mx-auto px-4">
+            <div className="px-4">
               <div className="grid md:grid-cols-3 gap-8">
                 <div ref={businessCount.countRef} className="relative group">
                   <div className="bg-card/30 backdrop-blur-sm border-2 border-primary/30 rounded-2xl p-8 shadow-lg hover:shadow-[0_0_40px_rgba(0,229,255,0.4)] transition-all duration-300 hover:-translate-y-1 hover:border-primary text-center overflow-hidden">
@@ -287,7 +299,7 @@ const Index = () => {
         
         {/* How It Works */}
         <section className="py-2 pb-10">
-          <div className="container mx-auto px-4">
+          <div className="px-4">
             <div className="flex flex-col items-center mb-16">
               <MessageBubble className="mb-4">
                 <h2 className="text-4xl font-bold text-primary">איך זה עובד?</h2>
@@ -381,7 +393,7 @@ const Index = () => {
         </section>
         {/* Objection-Busting Section */}
         <section className="py-20 silver-section">
-          <div className="container mx-auto px-4 text-center relative z-10">
+          <div className="px-4 text-center relative z-10">
             
             <div className="flex flex-col items-center gap-2 mb-4">
               <MessageBubble>
@@ -411,7 +423,7 @@ const Index = () => {
 
         {/* Benefits */}
         <section className="py-20">
-          <div className="container mx-auto px-4">
+          <div className="px-4">
             <div className="flex flex-col items-center mb-16">
               <MessageBubble className="mb-4">
                 <h2 className="text-4xl font-bold text-primary">למה פורלי?</h2>
@@ -467,7 +479,7 @@ const Index = () => {
 
         {/* Value Proposition */}
         <section className="py-20">
-          <div className="container mx-auto px-4 text-center">
+          <div className="px-4 text-center">
             <div className="flex justify-center mb-8">
               <video src={valuePropositionVid} autoPlay muted loop playsInline className="w-24 h-24" />
             </div>
@@ -518,7 +530,7 @@ const Index = () => {
 
         {/* Pricing */}
         <section id="pricing" className="py-20">
-          <div className="container mx-auto px-4">
+          <div className="px-4">
             <div className="flex flex-col items-center mb-16">
               <MessageBubble className="mb-4">
                 <h2 className="text-4xl font-bold text-primary">חבילות המחיר שלנו</h2>
@@ -631,7 +643,7 @@ const Index = () => {
 
         {/* Testimonials */}
         <section className="py-20">
-          <div className="container mx-auto px-4">
+          <div className="px-4">
             <div className="flex flex-col items-center mb-16">
               <MessageBubble className="mb-4">
                 <h2 className="text-4xl font-bold text-primary">מה הלקוחות שלנו אומרים</h2>
@@ -698,7 +710,7 @@ const Index = () => {
 
         {/* CTA Section */}
         <section className="py-20">
-          <div className="container mx-auto px-4 text-center">
+          <div className="px-4 text-center">
             <div className="flex justify-center mb-8">
               <video
                 src={ctaMascotVid}
@@ -733,7 +745,7 @@ const Index = () => {
 
         {/* FAQ Section */}
         <section className="py-20">
-          <div className="container mx-auto px-4 max-w-4xl">
+          <div className="px-4 max-w-4xl mx-auto">
             <div className="flex flex-col items-center mb-12">
               <MessageBubble className="mb-4">
                 <h2 className="text-4xl md:text-5xl font-bold text-primary">שאלות ותשובות</h2>
@@ -840,7 +852,7 @@ const Index = () => {
         {/* Footer */}
         <footer className="backdrop-blur-sm py-12 bg-card/30 text-foreground border-t-2 border-primary/20 relative">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-cyber-void/50 pointer-events-none"></div>
-          <div className="container mx-auto px-4 relative z-10">
+          <div className="px-4 relative z-10">
             <div className="grid md:grid-cols-3 gap-8 text-center md:text-right">
               <div>
                 <div className="flex items-center justify-center md:justify-start gap-3 mb-4">
