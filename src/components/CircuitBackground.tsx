@@ -42,7 +42,7 @@ const CircuitBackground = ({
       intervalOffset: number;
     }[] = [];
     const isMobile = window.matchMedia("(max-width: 767px)").matches;
-    const densityFactor = isMobile ? 28000 : Math.random() * 5000 + 20000;
+    const densityFactor = isMobile ? 12000 : Math.random() * 5000 + 20000;
     const nodeCount = Math.floor((canvas.width * canvas.height) / densityFactor);
     console.log("node count ", nodeCount);
     

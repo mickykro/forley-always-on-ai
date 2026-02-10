@@ -14,8 +14,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { PhoneIcon, MessageCircleIcon, ClipboardCheckIcon, TrendingUpIcon, ClockIcon, BrainIcon } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { Link } from "react-router-dom";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useCountUp } from "@/hooks/useCountUp";
@@ -23,6 +24,7 @@ import SEO from "@/components/SEO";
 import MessageBubble from "@/components/MessageBubble";
 import PromoModal from "@/components/PromoModal";
 import CircuitBackground from "@/components/CircuitBackground";
+import ContactUs from "@/components/ContactUs";
 
 const wheelListenerOptions: AddEventListenerOptions = { passive: false, capture: true };
 
@@ -73,17 +75,11 @@ const gridItems = orderedBusinesses.map((business) => ({
 }));
 
 const Index = () => {
-  const defaultWhatsAppMessage = "היי פורלי, אני מעוניין/ת להירשם";
-  const phoneNumber = import.meta.env.VITE_WHATSAPP_PHONE || "972553163293";
-  const whatsappBaseUrl = `https://wa.me/${phoneNumber}?text=`;
   const [dealValue, setDealValue] = useState<number>(1000);
   const [callsPerMonth, setCallsPerMonth] = useState<number>(100);
-  const [heroMessage, setHeroMessage] = useState<string>(defaultWhatsAppMessage);
+  const [isContactPopupOpen, setIsContactPopupOpen] = useState(false);
   const expectedReturn = Math.round(dealValue * callsPerMonth * 0.3);
   const stuckGridSectionRef = useRef<HTMLDivElement | null>(null);
-
-  const whatsappUrl = `${whatsappBaseUrl}${encodeURIComponent(defaultWhatsAppMessage)}`;
-  const heroWhatsAppUrl = `${whatsappBaseUrl}${encodeURIComponent(heroMessage || defaultWhatsAppMessage)}`;
 
   // Counter animations
   const businessCount = useCountUp({
@@ -96,7 +92,7 @@ const Index = () => {
     },
   });
   const callsCount = useCountUp({
-    end: 3737,
+    end: 737,
     duration: 2500,
     suffix: "+",
     incrementInterval: {
@@ -122,6 +118,29 @@ const Index = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const openContactPopup = (event?: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+    event?.preventDefault();
+    setIsContactPopupOpen(true);
+  };
+
+  useEffect(() => {
+    const section = stuckGridSectionRef.current;
+    if (!section) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        section.classList.toggle("is-animating", entry.isIntersecting);
+      },
+      { threshold: 0.2 },
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
   const chatImages = [chat1, chat2, chat3, chat1, chat2, chat3];
 
   const activeObjection = objectionHighlights[activeObjectionIndex];
@@ -132,7 +151,18 @@ const Index = () => {
         description="מערכת בוט חכמה שמתעדת שיחות, יוצרת קשר עם לקוחות ושולחת סיכומים. לא מפספסים אף הזדמנות עסקית!"
         canonicalUrl={import.meta.env.VITE_DOMAIN_URL || "https://call4li.com"}
       />
-      <PromoModal whatsappUrl={whatsappUrl} />
+      {/* <PromoModal whatsappUrl={whatsappUrl} /> */}
+      <Dialog open={isContactPopupOpen} onOpenChange={setIsContactPopupOpen}>
+        <DialogContent className="sm:max-w-2xl bg-gradient-to-br from-primary/5 to-accent/10 border-2 border-primary/20">
+          <DialogHeader className="text-center space-y-2">
+            <DialogTitle className="text-3xl font-bold text-primary">בואו נתחיל</DialogTitle>
+            <DialogDescription className="text-muted-foreground">
+              שני צעדים קצרים ואנחנו איתכם.
+            </DialogDescription>
+          </DialogHeader>
+          <ContactUs variant="modal" onComplete={() => setIsContactPopupOpen(false)} />
+        </DialogContent>
+      </Dialog>
       <CircuitBackground className="min-h-screen w-full">
         {/* Header */}
         <header className="bg-cyber-void/80 backdrop-blur-sm shadow-lg border-b border-cyber-cyan/30 sticky top-0 z-50">
@@ -145,11 +175,14 @@ const Index = () => {
               </div>
             </div>
             
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" className="text-primary hover:bg-primary hover:text-black border-primary cyber-border">
-                להתחלת ניסיון חינם
-              </Button>
-            </a>
+            <Button
+              type="button"
+              variant="outline"
+              className="text-primary hover:bg-primary hover:text-black border-primary cyber-border"
+              onClick={openContactPopup}
+            >
+              להתחלת ניסיון חינם
+            </Button>
           </div>
         </header>
 
@@ -199,29 +232,8 @@ const Index = () => {
                 /> */}
             </div>
             </div>
-            
-            {/* Rounded Text Field */}
-            <div className="w-full md:w-4/5 mx-auto">
-              <input
-                type="text"
-                placeholder="כאן כותבים הודעה לפורלי."
-                className="w-full px-6 py-4 rounded-full bg-card/50 backdrop-blur-sm border-2 border-primary/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:shadow-[0_0_20px_rgba(0,229,255,0.5)] transition-all duration-300 text-center text-md"
-                value={heroMessage}
-                onChange={(e) => setHeroMessage(e.target.value)}
-              />
+            <ContactUs showWhatsAppOption={true} />
             </div>
-
-            <p className=" mt-6 text-lg md:text-xl leading-relaxed text-foreground">הצילו לקוח אחד היום</p>
-            <div className="block ">
-              <a href={heroWhatsAppUrl} target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="bg-primary text-black hover:bg-primary/90 text-sm md:text-lg rounded-full px-4 py-6 shadow-[0_0_30px_rgba(0,229,255,0.4)] hover:shadow-[0_0_50px_rgba(0,229,255,0.6)] transition-all">
-                  שלחו הודעה לפורלי – התחילו חינם
-                </Button>
-              </a>
-            </div>
-            <div>
-            </div>
-          </div>
         </section>
 
           <div>
@@ -258,39 +270,39 @@ const Index = () => {
           {/* Statistics Counter */}
           <section className="py-16">
             <div className="px-4">
-              <div className="grid md:grid-cols-3 gap-8">
-                <div ref={businessCount.countRef} className="relative group">
-                  <div className="bg-card/30 backdrop-blur-sm border-2 border-primary/30 rounded-2xl p-8 shadow-lg hover:shadow-[0_0_40px_rgba(0,229,255,0.4)] transition-all duration-300 hover:-translate-y-1 hover:border-primary text-center overflow-hidden">
+              <div className="grid grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+                <div ref={businessCount.countRef} className="relative group h-full">
+                  <div className="bg-card/30 backdrop-blur-sm border-2 border-primary/30 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-[0_0_40px_rgba(0,229,255,0.4)] transition-all duration-300 hover:-translate-y-1 hover:border-primary text-center overflow-hidden h-full min-h-[170px] sm:min-h-[200px] md:min-h-[240px] flex flex-col items-center justify-center">
                     {businessCount.showIncrement && (
                       <div className="absolute top-2 left-1/2 transform -translate-x-1/2 animate-float-up-fade z-10">
-                        <div className="bg-primary rounded-full w-20 h-20 flex items-center justify-center shadow-lg">
-                          <span className="text-black font-bold text-xl">+1</span>
+                        <div className="bg-primary rounded-full w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center shadow-lg">
+                          <span className="text-black font-bold text-sm sm:text-lg md:text-xl">+1</span>
                         </div>
                       </div>
                     )}
-                    <div className="text-5xl font-bold text-primary cyber-glow mb-4">{businessCount.formattedCount}</div>
-                    <p className="text-lg text-foreground font-semibold">עסקים משתמשים בשירות</p>
+                    <div className="text-2xl sm:text-4xl md:text-5xl font-bold text-primary cyber-glow mb-2 sm:mb-3 md:mb-4">{businessCount.formattedCount}</div>
+                    <p className="text-xs sm:text-sm md:text-lg text-foreground font-semibold">עסקים משתמשים בשירות</p>
                   </div>
                 </div>
 
-                <div ref={callsCount.countRef} className="relative group">
-                  <div className="bg-card/30 backdrop-blur-sm border-2 border-accent/30 rounded-2xl p-8 shadow-lg hover:shadow-[0_0_40px_rgba(0,255,255,0.4)] transition-all duration-300 hover:-translate-y-1 hover:border-accent text-center overflow-hidden">
+                <div ref={callsCount.countRef} className="relative group h-full">
+                  <div className="bg-card/30 backdrop-blur-sm border-2 border-accent/30 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-[0_0_40px_rgba(0,255,255,0.4)] transition-all duration-300 hover:-translate-y-1 hover:border-accent text-center overflow-hidden h-full min-h-[170px] sm:min-h-[200px] md:min-h-[240px] flex flex-col items-center justify-center">
                     {callsCount.showIncrement && (
                       <div className="absolute top-2 left-1/2 transform -translate-x-1/2 animate-float-up-fade z-10">
-                        <div className="bg-accent rounded-full w-20 h-20 flex items-center justify-center shadow-lg">
-                          <span className="text-black font-bold text-xl">+1</span>
+                        <div className="bg-accent rounded-full w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center shadow-lg">
+                          <span className="text-black font-bold text-sm sm:text-lg md:text-xl">+1</span>
                         </div>
                       </div>
                     )}
-                    <div className="text-5xl font-bold text-accent cyber-glow mb-4">{callsCount.formattedCount}</div>
-                    <p className="text-lg text-foreground font-semibold">שיחות נשמרו בזכות הבוט</p>
+                    <div className="text-2xl sm:text-4xl md:text-5xl font-bold text-accent cyber-glow mb-2 sm:mb-3 md:mb-4">{callsCount.formattedCount}</div>
+                    <p className="text-xs sm:text-sm md:text-lg text-foreground font-semibold">שיחות נשמרו בזכות הבוט</p>
                   </div>
                 </div>
 
-                <div ref={satisfactionCount.countRef} className="relative group">
-                  <div className="bg-card/30 backdrop-blur-sm border-2 border-secondary/30 rounded-2xl p-8 shadow-lg hover:shadow-[0_0_40px_rgba(46,90,117,0.6)] transition-all duration-300 hover:-translate-y-1 hover:border-secondary text-center">
-                    <div className="text-5xl font-bold text-secondary mb-4">{satisfactionCount.formattedCount}</div>
-                    <p className="text-lg text-foreground font-semibold">שביעות רצון לקוחות</p>
+                <div ref={satisfactionCount.countRef} className="relative group h-full">
+                  <div className="bg-card/30 backdrop-blur-sm border-2 border-secondary/30 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-[0_0_40px_rgba(46,90,117,0.6)] transition-all duration-300 hover:-translate-y-1 hover:border-secondary text-center h-full min-h-[170px] sm:min-h-[200px] md:min-h-[240px] flex flex-col items-center justify-center">
+                    <div className="text-2xl sm:text-4xl md:text-5xl font-bold text-secondary mb-2 sm:mb-3 md:mb-4">{satisfactionCount.formattedCount}</div>
+                    <p className="text-xs sm:text-sm md:text-lg text-foreground font-semibold">שביעות רצון לקוחות</p>
                   </div>
                 </div>
               </div>
@@ -298,9 +310,9 @@ const Index = () => {
           </section>
         
         {/* How It Works */}
-        <section className="py-2 pb-10">
-          <div className="px-4">
-            <div className="flex flex-col items-center mb-16">
+        <section className="pb-10">
+          <div className="">
+            <div className="flex flex-col items-center mb-2 md:mb-16">
               <MessageBubble className="mb-4">
                 <h2 className="text-4xl font-bold text-primary">איך זה עובד?</h2>
               </MessageBubble>
@@ -392,7 +404,7 @@ const Index = () => {
           </div>
         </section>
         {/* Objection-Busting Section */}
-        <section className="py-20 silver-section">
+        <section className=" py-6 md:py-20 silver-section">
           <div className="px-4 text-center relative z-10">
             
             <div className="flex flex-col items-center gap-2 mb-4">
@@ -400,7 +412,7 @@ const Index = () => {
                 <h2 className="text-4xl font-bold text-primary">מתלבטים? הנה התשובות</h2>
               </MessageBubble>
               <MessageBubble>
-                <p className="text-xl text-muted-foreground">3 התנגדויות נפוצות – ופורלי עונה לכולן</p>
+                <p className="text-xl text-muted-foreground text-red-50">3 התנגדויות נפוצות – ופורלי עונה לכולן</p>
               </MessageBubble>
             </div>
             
@@ -433,44 +445,44 @@ const Index = () => {
               </MessageBubble>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <Card className="p-6 text-center bg-card/20 backdrop-blur-sm border-2 border-success/30 hover:shadow-[0_0_25px_rgba(0,255,255,0.3)] hover:border-success transition-all">
-                <CardContent className="pt-4">
-                  <div className="w-16 h-16 bg-success/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-success/50">
-                    <TrendingUpIcon className="w-8 h-8 text-success" />
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4">
+              <Card className="sm:p-6 text-center bg-card/20 backdrop-blur-sm border-2 border-success/30 hover:shadow-[0_0_25px_rgba(0,255,255,0.3)] hover:border-success transition-all">
+                <CardContent className="pt-3 sm:pt-4">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-success/20 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4 border border-success/50">
+                    <TrendingUpIcon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-success" />
                   </div>
-                  <h3 className="text-xl font-bold text-primary mb-2">🦉 לא מפספסים לידים</h3>
-                  <p className="text-foreground">כל שיחה הופכת להזדמנות עסקית</p>
+                  <h3 className="text-base sm:text-lg md:text-xl font-bold text-primary mb-1 sm:mb-2 leading-relaxed text-balance">🦉 לא מפספסים לידים</h3>
+                  <p className="text-xs sm:text-base text-foreground leading-relaxed text-balance">כל שיחה הופכת להזדמנות עסקית</p>
                 </CardContent>
               </Card>
 
-              <Card className="p-6 text-center bg-card/20 backdrop-blur-sm border-2 border-secondary/30 hover:shadow-[0_0_25px_rgba(46,90,117,0.4)] hover:border-secondary transition-all">
-                <CardContent className="pt-4">
-                  <div className="w-16 h-16 bg-secondary/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-secondary/50">
-                    <ClipboardCheckIcon className="w-8 h-8 text-secondary" />
+              <Card className=" sm:p-6 text-center bg-card/20 backdrop-blur-sm border-2 border-secondary/30 hover:shadow-[0_0_25px_rgba(46,90,117,0.4)] hover:border-secondary transition-all">
+                <CardContent className="pt-3 sm:pt-4">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-secondary/20 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4 border border-secondary/50">
+                    <ClipboardCheckIcon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-secondary" />
                   </div>
-                  <h3 className="text-xl font-bold text-primary mb-2">📊 הכל מתועד אוטומטית</h3>
-                  <p className="text-foreground">מערכת ניהול לקוחות חכמה</p>
+                  <h3 className="text-base sm:text-lg md:text-xl font-bold text-primary mb-1 sm:mb-2 leading-relaxed text-balance">📊 הכל מתועד אוטומטית</h3>
+                  <p className="text-sm sm:text-base text-foreground leading-relaxed text-balance">מערכת ניהול לקוחות חכמה</p>
                 </CardContent>
               </Card>
 
-              <Card className="p-6 text-center bg-card/20 backdrop-blur-sm border-2 border-accent/30 hover:shadow-[0_0_25px_rgba(0,229,255,0.3)] hover:border-accent transition-all">
-                <CardContent className="pt-4">
-                  <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-accent/50">
-                    <ClockIcon className="w-8 h-8 text-accent" />
+              <Card className="sm:p-6 text-center bg-card/20 backdrop-blur-sm border-2 border-accent/30 hover:shadow-[0_0_25px_rgba(0,229,255,0.3)] hover:border-accent transition-all">
+                <CardContent className="pt-3 sm:pt-4">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4 border border-accent/50">
+                    <ClockIcon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-accent" />
                   </div>
-                  <h3 className="text-xl font-bold text-primary mb-2">⏱️ זמן תגובה מהיר ומקצועי</h3>
-                  <p className="text-foreground">לקוחות מרוצים, עסק שגדל</p>
+                  <h3 className="text-base sm:text-lg md:text-xl font-bold text-primary mb-1 sm:mb-2 leading-relaxed text-balance">⏱️ זמן תגובה מהיר ומקצועי</h3>
+                  <p className="text-sm sm:text-base text-foreground leading-relaxed text-balance">לקוחות מרוצים, עסק שגדל</p>
                 </CardContent>
               </Card>
 
-              <Card className="p-6 text-center bg-card/20 backdrop-blur-sm border-2 border-primary/30 hover:shadow-[0_0_25px_rgba(0,229,255,0.3)] hover:border-primary transition-all">
-                <CardContent className="pt-4">
-                  <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-primary/50">
-                    <BrainIcon className="w-8 h-8 text-primary" />
+              <Card className="sm:p-6 text-center bg-card/20 backdrop-blur-sm border-2 border-primary/30 hover:shadow-[0_0_25px_rgba(0,229,255,0.3)] hover:border-primary transition-all">
+                <CardContent className="pt-3 sm:pt-4">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4 border border-primary/50">
+                    <BrainIcon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-primary" />
                   </div>
-                  <h3 className="text-xl font-bold text-primary mb-2">💡 מערכת חכמה עם סיכומי AI</h3>
-                  <p className="text-foreground">טכנולוגיה מתקדמת בשירותך</p>
+                  <h3 className="text-base sm:text-lg md:text-xl font-bold text-primary mb-1 sm:mb-2 leading-relaxed text-balance">💡 מערכת חכמה עם סיכומי AI</h3>
+                  <p className="text-sm sm:text-base text-foreground leading-relaxed text-balance">טכנולוגיה מתקדמת בשירותך</p>
                 </CardContent>
               </Card>
             </div>
@@ -486,10 +498,6 @@ const Index = () => {
             <div className="block w-full">
               <MessageBubble className="mb-4">
                 <h2 className="text-4xl font-bold text-primary">עסק ממוצע מפספס 30% מהשיחות</h2>
-              </MessageBubble>
-            </div>
-            <div className="block w-full">
-              <MessageBubble className="mb-8">
                 <p className="text-2xl text-muted-foreground">Call4li הופך אותן להזדמנויות!</p>
               </MessageBubble>
             </div>
@@ -574,14 +582,13 @@ const Index = () => {
                       <span className="text-foreground">דוחות בסיסיים</span>
                     </li>
                   </ul>
-                  <a
-                    href={whatsappUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full"
+                  <Button
+                    type="button"
+                    className="w-full bg-secondary hover:bg-secondary/90 hover:shadow-[0_0_20px_rgba(46,90,117,0.5)]"
+                    onClick={openContactPopup}
                   >
-                    <Button className="w-full bg-secondary hover:bg-secondary/90 hover:shadow-[0_0_20px_rgba(46,90,117,0.5)]">התחילו עכשיו</Button>
-                  </a>
+                    התחילו עכשיו
+                  </Button>
                 </CardContent>
               </Card>
 
@@ -625,16 +632,13 @@ const Index = () => {
                       <span className="text-foreground">דוחות יומיים ושבועיים</span>
                     </li>
                   </ul>
-                  <a
-                    href={whatsappUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full"
+                  <Button
+                    type="button"
+                    className="w-full bg-primary text-black hover:bg-primary/90 hover:shadow-[0_0_30px_rgba(0,229,255,0.6)]"
+                    onClick={openContactPopup}
                   >
-                    <Button className="w-full bg-primary text-black hover:bg-primary/90 hover:shadow-[0_0_30px_rgba(0,229,255,0.6)]">
-                      התחילו עכשיו
-                    </Button>
-                  </a>
+                    התחילו עכשיו
+                  </Button>
                 </CardContent>
               </Card>
             </div>
@@ -734,11 +738,14 @@ const Index = () => {
               </MessageBubble>
             </div>
             <div className="block w-full">
-              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6">
-                  התחילו ניסיון חינם היום
-                </Button>
-              </a>
+              <Button
+                type="button"
+                size="lg"
+                className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6"
+                onClick={openContactPopup}
+              >
+                התחילו ניסיון חינם היום
+              </Button>
             </div>
           </div>
         </section>

@@ -176,8 +176,8 @@
     background: linear-gradient(
       120deg,
       rgba(255, 255, 255, 0) 20%,
-      rgba(255, 255, 255, 0.9) 44%,
-      rgba(255, 255, 255, 0.9) 54%,
+      rgba(255, 255, 255, 0.2) 44%,
+      rgba(255, 255, 255, 0.3) 54%,
       rgba(255, 255, 255, 0) 78%
     );
     opacity: 0.85;
@@ -191,7 +191,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.15), transparent 60%);
+    background: linear-gradient(circle at top right, rgba(255, 255, 255, 0.15), transparent 60%);
     pointer-events: none;
     z-index: 0;
   }
@@ -202,6 +202,13 @@
     }
     100% {
       transform: translateX(100%);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .silver-section::before {
+      animation: none;
+      opacity: 0;
     }
   }
 
@@ -224,6 +231,11 @@
   .button-shine > * {
     position: relative;
     z-index: 1;
+  }
+
+  .button-shine.no-shine::before {
+    animation: none;
+    opacity: 0;
   }
 
   .carousel {
@@ -300,6 +312,7 @@
     margin-top: 0;
     /* Add the infinite scroll animation here */
     animation: infinite-scroll 20s linear infinite;
+    animation-play-state: paused;
   }
 
   @screen md {
@@ -326,7 +339,13 @@
       animation: zoom-in 10s ease-in-out infinite alternate;
       /* `will-change` is a performance hint for the browser. */
       will-change: transform, opacity, filter;
+      animation-play-state: paused;
     }
+  }
+
+  .stuck-grid-container.is-animating .stuck-grid,
+  .stuck-grid-container.is-animating .stuck-grid > .grid-item {
+    animation-play-state: running;
   }
 
   .stuck-grid > .grid-item > b {

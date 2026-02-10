@@ -10,10 +10,11 @@ import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 
 interface PromoModalProps {
-  whatsappUrl: string;
+  whatsappUrl?: string;
+  onOpenContact?: () => void;
 }
 
-const PromoModal = ({ whatsappUrl }: PromoModalProps) => {
+const PromoModal = ({ whatsappUrl, onOpenContact }: PromoModalProps) => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -39,7 +40,11 @@ const PromoModal = ({ whatsappUrl }: PromoModalProps) => {
   const handleJoin = () => {
     // Mark as seen and open WhatsApp
     localStorage.setItem("hasSeenPromoModal", "true");
-    window.open(whatsappUrl, "_blank");
+    if (onOpenContact) {
+      onOpenContact();
+    } else if (whatsappUrl) {
+      window.open(whatsappUrl, "_blank");
+    }
     setOpen(false);
   };
 
