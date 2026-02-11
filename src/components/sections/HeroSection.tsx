@@ -35,14 +35,14 @@ const HeroSection = () => {
         <div className="carousel">
           <div className="flex justify-center carousel-group">
             {chatImages.map((image, index) => (
-              <div key={index} className="chat-card w-200 h-200 object-fill">
+              <div key={index} className="chat-card">
                 <img src={image} alt="דוגמת שיחה מהבוט" />
               </div>
             ))}
           </div>
           <div className="flex justify-center carousel-group">
             {chatImages.map((image, index) => (
-              <div key={index} className="chat-card w-200 h-200 object-fill">
+              <div key={index} className="chat-card">
                 <img src={image} alt="דוגמת שיחה מהבוט" />
               </div>
             ))}

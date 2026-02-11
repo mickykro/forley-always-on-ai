@@ -239,32 +239,53 @@
   }
 
   .carousel {
-    margin: 60px auto;
-    overflow-x: auto;
-    width: 80%;
+    margin: 3.75rem auto;
+    width: min(100%, 72rem);
     display: flex;
-    padding-left: 10em;
-    padding-right: 10em;
-    gap: 4em;
+    gap: 1.5rem;
+    overflow: hidden;
+    padding-inline: 1rem;
   }
+
   .carousel-group {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 4em;
-    animation: carousel 20s infinite linear;
+    gap: 1.5rem;
+    flex-shrink: 0;
+    min-width: max-content;
+    animation: carousel-scroll 24s linear infinite;
+    will-change: transform;
   }
-.carousel::-webkit-scrollbar{
-  display: none;
-}
+
+  .carousel-group:nth-child(2) {
+    animation-delay: -12s;
+  }
+
   .chat-card {
-    flex: 0 0 15em;
+    flex: 0 0 clamp(11rem, 38vw, 15rem);
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid hsl(var(--primary) / 0.35);
   }
 
-  @keyframes carousel {
-    from { translate: 0; }
-    to { translate: 100%;}
+  .chat-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
+  .carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  @keyframes carousel-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - 1.5rem));
+    }
   }
 
   @keyframes button-shine-sweep {
