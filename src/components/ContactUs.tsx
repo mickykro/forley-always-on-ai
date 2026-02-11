@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { contactFormSchema, type ContactFormData } from "@/schemas/contactValidation";
@@ -29,9 +29,6 @@ const ContactUs = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [step, setStep] = useState<1 | 2>(1);
   const [savedStepOne, setSavedStepOne] = useState<Pick<ContactFormData, "companyName" | "businessDescription"> | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
-  const [headerOffset, setHeaderOffset] = useState(0);
-  const whatsappUrl = `${whatsappBaseUrl}${encodeURIComponent(whatsAppMessage)}`;
 
   const formatIsraeliPhoneNumber = (value: string) => {
     const cleaned = value.replace(/\D/g, "");
@@ -118,69 +115,15 @@ const ContactUs = ({
     setStep(1);
   };
 
-  useEffect(() => {
-    form.clearErrors();
-  }, [form, step]);
-
-  const isStickyActive = variant === "page" && isMobile;
-  const stickyPlaceholderClass = isStickyActive ? "placeholder:text-xs/[11px]" : "";
-
-  useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    const media = window.matchMedia("(max-width: 640px)");
-    const updateMatch = () => setIsMobile(media.matches);
-    updateMatch();
-
-    if (media.addEventListener) {
-      media.addEventListener("change", updateMatch);
-    } else {
-      media.addListener(updateMatch);
-    }
-
-    return () => {
-      if (media.removeEventListener) {
-        media.removeEventListener("change", updateMatch);
-      } else {
-        media.removeListener(updateMatch);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!isMobile || variant !== "page") {
-      setHeaderOffset(0);
-      return;
-    }
-
-    const updateHeaderOffset = () => {
-      const header = document.querySelector("header");
-      setHeaderOffset(header ? Math.round(header.getBoundingClientRect().height) : 0);
-    };
-
-    updateHeaderOffset();
-    window.addEventListener("resize", updateHeaderOffset);
-
-    return () => window.removeEventListener("resize", updateHeaderOffset);
-  }, [isMobile, variant]);
 
   const formContent = (
     <Card className={variant === "modal" ? " bg-transparent border-transparent" : "bg-transparent border-transparent md:p-8"}>
       <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 text-right">
-            <div
-              className={
-                isStickyActive
-                  ? "fixed left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-4xl rounded-2xl bg-card/95 backdrop-blur-md border border-primary/30 p-3 shadow-[0_0_20px_rgba(0,229,255,0.2)]"
-                  : ""
-              }
-              style={isStickyActive ? { top: headerOffset } : undefined}
-            >
+            <div>
               {step === 1 ? (
-                <div className={isStickyActive ? "grid grid-cols-2 gap-2" : "md:mx-40 space-y-4"}>
+                <div className="md:mx-40 space-y-4">
                   <FormField
                     control={form.control}
                     name="companyName"
@@ -190,7 +133,7 @@ const ContactUs = ({
                           <Input
                             placeholder="איך פורלי תציג את העסק שלך"
                             {...field}
-                            className={`rounded-full bg-card/50 backdrop-blur-sm border-2 border-primary/50 text-center text-foreground placeholder:text-muted-foreground focus:outline-none text-sm md:text-base align-center ${stickyPlaceholderClass}`}
+                            className={`rounded-full bg-card/50 backdrop-blur-sm border-2 border-primary/50 text-center text-foreground placeholder:text-muted-foreground focus:outline-none text-sm md:text-base align-center`}
                           />
                         </FormControl>
                         <FormMessage />
@@ -206,7 +149,7 @@ const ContactUs = ({
                           <Input
                             placeholder="כמה מילים על העסק שלך"
                             {...field}
-                            className={`rounded-full bg-card/50 backdrop-blur-sm border-2 border-primary/50 text-center text-foreground placeholder:text-muted-foreground focus:outline-none ${stickyPlaceholderClass}`}
+                            className={`rounded-full bg-card/50 backdrop-blur-sm border-2 border-primary/50 text-center text-foreground placeholder:text-muted-foreground focus:outline-none`}
                           />
                         </FormControl>
                         <FormMessage />
@@ -216,7 +159,7 @@ const ContactUs = ({
                   <Button
                     type="button"
                     size="lg"
-                    className={`w-full bg-primary text-black hover:bg-primary/90 ${isStickyActive ? "col-span-2" : ""}`}
+                    className="w-full bg-primary text-black hover:bg-primary/90"
                     onClick={handleNextStep}
                     disabled={isSubmitting}
                   >
@@ -224,7 +167,7 @@ const ContactUs = ({
                   </Button>
                 </div>
               ) : (
-                <div className={`grid grid-cols-2 gap-2 ${isStickyActive ? "" : "sm:gap-4"}`}>
+                <div className="grid grid-cols-2 gap-2 sm:gap-4">
                   <FormField
                     control={form.control}
                     name="name"
@@ -234,7 +177,7 @@ const ContactUs = ({
                           <Input
                             placeholder="שם מלא"
                             {...field}
-                            className={`rounded-full bg-card/60 backdrop-blur-sm border border-primary/40 text-center text-foreground placeholder:text-muted-foreground focus:outline-none ${stickyPlaceholderClass}`}
+                            className={`rounded-full bg-card/60 backdrop-blur-sm border border-primary/40 text-center text-foreground placeholder:text-muted-foreground focus:outline-none`}
                           />
                         </FormControl>
                         <FormMessage />
@@ -250,7 +193,7 @@ const ContactUs = ({
                           <Input
                             placeholder="מספר טלפון"
                             {...field}
-                            className={`rounded-full bg-card/60 backdrop-blur-sm border border-primary/40 text-center text-foreground placeholder:text-muted-foreground focus:outline-none ${stickyPlaceholderClass}`}
+                            className={`rounded-full bg-card/60 backdrop-blur-sm border border-primary/40 text-center text-foreground placeholder:text-muted-foreground focus:outline-none`}
                           />
                         </FormControl>
                         <FormMessage />
