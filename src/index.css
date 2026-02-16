@@ -7,60 +7,64 @@
 @layer base {
   :root {
     /* Text & base neutrals */
-    --background: 210 100% 6%; /* Deep midnight blue for cards */
-    --foreground: 190 100% 85%; /* Neon cyan text */
+    --background: 0 0% 0%; /* Deep Black */
+    --foreground: 180 100% 50%; /* Neon blue text */
 
-    --card: 210 100% 6%;
-    --card-foreground: 190 100% 85%;
+    --card: 0 0% 4%;
+    --card-foreground: 180 100% 50%;
 
-    --popover: 210 100% 6%;
-    --popover-foreground: 190 100% 85%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 180 100% 50%;
 
-    /* Neon Cyan / Electric Blue - Primary glow color */
-    --primary: 187 100% 50%; /* #00E5FF */
-    --primary-foreground: 210 100% 6%;
+    /* Main call-to-action color */
+    --primary: 300 100% 50%; /* #FF00FF */
+    --primary-foreground: 0 0% 0%;
 
-    /* Muted Teal / Steel Blue - Mid-tones */
-    --secondary: 199 43% 32%; /* #2E5A75 */
-    --secondary-foreground: 190 100% 85%;
+    /* Secondary frames and supporting text */
+    --secondary: 304 100% 55%; /* #E500E5 */
+    --secondary-foreground: 180 100% 50%;
 
-    /* Darker areas with subtle glow */
-    --muted: 210 100% 8%;
-    --muted-foreground: 199 20% 60%;
+    /* Darkened areas */
+    --muted: 210 100% 6%;
+    --muted-foreground: 180 100% 50%;
 
-    /* Glowing accent (cyan glow) */
-    --accent: 187 100% 50%; /* #00E5FF */
-    --accent-foreground: 210 100% 6%;
+    /* Inner frame highlights */
+    --accent: 180 100% 50%; /* #00FFFF */
+    --accent-foreground: 0 0% 0%;
 
-    /* Success - cyan based */
-    --success: 180 100% 50%; /* #00FFFF */
-    --success-foreground: 210 100% 6%;
+    /* Success/notification matches highlight */
+    --success: 180 100% 50%;
+    --success-foreground: 0 0% 0%;
 
     /* Softer text option */
-    --text-custom: 190 80% 75%;
+    --text-custom: 180 100% 50%;
 
-    /* Circuit board gradient background */
-    --gradient-hero: linear-gradient(135deg, #020612 0%, #050A1E 50%, #0a1428 100%);
-    --gradient-accent: linear-gradient(135deg, #00E5FF, #00FFFF);
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, #FF00FF, #00FFFF);
+    --gradient-accent: linear-gradient(135deg, #FF00FF, #00FFFF);
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 199 43% 20%;
-    --input: 210 100% 10%;
-    --ring: 187 100% 50%;
+    --border: 304 100% 55%;
+    --input: 0 0% 10%;
+    --ring: 180 100% 50%;
 
     --radius: 0.5rem;
 
     /* Sidebar */
-    --sidebar-background: 210 100% 6%;
-    --sidebar-foreground: 190 100% 85%;
-    --sidebar-primary: 187 100% 50%;
-    --sidebar-primary-foreground: 210 100% 6%;
-    --sidebar-accent: 199 43% 32%;
-    --sidebar-accent-foreground: 190 100% 85%;
-    --sidebar-border: 199 43% 20%;
-    --sidebar-ring: 187 100% 50%;
+    --sidebar-background: 0 0% 0%;
+    --sidebar-foreground: 180 100% 50%;
+    --sidebar-primary: 300 100% 50%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 180 100% 50%;
+    --sidebar-accent-foreground: 0 0% 0%;
+    --sidebar-border: 304 100% 55%;
+    --sidebar-ring: 180 100% 50%;
+
+        /* Carousel variables */
+    --carousel-duration: 24s;
+    --carousel-width: -100%;
   }
 
   .stuck-grid-scroll-lock {
@@ -69,43 +73,43 @@
   }
 
   .dark {
-    /* If you use dark mode, keep the same gradient and flip text to white */
-    --background: 210 100% 6%;
-    --foreground: 190 100% 85%;
+    /* If you use dark mode, keep the same palette */
+    --background: 0 0% 0%;
+    --foreground: 180 100% 50%;
 
-    --card: 210 100% 6%;
-    --card-foreground: 190 100% 85%;
+    --card: 0 0% 4%;
+    --card-foreground: 180 100% 50%;
 
-    --popover: 210 100% 6%;
-    --popover-foreground: 190 100% 85%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 180 100% 50%;
 
-    --primary: 187 100% 50%;
-    --primary-foreground: 210 100% 6%;
+    --primary: 300 100% 50%;
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 199 43% 32%;
-    --secondary-foreground: 190 100% 85%;
+    --secondary: 304 100% 55%;
+    --secondary-foreground: 180 100% 50%;
 
-    --muted: 210 100% 8%;
-    --muted-foreground: 199 20% 60%;
+    --muted: 210 100% 6%;
+    --muted-foreground: 180 100% 50%;
 
-    --accent: 187 100% 50%;
-    --accent-foreground: 210 100% 6%;
+    --accent: 180 100% 50%;
+    --accent-foreground: 0 0% 0%;
 
-    --destructive: 0 63% 31%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 199 43% 20%;
-    --input: 210 100% 10%;
-    --ring: 187 100% 50%;
+    --border: 304 100% 55%;
+    --input: 0 0% 10%;
+    --ring: 180 100% 50%;
 
-    --sidebar-background: 210 100% 6%;
-    --sidebar-foreground: 190 100% 85%;
-    --sidebar-primary: 187 100% 50%;
-    --sidebar-primary-foreground: 210 100% 6%;
-    --sidebar-accent: 199 43% 32%;
-    --sidebar-accent-foreground: 190 100% 85%;
-    --sidebar-border: 199 43% 20%;
-    --sidebar-ring: 187 100% 50%;
+    --sidebar-background: 0 0% 0%;
+    --sidebar-foreground: 180 100% 50%;
+    --sidebar-primary: 300 100% 50%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 180 100% 50%;
+    --sidebar-accent-foreground: 0 0% 0%;
+    --sidebar-border: 304 100% 55%;
+    --sidebar-ring: 180 100% 50%;
   }
 }
 
@@ -117,7 +121,7 @@
   body {
     @apply font-heebo;
     color: hsl(var(--foreground));
-    background-color: #050A1E;
+    background-color: #000000;
     position: relative;
     overflow-x: hidden;
   }
@@ -129,16 +133,15 @@
 @layer components {
   .cyber-glow {
     text-shadow: 
-      0 0 10px #36565b,
-      0 0 20px #36606e,
-      0 0 10px #3a687a;
+      0 0 20px #E500E5,
+      0 0 25px #00FFFF;
   }
 
   .cyber-border {
-    border: 1px solid #00E5FF;
+    border: 1px solid #00FFFF;
     box-shadow: 
-      0 0 10px rgba(0, 229, 255, 0.5),
-      inset 0 0 10px rgba(0, 229, 255, 0.2);
+      0 0 10px rgba(0, 255, 255, 0.6),
+      inset 0 0 10px rgba(0, 255, 255, 0.35);
   }
 
   .circuit-line {
@@ -150,7 +153,7 @@
     position: absolute;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #00E5FF, transparent);
+    background: linear-gradient(90deg, transparent, #001F3F 45%, #00FFFF 55%, #001F3F 65%, transparent);
     animation: circuit-flow 3s linear infinite;
   }
 
@@ -164,7 +167,7 @@
   }
 
   .silver-section {
-    background-color: #52565f;
+    background-color: #050014;
     position: relative;
     overflow: hidden;
   }
@@ -175,10 +178,10 @@
     inset: 0;
     background: linear-gradient(
       120deg,
-      rgba(255, 255, 255, 0) 20%,
-      rgba(255, 255, 255, 0.2) 44%,
-      rgba(255, 255, 255, 0.3) 54%,
-      rgba(255, 255, 255, 0) 78%
+      rgba(255, 0, 255, 0) 20%,
+      rgba(255, 0, 255, 0.25) 44%,
+      rgba(0, 255, 255, 0.3) 54%,
+      rgba(255, 0, 255, 0) 78%
     );
     opacity: 0.85;
     transform: translateX(-100%);
@@ -191,7 +194,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(circle at top right, rgba(255, 255, 255, 0.15), transparent 60%);
+    background: linear-gradient(circle at top right, rgba(255, 0, 255, 0.25), transparent 60%);
     pointer-events: none;
     z-index: 0;
   }
@@ -238,13 +241,36 @@
     opacity: 0;
   }
 
+body.contact-sticky-active .header-bar {
+  display: none;
+}
+
   .carousel {
+    flex-direction: row;
     margin: 3.75rem auto;
     width: min(100%, 72rem);
-    display: flex;
-    gap: 1.5rem;
     overflow: hidden;
     padding-inline: 1rem;
+  }
+
+  .carousel-track {
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+    animation: carousel-scroll-ltr var(--carousel-duration, 24s) linear infinite;
+    will-change: transform;
+    perspective: 1000;
+    --carousel-duration: 24s;
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+
+  [dir="rtl"] .carousel-track {
+    animation-name: carousel-scroll-rtl;
   }
 
   .carousel-group {
@@ -252,20 +278,19 @@
     align-items: center;
     gap: 1.5rem;
     flex-shrink: 0;
-    min-width: max-content;
-    animation: carousel-scroll 24s linear infinite;
-    will-change: transform;
+    width: max-content;
   }
 
-  .carousel-group:nth-child(2) {
-    animation-delay: -12s;
-  }
-
-  .chat-card {
+   .chat-card {
     flex: 0 0 clamp(11rem, 38vw, 15rem);
     border-radius: 1rem;
     overflow: hidden;
     border: 1px solid hsl(var(--primary) / 0.35);
+    /* iOS performance optimizations */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 
   .chat-card img {
@@ -275,16 +300,29 @@
     display: block;
   }
 
+    .carousel-track:hover {
+    animation-play-state: running;
+  }
+
   .carousel::-webkit-scrollbar {
     display: none;
   }
 
-  @keyframes carousel-scroll {
+  @keyframes carousel-scroll-ltr {
     from {
-      transform: translateX(0);
+      transform: translate3d(0, 0, 0);
     }
     to {
-      transform: translateX(calc(-100% - 1.5rem));
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  @keyframes carousel-scroll-rtl {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(50%, 0, 0);
     }
   }
 
@@ -326,19 +364,21 @@
     perspective: 1000px; 
     transform-style: preserve-3d;
     display: grid;
-    grid-template-rows: repeat(4, 16dvh);
-    grid-template-columns: repeat(3, 25dvw);
+    grid-template-rows: repeat(5, 16dvh);
+    grid-template-columns: repeat(3, 35dvw);
+    grid-auto-flow: row;
+    justify-content: center;
     place-items: center;
     position: sticky;
     margin-top: 0;
     /* Add the infinite scroll animation here */
-    animation: infinite-scroll 20s linear infinite;
+    animation: infinite-scroll 15s linear infinite;
     animation-play-state: paused;
   }
 
   @screen md {
     .stuck-grid {
-      grid-template-columns: repeat(3, 20dvw);
+      grid-template-columns: repeat(4, 18dvw);
     }
   }
 
@@ -378,59 +418,58 @@
     This is where you can personalize the timing for each text element.
     `animation-delay` staggers the start of each item's animation.
   */
-  .stuck-grid > .grid-item:nth-of-type(1)  { animation-delay: 10s; }
-  .stuck-grid > .grid-item:nth-of-type(2)  { animation-delay: -1s; }
-  .stuck-grid > .grid-item:nth-of-type(3)  { animation-delay: -12s; }
-  .stuck-grid > .grid-item:nth-of-type(4)  { animation-delay: -23s; }
-  .stuck-grid > .grid-item:nth-of-type(5)  { animation-delay: -4s; }
-  .stuck-grid > .grid-item:nth-of-type(6)  { animation-delay: -15s; }
-  .stuck-grid > .grid-item:nth-of-type(7)  { animation-delay: -6s; }
-  .stuck-grid > .grid-item:nth-of-type(8)  { animation-delay: -27s; }
-  .stuck-grid > .grid-item:nth-of-type(9)  { animation-delay: -8s; }
-  .stuck-grid > .grid-item:nth-of-type(10) { animation-delay: -39s; }
-  .stuck-grid > .grid-item.special        { animation-delay: -10s; }
+   /* .stuck-grid > .grid-item:nth-of-type(1) { animation-delay: -1s; } */
+  /* .stuck-grid > .grid-item:nth-of-type(2) { animation-delay: -2s; } */
+  /* .stuck-grid > .grid-item:nth-of-type(3) { animation-delay: -3s; } */
+  /* .stuck-grid > .grid-item:nth-of-type(4) { animation-delay: -4s; } */
+  .stuck-grid > .grid-item:nth-of-type(5) { animation-delay: -5s; }
+ /* .stuck-grid > .grid-item:nth-of-type(6) { animation-delay: -6s; } */
+  .stuck-grid > .grid-item:nth-of-type(7) { animation-delay: -7s; }
+  /* .stuck-grid > .grid-item:nth-of-type(8) { animation-delay: -8s; } */
+  .stuck-grid > .grid-item:nth-of-type(9) { animation-delay: -9s; } 
+  /* .stuck-grid > .grid-item:nth-of-type(10) { animation-delay: -10s; } */
   .stuck-grid > .grid-item:nth-of-type(11) { animation-delay: -11s; }
-  .stuck-grid > .grid-item:nth-of-type(12) { animation-delay: -2s; }
+  /* .stuck-grid > .grid-item:nth-of-type(12) { animation-delay: -12s; } */
   .stuck-grid > .grid-item:nth-of-type(13) { animation-delay: -13s; }
-  .stuck-grid > .grid-item:nth-of-type(14) { animation-delay: -34s; }
+  /* .stuck-grid > .grid-item:nth-of-type(14) { animation-delay: -14s; } */
   .stuck-grid > .grid-item:nth-of-type(15) { animation-delay: -15s; }
-  .stuck-grid > .grid-item:nth-of-type(16) { animation-delay: -16s; }
+  /* .stuck-grid > .grid-item:nth-of-type(16) { animation-delay: -16s; } */
   .stuck-grid > .grid-item:nth-of-type(17) { animation-delay: -17s; }
-  .stuck-grid > .grid-item:nth-of-type(18) { animation-delay: -18s; }
+  /* .stuck-grid > .grid-item:nth-of-type(18) { animation-delay: -18s; } */
   .stuck-grid > .grid-item:nth-of-type(19) { animation-delay: -19s; }
-  .stuck-grid > .grid-item:nth-of-type(20) { animation-delay: -20s; }
+  /* .stuck-grid > .grid-item:nth-of-type(20) { animation-delay: -20s; } */
   .stuck-grid > .grid-item:nth-of-type(21) { animation-delay: -21s; }
-  .stuck-grid > .grid-item:nth-of-type(22) { animation-delay: -22s; }
+  /* .stuck-grid > .grid-item:nth-of-type(22) { animation-delay: -22s; } */
   .stuck-grid > .grid-item:nth-of-type(23) { animation-delay: -23s; }
-  .stuck-grid > .grid-item:nth-of-type(24) { animation-delay: -24s; }
+  /* .stuck-grid > .grid-item:nth-of-type(24) { animation-delay: -24s; } */
   .stuck-grid > .grid-item:nth-of-type(25) { animation-delay: -25s; }
-  .stuck-grid > .grid-item:nth-of-type(26) { animation-delay: -36s; }
-  .stuck-grid > .grid-item:nth-of-type(27) { animation-delay: -27s; }
+  /* .stuck-grid > .grid-item:nth-of-type(26) { animation-delay: -26s; } */
+  /* /* .stuck-grid > .grid-item:nth-of-type(27) { animation-delay: -27s; } */
   .stuck-grid > .grid-item:nth-of-type(28) { animation-delay: -28s; }
-  .stuck-grid > .grid-item:nth-of-type(29) { animation-delay: -9s; }
+  /* .stuck-grid > .grid-item:nth-of-type(29) { animation-delay: -29s; } */
   .stuck-grid > .grid-item:nth-of-type(30) { animation-delay: -30s; }
-  .stuck-grid > .grid-item:nth-of-type(31) { animation-delay: -3s; }
-  .stuck-grid > .grid-item:nth-of-type(32) { animation-delay: -32s; }
-  .stuck-grid > .grid-item:nth-of-type(33) { animation-delay: -23s; }
-  .stuck-grid > .grid-item:nth-of-type(34) { animation-delay: -4s; }
-  .stuck-grid > .grid-item:nth-of-type(35) { animation-delay: -35s; }
+  /* .stuck-grid > .grid-item:nth-of-type(31) { animation-delay: -31s; } */
+  .stuck-grid > .grid-item:nth-of-type(32) { animation-delay: -32s; } 
+  /* .stuck-grid > .grid-item:nth-of-type(33) { animation-delay: -33s; } */
+  .stuck-grid > .grid-item:nth-of-type(34) { animation-delay: -34s; }
+  /* .stuck-grid > .grid-item:nth-of-type(35) { animation-delay: -35s; } */
   .stuck-grid > .grid-item:nth-of-type(36) { animation-delay: -36s; }
-  .stuck-grid > .grid-item:nth-of-type(37) { animation-delay: -37s; }
-  .stuck-grid > .grid-item:nth-of-type(38) { animation-delay: -3s; }
-  .stuck-grid > .grid-item:nth-of-type(39) { animation-delay: -39s; }
+  /* .stuck-grid > .grid-item:nth-of-type(37) { animation-delay: -37s; } */
+  .stuck-grid > .grid-item:nth-of-type(38) { animation-delay: -38s; }
+  /* .stuck-grid > .grid-item:nth-of-type(39) { animation-delay: -39s; } */
   .stuck-grid > .grid-item:nth-of-type(40) { animation-delay: -40s; }
-  .stuck-grid > .grid-item:nth-of-type(41) { animation-delay: -1s; }
-  .stuck-grid > .grid-item:nth-of-type(42) { animation-delay: -2s; }
-  .stuck-grid > .grid-item:nth-of-type(43) { animation-delay: -43s; }
+  /* .stuck-grid > .grid-item:nth-of-type(41) { animation-delay: -41s; } */
+  .stuck-grid > .grid-item:nth-of-type(42) { animation-delay: -42s; }
+  /* .stuck-grid > .grid-item:nth-of-type(43) { animation-delay: -43s; } */
   .stuck-grid > .grid-item:nth-of-type(44) { animation-delay: -44s; }
-  .stuck-grid > .grid-item:nth-of-type(45) { animation-delay: -45s; }
-  .stuck-grid > .grid-item:nth-of-type(46) { animation-delay: -6s; }
-  .stuck-grid > .grid-item:nth-of-type(47) { animation-delay: -47s; }
-  .stuck-grid > .grid-item:nth-of-type(48) { animation-delay: -18s; }
-  .stuck-grid > .grid-item:nth-of-type(49) { animation-delay: -49s; }
-  .stuck-grid > .grid-item:nth-of-type(50) { animation-delay: -23s; }
-  .stuck-grid > .grid-item:nth-of-type(51) { animation-delay: -1s; }
-  .stuck-grid > .grid-item:nth-of-type(52) { animation-delay: -2s; }
+  /* .stuck-grid > .grid-item:nth-of-type(45) { animation-delay: -45s; } */
+  .stuck-grid > .grid-item:nth-of-type(46) { animation-delay: -46s; }
+  /* .stuck-grid > .grid-item:nth-of-type(47) { animation-delay: -47s; } */
+  .stuck-grid > .grid-item:nth-of-type(48) { animation-delay: -48s; }
+  /* .stuck-grid > .grid-item:nth-of-type(49) { animation-delay: -49s; } */
+  /* .stuck-grid > .grid-item:nth-of-type(50) { animation-delay: -50s; } */
+  /* .stuck-grid > .grid-item:nth-of-type(51) { animation-delay: -51s; } */
+  /* .stuck-grid > .grid-item:nth-of-type(52) { animation-delay: -52s; }   */
 
   /*
     This is the definition of the animation itself.
@@ -439,7 +478,7 @@
   @keyframes zoom-in {
     /* At the beginning (0%), the item is far away, invisible, and blurred. */
     0% {
-      transform: translateZ(-10000px); /* `translateZ` moves the element along the Z-axis (towards/away from the viewer). */
+      transform: translateZ(-1000px); /* `translateZ` moves the element along the Z-axis (towards/away from the viewer). */
       opacity: 0;
     }
     /* In the middle (50%), the item is right in front of the viewer, fully visible, and sharp. */
@@ -450,7 +489,7 @@
     }
     /* At the end (100%), the item has flown past the viewer and is once again far away, invisible, and blurred. */
     100% {
-      transform: translateZ(0px);
+      transform: translateZ(10px);
       opacity: 0;
     }
   }
@@ -466,61 +505,6 @@
   }
 
   /*
-    This is where you can personalize the timing and position for each text element.
-    `grid-area` places the item in the 4x4 grid. We reuse the same 16
-    grid cells for many items, just like in your reference, so more than
-    16 items can all appear over time without overflowing the grid.
+    Items auto-flow across the grid to avoid overlap.
   */
-  .stuck-grid > .grid-item:nth-of-type(1) { grid-area: 1 / 1; }
-  .stuck-grid > .grid-item:nth-of-type(13) { grid-area: 1 / 1; }
-  .stuck-grid > .grid-item:nth-of-type(25) { grid-area: 1 / 1; }
-  .stuck-grid > .grid-item:nth-of-type(37) { grid-area: 1 / 1; }
-  .stuck-grid > .grid-item:nth-of-type(49) { grid-area: 1 / 1; }
-  .stuck-grid > .grid-item:nth-of-type(2) { grid-area: 2 / 1; }
-  .stuck-grid > .grid-item:nth-of-type(14) { grid-area: 2 / 1; }
-  .stuck-grid > .grid-item:nth-of-type(26) { grid-area: 2 / 1; }
-  .stuck-grid > .grid-item:nth-of-type(38) { grid-area: 2 / 1; }
-  .stuck-grid > .grid-item:nth-of-type(50) { grid-area: 2 / 1; }
-  .stuck-grid > .grid-item:nth-of-type(3) { grid-area: 3 / 1; }
-  .stuck-grid > .grid-item:nth-of-type(15) { grid-area: 3 / 1; }
-  .stuck-grid > .grid-item:nth-of-type(27) { grid-area: 3 / 1; }
-  .stuck-grid > .grid-item:nth-of-type(39) { grid-area: 3 / 1; }
-  .stuck-grid > .grid-item:nth-of-type(51) { grid-area: 3 / 1; }
-  .stuck-grid > .grid-item:nth-of-type(4) { grid-area: 4 / 1; }
-  .stuck-grid > .grid-item:nth-of-type(16) { grid-area: 4 / 1; }
-  .stuck-grid > .grid-item:nth-of-type(28) { grid-area: 4 / 1; }
-  .stuck-grid > .grid-item:nth-of-type(40) { grid-area: 4 / 1; }
-  .stuck-grid > .grid-item:nth-of-type(52) { grid-area: 4 / 1; }
-  .stuck-grid > .grid-item:nth-of-type(5) { grid-area: 1 / 2; }
-  .stuck-grid > .grid-item:nth-of-type(17) { grid-area: 1 / 2; }
-  .stuck-grid > .grid-item:nth-of-type(29) { grid-area: 1 / 2; }
-  .stuck-grid > .grid-item:nth-of-type(41) { grid-area: 1 / 2; }
-  .stuck-grid > .grid-item:nth-of-type(6) { grid-area: 2 / 2; }
-  .stuck-grid > .grid-item:nth-of-type(18) { grid-area: 2 / 2; }
-  .stuck-grid > .grid-item:nth-of-type(30) { grid-area: 2 / 2; }
-  .stuck-grid > .grid-item:nth-of-type(42) { grid-area: 2 / 2; }
-  .stuck-grid > .grid-item:nth-of-type(7) { grid-area: 3 / 2; }
-  .stuck-grid > .grid-item:nth-of-type(19) { grid-area: 3 / 2; }
-  .stuck-grid > .grid-item:nth-of-type(31) { grid-area: 3 / 2; }
-  .stuck-grid > .grid-item:nth-of-type(43) { grid-area: 3 / 2; }
-  .stuck-grid > .grid-item:nth-of-type(8) { grid-area: 4 / 2; }
-  .stuck-grid > .grid-item:nth-of-type(20) { grid-area: 4 / 2; }
-  .stuck-grid > .grid-item:nth-of-type(32) { grid-area: 4 / 2; }
-  .stuck-grid > .grid-item:nth-of-type(44) { grid-area: 4 / 2; }
-  .stuck-grid > .grid-item:nth-of-type(9) { grid-area: 1 / 3; }
-  .stuck-grid > .grid-item:nth-of-type(21) { grid-area: 1 / 3; }
-  .stuck-grid > .grid-item:nth-of-type(33) { grid-area: 1 / 3; }
-  .stuck-grid > .grid-item:nth-of-type(45) { grid-area: 1 / 3; }
-  .stuck-grid > .grid-item:nth-of-type(10) { grid-area: 2 / 3; }
-  .stuck-grid > .grid-item:nth-of-type(22) { grid-area: 2 / 3; }
-  .stuck-grid > .grid-item:nth-of-type(34) { grid-area: 2 / 3; }
-  .stuck-grid > .grid-item:nth-of-type(46) { grid-area: 2 / 3; }
-  .stuck-grid > .grid-item:nth-of-type(11) { grid-area: 3 / 3; }
-  .stuck-grid > .grid-item:nth-of-type(23) { grid-area: 3 / 3; }
-  .stuck-grid > .grid-item:nth-of-type(35) { grid-area: 3 / 3; }
-  .stuck-grid > .grid-item:nth-of-type(47) { grid-area: 3 / 3; }
-  .stuck-grid > .grid-item:nth-of-type(12) { grid-area: 4 / 3; }
-  .stuck-grid > .grid-item:nth-of-type(24) { grid-area: 4 / 3; }
-  .stuck-grid > .grid-item:nth-of-type(36) { grid-area: 4 / 3; }
-  .stuck-grid > .grid-item:nth-of-type(48) { grid-area: 4 / 3; }
 }

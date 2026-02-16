@@ -14,7 +14,7 @@ export const contactFormSchema = z.object({
 
   businessDescription: z
     .string()
-    .min(10, "התיאור חייב להכיל לפחות 10 תווים")
+    .min(6, "התיאור חייב להכיל לפחות 10 תווים")
     .max(500, "התיאור לא יכול להכיל יותר מ-500 תווים"),
 
   phone: z
@@ -22,12 +22,6 @@ export const contactFormSchema = z.object({
     .min(9, "מספר הטלפון קצר מדי")
     .max(11, "מספר הטלפון ארוך מדי")
     .regex(/^0[2-9]\d{7,8}$|^\+972[2-9]\d{7,8}$|^972[2-9]\d{7,8}$/, "מספר הטלפון לא תקין. יש להזין מספר ישראלי תקין"),
-
-  email: z
-    .string()
-    .email("כתובת האימייל לא תקינה")
-    .optional()
-    .or(z.literal(""))
 });
 
 export type ContactFormData = z.infer<typeof contactFormSchema>;

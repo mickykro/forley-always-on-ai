@@ -64,9 +64,9 @@ const PricingSection = ({ onOpenContact }: PricingSectionProps) => {
             </CardContent>
           </Card>
 
-          <Card className="p-8 border-2 border-primary/50 bg-card/20 backdrop-blur-sm shadow-[0_0_40px_rgba(0,229,255,0.3)] relative">
+          <Card className="p-8 border-2 border-primary/50 bg-card/20 backdrop-blur-sm shadow-[0_0_40px_rgba(255,0,255,0.3)] relative">
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-              <Badge className="bg-primary text-black shadow-[0_0_15px_rgba(0,229,255,0.6)]">הכי פופולרי</Badge>
+              <Badge className="bg-primary text-black shadow-[0_0_15px_rgba(255,0,255,0.6)]">הכי פופולרי</Badge>
             </div>
             <CardContent className="pt-4">
               <div className="text-center mb-8">
@@ -106,7 +106,7 @@ const PricingSection = ({ onOpenContact }: PricingSectionProps) => {
               </ul>
               <Button
                 type="button"
-                className="w-full bg-primary text-black hover:bg-primary/90 hover:shadow-[0_0_30px_rgba(0,229,255,0.6)]"
+                className="w-full bg-primary text-black hover:bg-primary/90 hover:shadow-[0_0_30px_rgba(255,0,255,0.6)]"
                 onClick={onOpenContact}
               >
                 התחילו עכשיו

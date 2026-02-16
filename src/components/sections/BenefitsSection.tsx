@@ -36,7 +36,7 @@ const BenefitsSection = () => {
             </CardContent>
           </Card>
 
-          <Card className="sm:p-6 text-center bg-card/20 backdrop-blur-sm border-2 border-accent/30 hover:shadow-[0_0_25px_rgba(0,229,255,0.3)] hover:border-accent transition-all">
+          <Card className="sm:p-6 text-center bg-card/20 backdrop-blur-sm border-2 border-accent/30 hover:shadow-[0_0_25px_rgba(255,0,255,0.3)] hover:border-accent transition-all">
             <CardContent className="pt-3 sm:pt-4">
               <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4 border border-accent/50">
                 <ClockIcon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-accent" />
@@ -46,7 +46,7 @@ const BenefitsSection = () => {
             </CardContent>
           </Card>
 
-          <Card className="sm:p-6 text-center bg-card/20 backdrop-blur-sm border-2 border-primary/30 hover:shadow-[0_0_25px_rgba(0,229,255,0.3)] hover:border-primary transition-all">
+          <Card className="sm:p-6 text-center bg-card/20 backdrop-blur-sm border-2 border-primary/30 hover:shadow-[0_0_25px_rgba(255,0,255,0.3)] hover:border-primary transition-all">
             <CardContent className="pt-3 sm:pt-4">
               <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4 border border-primary/50">
                 <BrainIcon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-primary" />

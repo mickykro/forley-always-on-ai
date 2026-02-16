@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef } from "react";
 
 const HIGHLIGHT_BUSINESS = "Call4li";
 const businessTypes = [
@@ -10,66 +10,29 @@ const businessTypes = [
   "אינסטלטורים", "שפים פרטיים", "מורי נהיגה",
   "מפתחי אתרים", "יועצי משכנתאות", "תזונאים", "מנעולנים",
   "מדבירים", "חברות ניקיון", "שירותי קייטרינג", "מפיקי אירועים",
-  "סדנאות", "חוגים", "מרפאות", "משרדי נסיעות",
-  "חנויות בוטיק", "מאפיות",
+  "סדנאות", "חוגים", "מרפאות", "נגרים", "חנויות פרחים",
 ];
 
 const shuffledBusinesses = [...businessTypes]
   .filter((business) => business !== HIGHLIGHT_BUSINESS)
   .sort(() => Math.random() - 0.5);
 
-const orderedBusinesses = [
-  ...shuffledBusinesses.slice(0, 8),
-  ...shuffledBusinesses.slice(8),
-];
-
-const gridItems = orderedBusinesses.map((business) => ({
+const gridItems = shuffledBusinesses.map((business) => ({
   content: business,
   isSpecial: business === HIGHLIGHT_BUSINESS,
 }));
 
 const BusinessGridSection = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    const media = window.matchMedia("(max-width: 640px)");
-    const updateMatch = () => setIsMobile(media.matches);
-    updateMatch();
-
-    if (media.addEventListener) {
-      media.addEventListener("change", updateMatch);
-    } else {
-      media.addListener(updateMatch);
-    }
-
-    return () => {
-      if (media.removeEventListener) {
-        media.removeEventListener("change", updateMatch);
-      } else {
-        media.removeListener(updateMatch);
-      }
-    };
+  const visibleChunks = useMemo(() => {
+    const chunkCount = 3;
+    const chunkSize = Math.ceil(gridItems.length / chunkCount);
+    return [
+      gridItems.slice(0, chunkSize),
+      gridItems.slice(chunkSize, chunkSize * 2),
+      gridItems.slice(chunkSize * 2),
+    ];
   }, []);
-
-  const visibleItems = useMemo(() => {
-    if (!isMobile) {
-      return gridItems;
-    }
-
-    return gridItems.slice(0, Math.ceil(gridItems.length / 2));
-  }, [isMobile]);
-  const visibleItems2 = useMemo(() => {
-    if (!isMobile) {
-      return gridItems;
-    }
-
-    return gridItems.slice( Math.ceil(gridItems.length / 2));
-  }, [isMobile]);
 
   useEffect(() => {
     const section = containerRef.current;
@@ -95,32 +58,24 @@ const BusinessGridSection = () => {
         <p className="text-lg md:text-xl leading-relaxed text-foreground">העסקים שעובדים איתנו</p>
       </div>
       <div ref={containerRef} className="stuck-grid-container full-width-section">
-        <section className="stuck-grid">
-          {visibleItems.map((item, index) => {
-            console.log(item, index);
-            return (
-              <div
-                key={index}
-                className={`grid-item${item.isSpecial ? " special" : ""}`}
-              >
-                {item.content}
-              </div>
-            );
-          })}
-        </section>
-        <section className="stuck-grid" aria-hidden="true">
-          {visibleItems2.map((item, index) => {
-            console.log(item, index);
-            return (
-              <div
-                key={index}
-                className={`grid-item${item.isSpecial ? " special" : ""}`}
-              >
-                {item.content}
-              </div>
-            );
-          })}
-        </section>
+        {visibleChunks.map((chunk, chunkIndex) => (
+          <section
+            key={chunkIndex}
+            className="stuck-grid"
+            aria-hidden={chunkIndex > 0 ? true : undefined}
+          >
+            {chunk.map((item, index) => {
+              return (
+                <div
+                  key={index}
+                  className={`grid-item${item.isSpecial ? " special" : ""}`}
+                >
+                  {item.content}
+                </div>
+              );
+            })}
+          </section>
+        ))}
       </div>
     </>
   );
