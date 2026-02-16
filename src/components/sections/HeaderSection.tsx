@@ -12,14 +12,17 @@ const HeaderSection = ({ onOpenContact }: HeaderSectionProps) => {
         <div className="header-brand flex items-center">
           <img src={forliMascot} alt="פורלי הינשוף" className="w-22 h-12 animate-glow-pulse" />
           <div className="header-text">
-            <h1 className="text-xl md:text-2xl font-bold text-primary cyber-glow">Call4li</h1>
+            <h1 className="text-xl md:text-2xl font-bold cyber-glow">
+              <span className="text-primary">Call</span>
+              <span className="text-accent">4li</span>
+            </h1>
           </div>
         </div>
 
         <Button
           type="button"
           variant="outline"
-          className="header-cta text-primary hover:bg-primary hover:text-black border-primary cyber-border"
+          className="header-cta text-accent hover:bg-accent hover:text-black border-accent cyber-border"
           onClick={onOpenContact}
         >
           להתחלת ניסיון חינם

@@ -75,7 +75,7 @@ export default {
         },
         // Futuristic Tech Colors
         cyber: {
-          cyan: "#FF00FF",
+          cyan: "#F0B1DC",
           blue: "#00FFFF",
           void: "#000000",
           midnight: "#001F3F",
@@ -134,11 +134,11 @@ export default {
         "glow-pulse": {
           "0%, 100%": {
             opacity: "1",
-            filter: "drop-shadow(0 0 8px #FF00FF)",
+            filter: "drop-shadow(0 0 8px #F0B1DC)",
           },
           "50%": {
             opacity: "0.8",
-            filter: "drop-shadow(0 0 20px #FF00FF)",
+            filter: "drop-shadow(0 0 20px #F0B1DC)",
           },
         },
       },

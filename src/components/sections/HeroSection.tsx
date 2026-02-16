@@ -98,17 +98,19 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative overflow-hidden py-20">
+    <section className="hero-section relative overflow-hidden py-20">
       <div className=" text-center relative z-10">
         <div className="flex justify-center mb-8">
-          <video
-            src={heroMascotVid}
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-40 h-40 rounded-full object-cover animate-pop-in shadow-[0_0_50px_rgba(255,0,255,0.6)]"
-          />
+          <div className="hero-mascot-glow">
+            <video
+              src={heroMascotVid}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-40 h-40 rounded-full object-cover animate-pop-in"
+            />
+          </div>
         </div>
         <MessageBubble className="mb-4">
           <h1 className="text-md md:text-4xl font-bold leading-tight text-primary cyber-glow">

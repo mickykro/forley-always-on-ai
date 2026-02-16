@@ -124,6 +124,13 @@ const ContactUs = ({ variant = "page", showWhatsAppOption = true, onComplete }: 
     return () => window.removeEventListener("scroll", updateScroll);
   }, [isStickyActive]);
 
+  useEffect(() => {
+    if (variant !== "page") return;
+    if (typeof document === "undefined") return;
+    document.body.classList.toggle("contact-sticky-active", isStickyActive);
+    return () => document.body.classList.remove("contact-sticky-active");
+  }, [isStickyActive, variant]);
+
   return (
     <section id="contact" className={variant === "page" ? "py-0 w-full" : ""}>
       <div className="md:px-4 md:max-w-4xl md:mx-auto space-y-8">
@@ -132,7 +139,7 @@ const ContactUs = ({ variant = "page", showWhatsAppOption = true, onComplete }: 
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit, (e) => console.log("Validation Failed:", e))} className="space-y-4 text-right">
                 <div
-                  className={isStickyActive ? "fixed left-1/2 -translate-x-1/2 z-40 w-[calc(100%-2rem)] max-w-4xl rounded-2xl bg-card/95 backdrop-blur-md border border-primary/30 p-3 shadow-lg" : ""}
+                  className={isStickyActive ? "fixed left-1/2 -translate-x-1/2 z-40 w-[calc(100%-2rem)] max-w-4xl rounded-2xl bg-card/95 backdrop-blur-md border border-accent/30 p-3 shadow-lg" : ""}
                   style={isStickyActive ? { top: stickyTopOffset } : undefined}
                 >
                   {/* STEP 1: Always in DOM, hidden if step is 2 */}
@@ -143,7 +150,7 @@ const ContactUs = ({ variant = "page", showWhatsAppOption = true, onComplete }: 
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                            <Input placeholder="איך פורלי תציג את העסק שלך" {...field} className={`rounded-full bg-card/50 border-2 border-primary/50 text-center ${stickyPlaceholderClass}`} />
+                            <Input placeholder="איך פורלי תציג את העסק שלך" {...field} className={`rounded-full bg-card/50 border-[1px] border-accent/50 text-center ${stickyPlaceholderClass}`} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -155,13 +162,13 @@ const ContactUs = ({ variant = "page", showWhatsAppOption = true, onComplete }: 
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                            <Input placeholder="כמה מילים על העסק שלך" {...field} className={`rounded-full bg-card/50 border-2 border-primary/50 text-center ${stickyPlaceholderClass}`} />
+                            <Input placeholder="כמה מילים על העסק שלך" {...field} className={`rounded-full bg-card/50 border-[1px] border-accent/50 text-center ${stickyPlaceholderClass}`} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
                     />
-                    <Button type="button" size="lg" className={`w-full bg-primary text-black ${isStickyActive ? "col-span-2" : ""}`} onClick={handleNextStep}>
+                    <Button type="button" size="lg" className={`w-full bg-transparent border border-primary/50 text-primary hover:bg-primary hover:text-black ${isStickyActive ? "col-span-2" : ""}`} onClick={handleNextStep}>
                       להמשך
                     </Button>
                   </div>
@@ -174,7 +181,7 @@ const ContactUs = ({ variant = "page", showWhatsAppOption = true, onComplete }: 
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                            <Input placeholder="שם מלא" {...field} className="rounded-full bg-card/60 border border-primary/40 text-center" />
+                            <Input placeholder="שם מלא" {...field} className="rounded-full bg-card/60 border border-accent/40 text-center" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -186,7 +193,7 @@ const ContactUs = ({ variant = "page", showWhatsAppOption = true, onComplete }: 
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                            <Input placeholder="מספר טלפון" {...field} className="rounded-full bg-card/60 border border-primary/40 text-center" />
+                            <Input placeholder="מספר טלפון" {...field} className="rounded-full bg-card/60 border border-accent/40 text-center" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>

@@ -25,12 +25,12 @@ const WhatsAppChatSection = ({
       />
       
       {/* Futuristic Chat Header */}
-      <div className="sticky top-0 z-20 bg-card/80 backdrop-blur-md border-b-2 border-primary/30 h-16 flex items-center px-4 gap-3 shadow-[0_0_20px_rgba(255,0,255,0.3)]">
+      <div className="sticky top-0 z-20 bg-card/80 backdrop-blur-md border-b-2 border-primary/30 h-16 flex items-center px-4 gap-3 shadow-[0_0_20px_rgba(240,177,220,0.3)]">
         {/* Back arrow */}
         <ArrowRight className="w-6 h-6 text-primary" />
         
         {/* Avatar with glow */}
-        <div className="w-10 h-10 rounded-full bg-primary/20 border-2 border-primary/50 flex items-center justify-center flex-shrink-0 shadow-[0_0_10px_rgba(255,0,255,0.5)]">
+        <div className="w-10 h-10 rounded-full bg-primary/20 border-2 border-primary/50 flex items-center justify-center flex-shrink-0 shadow-[0_0_10px_rgba(240,177,220,0.5)]">
           <span className="text-primary text-lg font-bold">
             {name.charAt(0)}
           </span>
