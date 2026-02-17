@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://forli.lovable.app/sitemap.xml
+Sitemap: https://call4li.com/sitemap.xml

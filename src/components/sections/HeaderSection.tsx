@@ -1,4 +1,4 @@
-import forliMascot from "@/assets/forli_no_bg.png";
+import forliMascot from "@/assets/forli_no_bg_silver.png";
 import { Button } from "@/components/ui/button";
 
 interface HeaderSectionProps {

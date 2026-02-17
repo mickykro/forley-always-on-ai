@@ -27,8 +27,8 @@ const Index = () => {
   return (
     <>
       <SEO
-        title="Call4li - פורלי הינשוף החכם עונה כשאתה לא יכול"
-        description="מערכת בוט חכמה שמתעדת שיחות, יוצרת קשר עם לקוחות ושולחת סיכומים. לא מפספסים אף הזדמנות עסקית!"
+        title="Call4li - פורלי העוזרת האישית שלך בזמן שאתה עובד"
+        description="מערכת צ׳אט בוט חכמה שמתעדת שיחות, יוצרת קשר עם לקוחות ושולחת סיכומים. לא מפספסים אף הזדמנות עסקית!"
         canonicalUrl={import.meta.env.VITE_DOMAIN_URL || "https://call4li.com"}
       />
       {/* <PromoModal whatsappUrl={whatsappUrl} /> */}

@@ -80,7 +80,7 @@ VITE_SUPABASE_URL=https://your_project_id.supabase.co
 
 **Required - Domain & WhatsApp:**
 ```bash
-VITE_DOMAIN_URL=https://yourdomain.vercel.app
+VITE_DOMAIN_URL=https://www.call4li.com
 VITE_WHATSAPP_PHONE=972553163293
 ```
 
@@ -92,7 +92,7 @@ N8N_ONBOARDING_WEBHOOK_URL=https://your-n8n-instance.com/webhook/onboarding
 
 **Optional - Custom Branding:**
 ```bash
-VITE_OG_IMAGE=https://your-og-image-url.com/image.png
+VITE_OG_IMAGE=https://storage.googleapis.com/website-seo-integration/forli-mascot.jpeg
 ```
 
 💡 **Tip:** Use the same values from your local `.env` file (if you have one) or refer to `.env.example`
