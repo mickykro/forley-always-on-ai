@@ -42,7 +42,7 @@ const CircuitBackground = ({
       intervalOffset: number;
     }[] = [];
     const isMobile = window.matchMedia("(max-width: 767px)").matches;
-    const densityFactor = isMobile ? 12000 : Math.random() * 5000 + 20000;
+    const densityFactor = isMobile ? 30000 : Math.random() * 5000 + 20000;
     const nodeCount = Math.floor((canvas.width * canvas.height) / densityFactor);
     console.log("node count ", nodeCount);
     
@@ -89,7 +89,7 @@ const CircuitBackground = ({
     };
 
     regenerateConnections();
-    const connectionInterval = setInterval(regenerateConnections, Math.random() * 10000);
+    const connectionInterval = setInterval(regenerateConnections, Math.random()+3000 * 10000);
 
     let animationFrame: number;
     let time = 0;
@@ -97,7 +97,7 @@ const CircuitBackground = ({
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const timeStep = isMobile ? 0.03 : 0.06;
+      const timeStep = isMobile ? 0.02 : 0.06;
       time += timeStep;
 
       // Draw connections

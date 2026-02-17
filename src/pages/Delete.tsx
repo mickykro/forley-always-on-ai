@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { logOnboardingEvent } from "@/services/onboardingIntegration";
-import forliMascot from "@/assets/forli_no_bg.png";
+import forliMascot from "@/assets/forli_no_bg_silver.png";
 import SEO from "@/components/SEO";
 
 const Delete = () => {

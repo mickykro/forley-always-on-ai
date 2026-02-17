@@ -15,10 +15,10 @@ const TestimonialsSection = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          <Card className="p-6 bg-card/20 backdrop-blur-sm border-2 border-primary/30 hover:shadow-[0_0_25px_rgba(0,229,255,0.3)] hover:border-primary transition-all">
+          <Card className="p-6 bg-card/20 backdrop-blur-sm border-2 border-primary/30 hover:shadow-[0_0_25px_rgba(240,177,220,0.3)] hover:border-primary transition-all">
             <CardContent className="pt-4">
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-primary/20 border-2 border-primary/50 rounded-full flex items-center justify-center text-primary font-bold shadow-[0_0_10px_rgba(0,229,255,0.4)]">
+                <div className="w-12 h-12 bg-primary/20 border-2 border-primary/50 rounded-full flex items-center justify-center text-primary font-bold shadow-[0_0_10px_rgba(240,177,220,0.4)]">
                   א
                 </div>
                 <div>
@@ -32,10 +32,10 @@ const TestimonialsSection = () => {
             </CardContent>
           </Card>
 
-          <Card className="p-6 bg-card/20 backdrop-blur-sm border-2 border-primary/30 hover:shadow-[0_0_25px_rgba(0,229,255,0.3)] hover:border-primary transition-all">
+          <Card className="p-6 bg-card/20 backdrop-blur-sm border-2 border-primary/30 hover:shadow-[0_0_25px_rgba(240,177,220,0.3)] hover:border-primary transition-all">
             <CardContent className="pt-4">
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-primary/20 border-2 border-primary/50 rounded-full flex items-center justify-center text-primary font-bold shadow-[0_0_10px_rgba(0,229,255,0.4)]">
+                <div className="w-12 h-12 bg-primary/20 border-2 border-primary/50 rounded-full flex items-center justify-center text-primary font-bold shadow-[0_0_10px_rgba(240,177,220,0.4)]">
                   ש
                 </div>
                 <div>
@@ -49,10 +49,10 @@ const TestimonialsSection = () => {
             </CardContent>
           </Card>
 
-          <Card className="p-6 bg-card/20 backdrop-blur-sm border-2 border-primary/30 hover:shadow-[0_0_25px_rgba(0,229,255,0.3)] hover:border-primary transition-all">
+          <Card className="p-6 bg-card/20 backdrop-blur-sm border-2 border-primary/30 hover:shadow-[0_0_25px_rgba(240,177,220,0.3)] hover:border-primary transition-all">
             <CardContent className="pt-4">
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-primary/20 border-2 border-primary/50 rounded-full flex items-center justify-center text-primary font-bold shadow-[0_0_10px_rgba(0,229,255,0.4)]">
+                <div className="w-12 h-12 bg-primary/20 border-2 border-primary/50 rounded-full flex items-center justify-center text-primary font-bold shadow-[0_0_10px_rgba(240,177,220,0.4)]">
                   ד
                 </div>
                 <div>

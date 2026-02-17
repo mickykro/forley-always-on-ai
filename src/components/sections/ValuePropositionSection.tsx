@@ -21,7 +21,7 @@ const ValuePropositionSection = () => {
           </MessageBubble>
         </div>
 
-        <Card className="max-w-md mx-auto bg-card/30 backdrop-blur-sm border-2 border-primary/30 text-foreground p-8 shadow-[0_0_30px_rgba(0,229,255,0.2)]">
+        <Card className="max-w-md mx-auto bg-card/30 backdrop-blur-sm border-2 border-primary/30 text-foreground p-8 shadow-[0_0_30px_rgba(240,177,220,0.2)]">
           <CardContent className="pt-4">
             <h3 className="text-2xl font-bold mb-6 text-primary cyber-glow">מחשבון החיסכון שלך</h3>
             <div className="space-y-4 text-right">
@@ -31,7 +31,7 @@ const ValuePropositionSection = () => {
                   type="number"
                   value={dealValue}
                   onChange={(event) => setDealValue(Number(event.target.value) || 0)}
-                  className="w-full p-3 border-2 border-primary/30 rounded-lg text-center bg-card/50 backdrop-blur-sm text-foreground focus:outline-none focus:border-primary focus:shadow-[0_0_15px_rgba(0,229,255,0.4)] transition-all"
+                  className="w-full p-3 border-2 border-primary/30 rounded-lg text-center bg-card/50 backdrop-blur-sm text-foreground focus:outline-none focus:border-primary focus:shadow-[0_0_15px_rgba(240,177,220,0.4)] transition-all"
                 />
               </div>
               <div>
@@ -40,7 +40,7 @@ const ValuePropositionSection = () => {
                   type="number"
                   value={callsPerMonth}
                   onChange={(event) => setCallsPerMonth(Number(event.target.value) || 0)}
-                  className="w-full p-3 border-2 border-primary/30 rounded-lg text-center bg-card/50 backdrop-blur-sm text-foreground focus:outline-none focus:border-primary focus:shadow-[0_0_15px_rgba(0,229,255,0.4)] transition-all"
+                  className="w-full p-3 border-2 border-primary/30 rounded-lg text-center bg-card/50 backdrop-blur-sm text-foreground focus:outline-none focus:border-primary focus:shadow-[0_0_15px_rgba(240,177,220,0.4)] transition-all"
                 />
               </div>
               <div className="pt-4 border-t border-primary/20">

@@ -75,11 +75,11 @@ export default {
         },
         // Futuristic Tech Colors
         cyber: {
-          cyan: "#00E5FF",
+          cyan: "#F0B1DC",
           blue: "#00FFFF",
-          void: "#050A1E",
-          midnight: "#020612",
-          teal: "#2E5A75",
+          void: "#000000",
+          midnight: "#001F3F",
+          teal: "#001F3F",
         },
       },
       borderRadius: {
@@ -134,11 +134,11 @@ export default {
         "glow-pulse": {
           "0%, 100%": {
             opacity: "1",
-            filter: "drop-shadow(0 0 8px #00E5FF)",
+            filter: "drop-shadow(0 0 8px #F0B1DC)",
           },
           "50%": {
             opacity: "0.8",
-            filter: "drop-shadow(0 0 20px #00E5FF)",
+            filter: "drop-shadow(0 0 20px #F0B1DC)",
           },
         },
       },
