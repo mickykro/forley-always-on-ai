@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { logOnboardingEvent } from "@/services/onboardingIntegration";
-import forliMascot from "@/assets/forli_no_bg_silver.png";
+import forliMascot from "@/assets/forli_no_bg_silver.avif";
 
 interface Carrier {
   name: string;

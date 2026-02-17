@@ -45,17 +45,19 @@ const Index = () => {
       </Dialog>
       <CircuitBackground className="min-h-screen w-full">
         <HeaderSection onOpenContact={openContactPopup} />
-        <HeroSection />
-        <BusinessGridSection />
-        <StatsSection />
-        <HowItWorksSection />
-        <ObjectionsSection />
-        <BenefitsSection />
-        <ValuePropositionSection />
-        <PricingSection onOpenContact={openContactPopup} />
-        <TestimonialsSection />
-        <CTASection onOpenContact={openContactPopup} />
-        <FAQSection />
+        <main>
+          <HeroSection />
+          <BusinessGridSection />
+          <StatsSection />
+          <HowItWorksSection />
+          <ObjectionsSection />
+          <BenefitsSection />
+          <ValuePropositionSection />
+          <PricingSection onOpenContact={openContactPopup} />
+          <TestimonialsSection />
+          <CTASection onOpenContact={openContactPopup} />
+          <FAQSection />
+        </main>
         <FooterSection />
       </CircuitBackground>
     </>

@@ -31,7 +31,7 @@ const ObjectionsSection = () => {
   const activeObjection = objectionHighlights[activeObjectionIndex];
 
   return (
-    <section className="py-6 md:py-20 silver-section">
+    <section className="py-6 md:py-20 silver-section opacity-60">
       <div className="px-4 text-center relative">
         <div className="flex flex-col items-center gap-2 mb-4">
           <MessageBubble>

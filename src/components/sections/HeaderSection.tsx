@@ -1,4 +1,4 @@
-import forliMascot from "@/assets/forli_no_bg_silver.png";
+import forliMascot from "@/assets/forli_no_bg_silver.avif";
 import { Button } from "@/components/ui/button";
 
 interface HeaderSectionProps {
@@ -10,7 +10,13 @@ const HeaderSection = ({ onOpenContact }: HeaderSectionProps) => {
     <header className="header-bar bg-cyber-void/80 backdrop-blur-sm shadow-lg border-b border-cyber-cyan/30 sticky top-0 z-50">
       <div className="header-inner py-4 flex gap-8 items-center justify-between flex-row md:items-center md:justify-between">
         <div className="header-brand flex items-center">
-          <img src={forliMascot} alt="פורלי הינשוף" className="w-22 h-12 animate-glow-pulse" />
+          <img
+            src={forliMascot}
+            alt="פורלי הינשוף"
+            width={72}
+            height={48}
+            className="w-22 h-12 animate-glow-pulse"
+          />
           <div className="header-text">
             <h1 className="text-xl md:text-2xl font-bold cyber-glow">
               <span className="text-primary">Call</span>

@@ -12,10 +12,12 @@ const ValuePropositionSection = () => {
     <section className="py-20">
       <div className="px-4 text-center">
         <div className="flex justify-center mb-8">
-          <video src={valuePropositionVid} autoPlay muted loop playsInline className="w-24 h-24" />
         </div>
         <div className="block w-full">
           <MessageBubble className="mb-4">
+            <div className="align-center flex justify-center">
+          <video src={valuePropositionVid} autoPlay muted loop playsInline className="w-20 h-20 rounded-full object-cover shadow-[0_0_20px_rgba(240,177,220,0.4)]" />
+            </div>
             <h2 className="text-4xl font-bold text-primary">עסק ממוצע מפספס 30% מהשיחות</h2>
             <p className="text-2xl text-muted-foreground">Call4li הופך אותן להזדמנויות!</p>
           </MessageBubble>
@@ -26,8 +28,11 @@ const ValuePropositionSection = () => {
             <h3 className="text-2xl font-bold mb-6 text-primary cyber-glow">מחשבון החיסכון שלך</h3>
             <div className="space-y-4 text-right">
               <div>
-                <label className="block text-sm font-medium mb-2 text-foreground">שווי עסקה ממוצעת (₪)</label>
+                <label htmlFor="dealValue" className="block text-sm font-medium mb-2 text-foreground">
+                  שווי עסקה ממוצעת (₪)
+                </label>
                 <input
+                  id="dealValue"
                   type="number"
                   value={dealValue}
                   onChange={(event) => setDealValue(Number(event.target.value) || 0)}
@@ -35,8 +40,11 @@ const ValuePropositionSection = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2 text-foreground">שיחות בחודש</label>
+                <label htmlFor="callsPerMonth" className="block text-sm font-medium mb-2 text-foreground">
+                  שיחות בחודש
+                </label>
                 <input
+                  id="callsPerMonth"
                   type="number"
                   value={callsPerMonth}
                   onChange={(event) => setCallsPerMonth(Number(event.target.value) || 0)}

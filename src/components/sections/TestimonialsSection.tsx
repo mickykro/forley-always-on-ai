@@ -22,7 +22,7 @@ const TestimonialsSection = () => {
                   א
                 </div>
                 <div>
-                  <h4 className="font-bold text-primary">אבי כהן</h4>
+                  <h3 className="font-bold text-primary">אבי כהן</h3>
                   <p className="text-sm text-foreground/70">בעל עסק שירותים</p>
                 </div>
               </div>
@@ -39,7 +39,7 @@ const TestimonialsSection = () => {
                   ש
                 </div>
                 <div>
-                  <h4 className="font-bold text-primary">שרה לוי</h4>
+                  <h3 className="font-bold text-primary">שרה לוי</h3>
                   <p className="text-sm text-foreground/70">מנהלת קליניקה</p>
                 </div>
               </div>
@@ -56,7 +56,7 @@ const TestimonialsSection = () => {
                   ד
                 </div>
                 <div>
-                  <h4 className="font-bold text-primary">דן אברהם</h4>
+                  <h3 className="font-bold text-primary">דן אברהם</h3>
                   <p className="text-sm text-foreground/70">יועץ עסקי</p>
                 </div>
               </div>

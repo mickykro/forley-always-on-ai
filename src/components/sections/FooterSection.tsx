@@ -1,4 +1,4 @@
-import forliMascot from "@/assets/forli_no_bg_silver.png";
+import forliMascot from "@/assets/forli_no_bg_silver.avif";
 import { Link } from "react-router-dom";
 
 const FooterSection = () => {
@@ -9,23 +9,29 @@ const FooterSection = () => {
         <div className="grid md:grid-cols-3 gap-8 text-center md:text-right">
           <div>
             <div className="flex items-center justify-center md:justify-start gap-3 mb-4">
-              <img src={forliMascot} alt="פורלי הינשוף" className="w-10 h-10 animate-glow-pulse" />
+              <img
+                src={forliMascot}
+                alt="פורלי הינשוף"
+                width={40}
+                height={27}
+                className="w-10 h-[27px] animate-glow-pulse"
+              />
               <h3 className="text-2xl font-bold text-primary cyber-glow">Call4li</h3>
             </div>
             <p className="text-foreground">פורלי הינשוף שתמיד ער בשביל העסק שלך</p>
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-4 text-primary">יצירת קשר</h4>
+            <h3 className="text-lg font-bold mb-4 text-primary">יצירת קשר</h3>
             <div className="space-y-2 text-foreground">
-              <p>📧 micky@call4li.com</p>
+              <p>📧 info@call4li.com</p>
               <p>📞 054-2045280</p>
               <p>💬 ווטסאפ: 054-2045280</p>
             </div>
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-4 text-primary">קישורים</h4>
+            <h3 className="text-lg font-bold mb-4 text-primary">קישורים</h3>
             <div className="space-y-2 text-foreground">
               <Link to="/privacy" className="block transition-colors hover:text-primary">
                 מדיניות פרטיות
