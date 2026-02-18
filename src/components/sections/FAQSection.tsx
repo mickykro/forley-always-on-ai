@@ -30,7 +30,7 @@ const FAQSection = () => {
               איך Forli עובד?
             </AccordionTrigger>
             <AccordionContent className="text-right text-foreground">
-              Forli לומד את המידע על העסק שלך ומשתמש בו כדי לענות על שאלות לקוחות. המערכת מנתחת את השאלות, מחפשת
+              Forli לומדת את המידע על העסק שלך ומשתמשת בו כדי לענות על שאלות לקוחות. המערכת מנתחת את השאלות, מחפשת
               את המידע הרלוונטי ומספקת תשובות מדויקות ומקצועיות.
             </AccordionContent>
           </AccordionItem>
@@ -50,7 +50,7 @@ const FAQSection = () => {
               האם Forli יכול להתאים לכל סוג של עסק?
             </AccordionTrigger>
             <AccordionContent className="text-right text-foreground">
-              כן! Forli הוא גמיש ומותאם לכל סוג עסק - בין אם אתה מנהל חנות אונליין, מספק שירותים מקצועיים, או מנהל
+              כן! Forli היא גמישה ומותאמת לכל סוג עסק - בין אם אתה מנהל חנות אונליין, מספק שירותים מקצועיים, או מנהל
               עסק פיזי. המערכת מותאמת לצרכים הייחודיים של כל לקוח.
             </AccordionContent>
           </AccordionItem>

@@ -25,7 +25,7 @@ const Contact = () => {
   const steps = [
     {
       id: "welcome",
-      message: "שלום! אני פורלי, הינשוף החכם של Call4li 🦉",
+      message: "שלום! אני פורלי, הינשופה החכמה של Call4li 🦉",
       submessage: "אשמח לעזור לכם להתחיל. בואו נכיר - איך קוראים לכם?",
     },
     {
@@ -266,7 +266,7 @@ const Contact = () => {
           <div className="flex gap-2">
             <img src={forliMascot} alt="פורלי" className="w-8 h-8 rounded-full flex-shrink-0" />
             <div className="bg-[#202c33] text-white rounded-lg rounded-bl-none px-4 py-2 max-w-[80%]">
-              <p className="text-sm">שלום! אני פורלי, הינשוף החכם של Call4li 🦉</p>
+            <p className="text-sm">שלום! אני פורלי, הינשופה החכמה של Call4li 🦉</p>
               <p className="text-sm mt-1 text-gray-300">אשמח לעזור לכם להתחיל. בואו נכיר - איך קוראים לכם?</p>
               <span className="text-xs text-gray-400 mt-1 block">
                 {new Date().toLocaleTimeString("he-IL", {

@@ -12,7 +12,7 @@ const HeaderSection = ({ onOpenContact }: HeaderSectionProps) => {
         <div className="header-brand flex items-center">
           <img
             src={forliMascot}
-            alt="פורלי הינשוף"
+            alt="פורלי הינשופה"
             width={72}
             height={48}
             className="w-22 h-12 animate-glow-pulse"

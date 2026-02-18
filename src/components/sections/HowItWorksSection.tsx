@@ -45,7 +45,7 @@ const HowItWorksSection = () => {
                 />
               </div>
               <h3 className="text-2xl font-bold text-primary mb-4">לקוח מתקשר</h3>
-              <p className="text-foreground text-lg">פורלי מזהה את השיחה הנכנסת ומתכונן לפעול</p>
+              <p className="text-foreground text-lg">פורלי מזהה את השיחה הנכנסת ומתכוננת לפעול</p>
             </CardContent>
           </Card>
 
@@ -71,9 +71,9 @@ const HowItWorksSection = () => {
               </div>
               <h3 className="text-2xl font-bold text-primary mb-4">תגובה חכמה</h3>
               <p className="text-foreground text-lg">
-                אם לא ענית - פורלי שולח ווטסאפ ללקוח
+                אם לא ענית - פורלי שולחת ווטסאפ ללקוח
                 <br />
-                אם ענית - פורלי מתעד ומסכם
+                אם ענית - פורלי מתעדת ומסכמת
               </p>
             </CardContent>
           </Card>
