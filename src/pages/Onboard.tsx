@@ -10,36 +10,39 @@ import forliMascot from "@/assets/forli_no_bg_silver.png";
 interface Carrier {
   name: string;
   code: string;
-  activationCode: string;
 }
 
 const carriers: Carrier[] = [
   // HOT Mobile supports 004
-  { name: "HOT Mobile", code: "hot", activationCode: "**004*0535972420**10%23" },
+  { name: "HOT Mobile", code: "hot" },
 
   // Golan supports 004
-  { name: "Golan Telecom", code: "golan", activationCode: "**004*0535972420**10%23" },
+  { name: "Golan Telecom", code: "golan" },
 
   // Rami Levy (MVNO) usually supports 004
-  { name: "Rami Levy", code: "rami", activationCode: "**004*0535972420**10%23" },
+  { name: "Rami Levy", code: "rami" },
 
   // 012 Mobile is Partner. If Partner needs 61/62/67, 012 likely does too.
   // If you are sure 004 works for 012, keep it.
-  { name: "012 Mobile", code: "012", activationCode: "**004*0535972420**10%23" },
+  { name: "012 Mobile", code: "012" },
 
   // --- THE PROBLEMATIC ONES ---
   // If you confirmed *004* fails on these, using *61* is a partial fix.
   // Ideally, test **004* on these. If it fails, they need 67/62 as well.
-  { name: "Pelephone", code: "pelephone", activationCode: "**004*0535972420**10%23" },
-  { name: "Partner", code: "partner", activationCode: "**004*0535972420**10%23" },
-  { name: "Cellcom", code: "cellcom", activationCode: "**004*0535972420**10%23" },
+  { name: "Pelephone", code: "pelephone" },
+  { name: "Partner", code: "partner" },
+  { name: "Cellcom", code: "cellcom" },
 ];
+
+const TIMER_OPTIONS = [10, 20, 30] as const;
+type TimerOption = typeof TIMER_OPTIONS[number];
 
 const Onboard = () => {
   const { client_id } = useParams<{ client_id: string }>();
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [isCarrierDialogOpen, setIsCarrierDialogOpen] = useState(false);
+  const [selectedTimer, setSelectedTimer] = useState<TimerOption>(20);
 
   useEffect(() => {
     if (client_id) {
@@ -66,7 +69,8 @@ const Onboard = () => {
         action: "activate",
       });
 
-      window.location.href = `tel:${carrier.activationCode}`;
+      const activationCode = `**004*0535972420**${selectedTimer}%23`;
+      window.location.href = `tel:${activationCode}`;
 
       toast({
         title: "פעולה בוצעה בהצלחה",
@@ -138,6 +142,28 @@ const Onboard = () => {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
+          <div className="space-y-2">
+            <p className="text-sm font-medium text-center">זמן המתנה לפני העברה</p>
+            <div className="flex gap-2 justify-center">
+              {TIMER_OPTIONS.map((seconds) => (
+                <button
+                  key={seconds}
+                  onClick={() => setSelectedTimer(seconds)}
+                  className={`flex-1 h-11 rounded-md border text-sm font-semibold transition-colors ${
+                    selectedTimer === seconds
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : "bg-background text-foreground border-border hover:bg-muted"
+                  }`}
+                >
+                  {seconds} שנ׳
+                </button>
+              ))}
+            </div>
+            <p className="text-xs text-muted-foreground text-center">
+              ⚠️ שיחות שיסתיימו לפני {selectedTimer} שניות לא יטופלו על ידי המערכת
+            </p>
+          </div>
+
           <Button
             className="w-full h-14 text-lg font-semibold bg-primary text-primary-foreground hover:bg-primary/90"
             onClick={handleActivateClick}
